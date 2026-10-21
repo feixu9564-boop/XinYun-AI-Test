@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>心云 AI · 摄像头生理信号研究</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><header><span class="brand">◉ 心云 AI</span><span>CAMERA PHYSIOLOGICAL SIGNAL RESEARCH</span><span class="badge">科研原型 · V0.1</span></header>
+<main><h1>从微小变化，探索生命节律</h1><p class="intro">普通摄像头 · 本地信号处理 · POS / CHROM 算法对照</p>
+<div class="layout"><section class="camera panel"><div class="panel-title">摄像头画面 <span id="face">尚未开启</span></div><div class="viewport"><video id="video" autoplay muted playsinline></video><canvas id="overlay" width="640" height="480"></canvas><div id="placeholder">授权摄像头后开始研究测量<br><small>请正对镜头，保持静止与均匀光照</small></div></div><p>绿色区域为额头与双颊采样区域。请避免强背光、说话及头部移动。</p></section>
+<section class="panel metrics"><div class="panel-title">实时研究指标 <span>仅供参考</span></div><label>心率估计</label><div class="heart"><strong id="bpm">—</strong><span>次 / 分钟</span></div><div class="quality"><span>信号质量（启发式）</span><strong id="quality">—</strong></div><progress id="qualitybar" max="100" value="0"></progress><p id="status" role="status" aria-live="polite">等待开始测量</p><div class="wave-title">rPPG 波形 · POS <span>非心电图</span></div><canvas id="wave" width="600" height="150"></canvas><p id="comparison">POS — / CHROM —</p></section></div>
+<div class="controls"><button id="start">开始测量</button><button id="stop" disabled>停止测量</button><button id="reset">重新测量</button><span id="elapsed">建议持续 45 秒；至少 15 秒连续有效采样</span></div>
+<section class="panel"><h2>测量结果</h2><p id="result" aria-live="polite">测量结束后，在此显示本次研究结果。质量分数不代表准确率。</p></section>
+<section class="notes"><h2>研究边界与隐私</h2><p>仅供研究参考，不用于医疗诊断。心率不等于焦虑程度，本系统不输出焦虑诊断或心理评分。</p><p>视频仅在当前浏览器内存处理，不上传、不录像、不存储；停止测量会关闭摄像头。请仅测量本人，画面中保持一人。</p><details><summary>后续研究模块</summary><p>心率趋势、呼吸频率、经过信号验证后的 HRV、主观压力问卷相关性、不同人群与拍摄条件的性能评估。当前均未启用。</p></details></section>
+</main><footer>XinYun AI · 可验证的信号，谨慎的解释</footer><script src="/static/vendor/face_mesh/face_mesh.js"></script><script type="module" src="/static/app.js"></script></body></html>
