@@ -1,0 +1,21 @@
+{
+  "benchmark/__init__.py": "24d46bc860546f5532f13475e714c3948c9b0c0d6fe75f7fce17af8752b2c1a9",
+  "benchmark/adapters.py": "54de8ea94f0d03db0257d1a9f170064d6b3b22f9fd3ed566ae835a225ade1166",
+  "benchmark/adversarial.py": "e9ee7ec82dfecb6207e29dac9bce0f52a0ee3a0872d65929d51348386ca2b523",
+  "benchmark/data.py": "3e95feff58dcbe1c43363a2c322ce57ea834f65958c338dc7d5437b5336b190e",
+  "benchmark/fixture.py": "505f225ea5ae790bede2ffda74fef9f2ccb6dc9b78462b748af61830dc16dbdb",
+  "benchmark/metrics.py": "fcfcd90e782c0d7b1f1a9ba702bbb22dd4ba64f031244396c3b9b39fe66559fc",
+  "benchmark/parity.py": "78bc3cde342ab7a6ecd29273721d9eed32af65e7594dc6e97ef30d7546e142dd",
+  "benchmark/prepare.py": "698bda90f8642c342cf57c5a048743883540441ef723326ad2714e0648515fd7",
+  "benchmark/probe.py": "7d8ad5efa0a0cdb20265630057e0504965e336e4db23bdc5c4b6cc455b7be4d7",
+  "benchmark/quality.py": "41dddf95ed82269a3feca0803c595c163f3920fd188cf26fce6909be6c3e2754",
+  "benchmark/run.py": "1eb926c690c9a66e4572c9f675f5df6f07b4ac6ae50c59ce61b182ed4f7c408e",
+  "benchmark/signal.py": "7922e931b53628fbd3da4b095de823a164dc6e00e59c5faf68f285e85708bb57",
+  "benchmark/spectral_check.py": "2061402d0072ddd7be1c8e2cdbe3b02a38948a769ecc82a2b9c0ccac3813b46d",
+  "requirements-benchmark.lock": "e9a58553179e27ab0dd8a8f1984c1e762729cf9c77557b65e0132e42d38e69a4",
+  "scripts/audit-phase3-sources.py": "8e760284936dd85fcdd0fa014312200cc419631ffd275036f875297b84fa6809",
+  "scripts/validate-benchmark.py": "c668aa30713f17a51bf80ff3eeefe0e8fc528cb0332b6a40295df53bd3c2cc64",
+  "tests/test_benchmark.py": "f81075ed1c459ce2dc29bf63f27d14b4ed9cbc4ee90f6c8f42a82ac88e48eb6e",
+  "tests/test_quality.py": "db52d923cc4a16dc3998f0addd21c7bc618ea351776ba46854b77c6f09311b22",
+  "tests/test_review.py": "a48f0d460f037b2f6b31a8aba03ed9274b8dba460f33b6bd7d1626a0d7bfc9bf"
+}

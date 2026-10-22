@@ -1,0 +1,16 @@
+{
+  "base_commit": "f8e56a4e326df2e1fe520713a65f10ad91647da0",
+  "commands": [
+    {
+      "command": "python scripts/audit-phase3-sources.py --out reports/logs/phase3/source-audit --try-video",
+      "exit_code": 1,
+      "log": "source-audit/run.log"
+    },
+    {
+      "command": ".venv/Scripts/python scripts/validate-benchmark.py --out reports/logs/phase3/validation",
+      "exit_code": 0,
+      "log": "validation/runner.log"
+    }
+  ],
+  "acceptance": "BLOCKED: real video unavailable; uncalibrated thresholds; known residual false accepts"
+}

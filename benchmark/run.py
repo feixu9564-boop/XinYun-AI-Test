@@ -1,5 +1,6 @@
 """python -m benchmark.run MANIFEST --out outputs/run [--smoke]."""
 import argparse
+import csv
 import json
 from pathlib import Path
 import platform
@@ -9,7 +10,7 @@ import numpy as np
 from .adapters import NAMES, build_adapters
 from .data import load_manifest, load_record, aligned_window, sha256
 from .metrics import summarize
-from .signal import heart_rate
+from .quality import POLICY, InsufficientSignal, input_quality, reliable_heart_rate
 
 
 def hardware():
@@ -54,26 +55,38 @@ def run(manifest_path, out, smoke=False, toolbox=None, device='cpu', acknowledge
             starts = starts[:1]  # one window per recording; same sample IDs for all algorithms
         for start in starts:
             frames, reference, audit, error = None, None, {}, load_error
+            quality, quality_error = {}, None
             if error is None:
                 try:
-                    frames, reference, audit = aligned_window(data, start)
+                    frames, reference, audit, telemetry = aligned_window(data, start, include_telemetry=True)
                 except Exception as e:
                     error = f'{type(e).__name__}: {e}'
+                if error is None:
+                    try:
+                        quality = input_quality(frames, telemetry)
+                    except InsufficientSignal as e:
+                        quality, quality_error = e.audit, str(e)
             for name in NAMES:
                 row = dict(algorithm=name, recording_id=record['id'], subject_id=record['subject_id'],
                            conditions=record['conditions'], start_s=start, duration_s=16,
-                           status='rejected', reason=error, reference_bpm=reference,
-                           predicted_bpm=None, inference_s=0., **audit)
+                           status='insufficient_signal' if error and 'InsufficientSignal:' in error else 'rejected', reason=error, reference_bpm=reference,
+                           predicted_bpm=None, inference_s=0., quality=dict(quality), **audit)
                 if not error:
                     if name not in adapters:
                         row.update(status='blocked', reason=states[name]['reason'])
                     elif name not in NAMES[:2] and record['dataset'].upper() == 'PURE':
                         row.update(status='blocked', reason='training-dataset overlap: PURE checkpoint/test PURE')
+                    elif quality_error:
+                        row.update(status='insufficient_signal', reason=quality_error)
                     else:
                         tick = time.perf_counter()
                         try:
-                            value = heart_rate(adapters[name].predict(frames))
+                            value, spectral = reliable_heart_rate(adapters[name].predict(frames))
+                            row['quality'].update(spectral)
                             row.update(status='ok', reason=None, predicted_bpm=value)
+                        except InsufficientSignal as e:
+                            row['quality'].update(e.audit)
+                            row.update(status='insufficient_signal', reason=str(e))
                         except Exception as e:
                             row.update(status='failed', reason=f'{type(e).__name__}: {e}')
                         row['inference_s'] = time.perf_counter()-tick
@@ -81,19 +94,26 @@ def run(manifest_path, out, smoke=False, toolbox=None, device='cpu', acknowledge
     output = Path(out)
     output.mkdir(parents=True, exist_ok=False)  # preserve previous evidence, never overwrite
     (output/'windows.jsonl').write_text(''.join(json.dumps(r, allow_nan=False)+'\n' for r in rows))
+    fields = ('algorithm', 'recording_id', 'subject_id', 'start_s', 'duration_s',
+              'status', 'reason', 'reference_bpm', 'predicted_bpm', 'inference_s')
+    with (output/'windows.csv').open('w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=fields, extrasaction='ignore')
+        writer.writeheader(); writer.writerows(rows)
     summary = {'schema_version': 1, 'synthetic': manifest.get('synthetic', False),
                'mode': 'smoke' if smoke else 'full', 'seed': 2026, 'hardware': hardware(),
                'adapters': states, 'metrics': summarize(rows),
                'elapsed_s': time.perf_counter()-started,
+               'timing_scope': 'NPZ load, alignment, quality, model setup/inference, metrics; excludes source-video preparation; not live-camera latency',
                'manifest_sha256': sha256(manifest_path),
                'recordings': [{k:v for k,v in r.items() if k not in ('_path', 'path')} for r in records],
                'window_s':16, 'target_fps':30,
-               'hr_estimator': 'linear detrend + Hann + FFT bin peak; no interpolation or artifact rejection',
+               'quality_policy': POLICY,
+               'hr_estimator': 'input telemetry and pixel gate + spectral ambiguity gate + Hann FFT bin peak',
                'trailing_partial_windows': 'excluded; duration floor to multiples of 16 s',
                'preprocessing': 'shared 128px ROI, nearest timestamp resampling; model-specific resize/normalize/chunk/edge pad; see docs/protocol.md'}
     (output/'summary.json').write_text(json.dumps(summary, indent=2, allow_nan=False)+'\n')
     print(json.dumps({'out': str(output), 'rows': len(rows), 'mode':summary['mode'],
-                      'status_counts': {s:sum(r['status']==s for r in rows) for s in ('ok','rejected','blocked','failed')},
+                      'status_counts': {s:sum(r['status']==s for r in rows) for s in ('ok','insufficient_signal','rejected','blocked','failed')},
                       'synthetic': summary['synthetic']}, indent=2))
     return summary
 

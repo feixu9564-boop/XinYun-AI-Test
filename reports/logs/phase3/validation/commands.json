@@ -1,0 +1,64 @@
+[
+  {
+    "command": [
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "exit_code": 0,
+    "log": "pytest.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.spectral_check",
+      "--out",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-22\\ji\\work\\XinYun-AI-Test\\reports\\logs\\phase3\\validation\\spectral.json"
+    ],
+    "exit_code": 0,
+    "log": "spectral.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.adversarial",
+      "--out",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-22\\ji\\work\\XinYun-AI-Test\\reports\\logs\\phase3\\validation\\adversarial"
+    ],
+    "exit_code": 1,
+    "log": "adversarial.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.fixture",
+      "--out",
+      "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\xinyun-engineering-jk5zxcae\\fixture"
+    ],
+    "exit_code": 0,
+    "log": "fixture.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.run",
+      "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\xinyun-engineering-jk5zxcae\\fixture\\manifest.json",
+      "--out",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-22\\ji\\work\\XinYun-AI-Test\\reports\\logs\\phase3\\validation\\smoke",
+      "--smoke"
+    ],
+    "exit_code": 1,
+    "log": "smoke.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.run",
+      "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\xinyun-engineering-jk5zxcae\\fixture\\manifest.json",
+      "--out",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-22\\ji\\work\\XinYun-AI-Test\\reports\\logs\\phase3\\validation\\full"
+    ],
+    "exit_code": 1,
+    "log": "full.log"
+  }
+]
