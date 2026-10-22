@@ -23,7 +23,7 @@ def main(out):
         if p.returncode: raise RuntimeError(f'{name} failed; see log')
     run('node-version',['node','--version'])
     run('build',['node','scripts/build-mobile.mjs'])
-    run('node-tests',['node','--test','tests/mobile.test.js'])
+    run('node-tests',['node','--test','tests/mobile.test.js','tests/frame-pump.test.js'])
     run('python-csv-tests',[sys.executable,'-m','pytest','tests/test_mobile_csv.py','-q'])
     run('algorithm-port-parity',[sys.executable,'scripts/check-mobile-parity.py'])
     run('diff-check',['git','diff','--check'])
@@ -42,7 +42,7 @@ def main(out):
     sources={str(p.relative_to(ROOT)).replace('\\','/'):hashlib.sha256(p.read_bytes()).hexdigest() for p in (ROOT/'web').glob('*') if p.is_file()}
     (out/'summary.json').write_text(json.dumps(dict(status='ENGINEERING_PASS',human_sessions=0,
         iphone_safari='DEVICE_TEST_REQUIRED',android_chrome='DEVICE_TEST_REQUIRED',
-        human_accuracy='NOT_VALIDATED',node_tests=7,python_csv_tests=5,existing_fixture_comparisons=12,browser_scenarios=3,
+        human_accuracy='NOT_VALIDATED',node_tests=13,python_csv_tests=5,existing_fixture_comparisons=12,browser_scenarios=5,
         caveat='Desktop engines; actual FaceMesh no-face fake-camera check and explicit lifecycle mocks. No simulated result counted as a human test.',source_sha256=sources),indent=2)+'\n',encoding='utf-8')
 
 if __name__=='__main__':

@@ -5,8 +5,8 @@
 已于2026-10-22发布独立研究站点：
 https://xinyun-mobile-research-20261022.tasty-iris-5068.chatgpt.site
 
-Sites返回`succeeded`，当前版本2，所有者私有。未扩大公开访问权限。
-手机可能需要登录同一ChatGPT账号；其他账号可能无权访问。普通未认证命令行请求收到Cloudflare 403，不能将curl结果作为手机登录访问结果。
+Sites返回`succeeded`，初始交付为版本2。本轮采样修补前读取到站点访问模式已为public，更新时保留现状，未调用权限变更接口。
+当前站点按托管平台已有访问设置开放，若平台出现登录或安全检查请按页面完成。普通未认证命令行请求收到Cloudflare 403，不能将curl结果作为手机登录访问结果。
 桌面内嵌浏览器的标签已显示本应用标题，但完整自动化读取超时；已发布站点的手机摄像头仍须用户实测。
 原生产系统未修改。网页无数据库、账号资料收集或上传接口。
 
@@ -96,3 +96,18 @@ python scripts/analyze-mobile-csv.py /path/to/xinyun.csv --out outputs/phone-rev
 - [PR #6](https://github.com/feixu9564-boop/XinYun-AI-Test/pull/6)：实验性频谱拒绝策略；未经真人标定。
 - [Google MediaPipe FaceMesh源文档](https://github.com/google-ai-edge/mediapipe/blob/master/docs/solutions/face_mesh.md)：定位与ROI实现依据。上游MediaPipe为Apache-2.0；保持锁定包与官方来源。
 - [WebKit inline video政策](https://webkit.org/blog/6784/new-video-policies-for-ios/)：使用muted、playsinline；此文档不是本项目真机测试证明。
+
+## v0.5.1 采样诊断扩展
+
+页面测量时保留右上角预览，CSV新增以下可选字段，旧记录仍可读取：
+
+- `capture_version`：capture-v0.5.1；不代表算法阈值改动。
+- `scheduler_source`：decoded_counter / video_callback / media_time_fallback。
+- `video_callbacks`、`frames_submitted`、`model_completions`、`model_results`：累计回调、提交、send完成、结果返回次数。
+- `face_frames`、`last_sample_reason`：单人面部返回次数及最近采样原因；不代表活体或正确皮肤识别。
+- `pending_inference_ms`：尚未完成的推理耗时。
+- `last_video_time`、`video_ready_state`、`video_paused`、`document_visibility`、`preview_visible`：停止前的媒体/页面状态（session_end记录在释放相机前快照）。
+- `stop_reason`：结束余段同时保留导致停机的原因，避免只有window_too_short而缺少上游信息。
+
+请在Safari打开原网址并加`?v=0.5.1`，确认版本后再测；旧本地记录不会清空。
+[修补说明与证据边界](../reports/capture-v051.md)。

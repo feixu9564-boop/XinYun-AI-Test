@@ -2,8 +2,11 @@
 
 ## 当前：Issue #9 手机测试版本
 
+v0.5.1：修补回调停滞时的连续采样调度，测量中保留可见预览，增加可导出的故障诊断。
+[修补报告](reports/capture-v051.md)。尚需手机复测，不能把此前失败测量计作成功。
+
 [打开独立 HTTPS 手机测试站](https://xinyun-mobile-research-20261022.tasty-iris-5068.chatgpt.site)
-（所有者私有，可能需要登录同一 ChatGPT 账号）。请用 iPhone Safari 或 Android Chrome。
+（访问模式以托管平台当前设置为准）。请用 iPhone Safari 或 Android Chrome。
 填写匿名编号、确认成年自愿参与，点击开始并允许摄像头，固定手机正对面部至少16秒。
 支持停止/重测、指夹参考值、成功与失败记录、本地保存、CSV/JSON下载与CSV分享。
 不上传或保存视频，不做医疗/心理诊断。**尚未真机验证；真人准确性未验证。**

@@ -1,0 +1,71 @@
+[
+  {
+    "name": "node-version",
+    "command": [
+      "node",
+      "--version"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.014359712600708008
+  },
+  {
+    "name": "build",
+    "command": [
+      "node",
+      "scripts/build-mobile.mjs"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.09360575675964355
+  },
+  {
+    "name": "node-tests",
+    "command": [
+      "node",
+      "--test",
+      "tests/mobile.test.js",
+      "tests/frame-pump.test.js"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.11959719657897949
+  },
+  {
+    "name": "python-csv-tests",
+    "command": [
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-22\\ji\\work\\XinYun-AI-Test\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "tests/test_mobile_csv.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.30017876625061035
+  },
+  {
+    "name": "algorithm-port-parity",
+    "command": [
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-22\\ji\\work\\XinYun-AI-Test\\.venv\\Scripts\\python.exe",
+      "scripts/check-mobile-parity.py"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.34233951568603516
+  },
+  {
+    "name": "diff-check",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.04485034942626953
+  },
+  {
+    "name": "browser-tests",
+    "command": [
+      "node",
+      "tests/mobile-browser.mjs"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 68.49955439567566
+  }
+]

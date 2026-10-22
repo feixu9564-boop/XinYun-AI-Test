@@ -2,6 +2,8 @@
 
 ## 交付状态
 
+当前采样兼容性修补见 [v0.5.1报告](capture-v051.md)。下述v0.5初始交付记录保留为历史；手机此前导出显示采样失败，不能作为最终验收通过。
+
 独立HTTPS站点已发布：
 https://xinyun-mobile-research-20261022.tasty-iris-5068.chatgpt.site
 
