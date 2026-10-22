@@ -1,0 +1,25 @@
+algorithm,recording_id,subject_id,start_s,duration_s,status,reason,reference_bpm,predicted_bpm,inference_s
+POS,synthetic-0,synthetic-subject-0,0,16,ok,,72.0,71.25,0.07937560000004851
+CHROM,synthetic-0,synthetic-subject-0,0,16,ok,,72.0,71.25,0.07719479999991563
+PhysNet,synthetic-0,synthetic-subject-0,0,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+EfficientPhys,synthetic-0,synthetic-subject-0,0,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+PhysFormer,synthetic-0,synthetic-subject-0,0,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+PhysMamba,synthetic-0,synthetic-subject-0,0,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+POS,synthetic-0,synthetic-subject-0,16,16,ok,,72.0,71.25,0.07679040000004989
+CHROM,synthetic-0,synthetic-subject-0,16,16,ok,,72.0,71.25,0.07691190000002734
+PhysNet,synthetic-0,synthetic-subject-0,16,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+EfficientPhys,synthetic-0,synthetic-subject-0,16,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+PhysFormer,synthetic-0,synthetic-subject-0,16,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+PhysMamba,synthetic-0,synthetic-subject-0,16,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+POS,synthetic-1,synthetic-subject-1,0,16,ok,,72.0,71.25,0.0767771000000721
+CHROM,synthetic-1,synthetic-subject-1,0,16,ok,,72.0,71.25,0.0763676999999916
+PhysNet,synthetic-1,synthetic-subject-1,0,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+EfficientPhys,synthetic-1,synthetic-subject-1,0,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+PhysFormer,synthetic-1,synthetic-subject-1,0,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+PhysMamba,synthetic-1,synthetic-subject-1,0,16,blocked,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,0.0
+POS,synthetic-1,synthetic-subject-1,16,16,rejected,ValueError: missing aligned reference,,,0.0
+CHROM,synthetic-1,synthetic-subject-1,16,16,rejected,ValueError: missing aligned reference,,,0.0
+PhysNet,synthetic-1,synthetic-subject-1,16,16,rejected,ValueError: missing aligned reference,,,0.0
+EfficientPhys,synthetic-1,synthetic-subject-1,16,16,rejected,ValueError: missing aligned reference,,,0.0
+PhysFormer,synthetic-1,synthetic-subject-1,16,16,rejected,ValueError: missing aligned reference,,,0.0
+PhysMamba,synthetic-1,synthetic-subject-1,16,16,rejected,ValueError: missing aligned reference,,,0.0

@@ -29,6 +29,13 @@ def generate(out):
     prepare(video, out/'timestamps.csv', out/'reference.csv', (0,0,32,32), out/'valid.npz')
     with np.load(out/'valid.npz', allow_pickle=False) as z:
         data = {k:z[k] for k in z.files}
+    # Generated, nonhuman positive-control telemetry; never reuse on real video.
+    data['face_count'] = np.ones(len(t), dtype=np.uint8)
+    data['roi_valid'] = np.ones(len(t), dtype=np.uint8)
+    provenance = json.loads(str(data['provenance']))
+    provenance['quality_source'] = 'nonhuman generated positive-control labels; not a detector'
+    data['provenance'] = json.dumps(provenance)
+    np.savez_compressed(out/'valid.npz', **data)
     data['reference_bpm'] = data['reference_bpm'].astype(float)
     data['reference_bpm'][20] = np.nan
     np.savez_compressed(out/'missing_reference.npz', **data)

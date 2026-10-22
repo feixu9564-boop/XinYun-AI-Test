@@ -3,6 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 import numpy as np
+from .quality import InsufficientSignal
 
 
 def sha256(path):
@@ -60,12 +61,20 @@ def load_record(record):
     with np.load(path, allow_pickle=False) as z:
         data = {k: z[k] for k in ('frames', 'timestamps', 'reference_timestamps', 'reference_bpm')}
         data['provenance'] = json.loads(str(z['provenance'])) if 'provenance' in z.files else {}
+        for key in ('face_count', 'roi_valid'):
+            if key in z.files:
+                data[key] = z[key]
     frames, t = data['frames'], data['timestamps']
     if frames.ndim != 4 or frames.shape[1:] != (128, 128, 3) or frames.dtype != np.uint8:
         raise ValueError('frames must be uint8 T,128,128,3 RGB skin ROI')
     if len(frames) != len(t):
         raise ValueError('frame/timestamp count mismatch')
     check_times(t, 'video')
+    for key in ('face_count', 'roi_valid'):
+        if key in data and (data[key].shape != t.shape or not np.isfinite(data[key]).all()):
+            raise ValueError('invalid per-frame '+key)
+        if key in data and not data['provenance'].get('quality_source'):
+            raise ValueError('quality telemetry requires verification provenance')
     rt, hr = data['reference_timestamps'], data['reference_bpm']
     if hr.ndim != 1 or len(hr) != len(rt):
         raise ValueError('reference count mismatch')
@@ -79,7 +88,7 @@ def check_times(t, name):
         raise ValueError(f'{name} timestamps must be finite and strictly increasing')
 
 
-def aligned_window(data, start, duration=16, fs=30):
+def aligned_window(data, start, duration=16, fs=30, *, include_telemetry=False):
     t = data['timestamps']
     end = start + duration
     grid = start + np.arange(round(duration*fs)) / fs
@@ -87,11 +96,11 @@ def aligned_window(data, start, duration=16, fs=30):
     lo, hi = max(0, np.searchsorted(t, start)-1), min(len(t), np.searchsorted(t, end)+1)
     local_t = t[lo:hi]
     if len(local_t) < 2 or local_t[0] > start + 1e-6 or local_t[-1] < grid[-1] - 1e-6:
-        raise ValueError('insufficient frame coverage')
+        raise InsufficientSignal('insufficient frame coverage')
     dt = np.diff(local_t)
     actual_fps = 1 / float(np.median(dt))
     if actual_fps < 12 or dt.max() > .25:
-        raise ValueError('low FPS or dropped-frame gap')
+        raise InsufficientSignal('low FPS or dropped-frame gap')
     # Nearest-frame resampling shared by every algorithm; ties choose previous.
     right = np.clip(np.searchsorted(t, grid), 1, len(t)-1)
     left = right-1
@@ -99,7 +108,7 @@ def aligned_window(data, start, duration=16, fs=30):
     frames = data['frames'][idx]
     means = frames.mean(axis=(1, 2))
     if np.any(means.mean(axis=1) < 30) or np.any(means.mean(axis=1) > 235):
-        raise ValueError('invalid dark/overexposed frame')
+        raise InsufficientSignal('invalid dark/overexposed frame')
     rt, hr = data['reference_timestamps'], data['reference_bpm']
     a, b = max(0, np.searchsorted(rt, start)-1), min(len(rt), np.searchsorted(rt, end)+1)
     if rt[0] > start or rt[-1] < end or not np.isfinite(hr[a:b]).all():
@@ -112,4 +121,7 @@ def aligned_window(data, start, duration=16, fs=30):
     audit = {'actual_fps': actual_fps, 'max_gap_s': float(dt.max()),
              'estimated_dropped_frames': int(np.maximum(np.round(dt*actual_fps)-1, 0).sum()),
              'unique_resampled_frames': int(len(np.unique(idx)))}
+    if include_telemetry:
+        telemetry = {k: data[k][idx] for k in ('face_count', 'roi_valid') if k in data}
+        return frames, reference, audit, telemetry or None
     return frames, reference, audit

@@ -1,0 +1,98 @@
+{
+  "checked_at_utc": "2026-10-22T05:04:00.953178+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "gdown": "5.2.0",
+  "entries": [
+    {
+      "label": "UBFC participant agreement",
+      "url": "https://drive.google.com/file/d/1oT_t9EHB_SzqwoQt-7VWvyLpFgCoLZT1/view",
+      "status": "DOWNLOADED_LOCAL_ONLY",
+      "bytes": 10424,
+      "sha256": "ae514a7216beca42760922b0f928179aef0636a976e58e28ad4c89c9f66e35fe"
+    },
+    {
+      "label": "UBFC official readme",
+      "url": "https://drive.google.com/file/d/1oL9oy_FU7jbB3qliHQIW629GtEMPJ64q/view",
+      "status": "DOWNLOADED_LOCAL_ONLY",
+      "bytes": 1094,
+      "sha256": "4821eefcc9c28818c3138408d16cf5bcaa8230ea0ed66c9f2bbc04b9b2462d89"
+    },
+    {
+      "label": "UBFC official processor",
+      "url": "https://drive.google.com/file/d/12jym67QYPnXHp3qSRjf1XsQGWRrC284M/view",
+      "status": "DOWNLOADED_LOCAL_ONLY",
+      "bytes": 5987,
+      "sha256": "bcd78d1013406bd2fe803f2a6721e29a4bad7606f3de36dfb4db0f8f39305eff"
+    },
+    {
+      "label": "UBFC consent review",
+      "status": "REVIEWED",
+      "selected_subjects_1_and_3_data_sharing": true,
+      "discrepancy": "readme describes image restriction for 21/27; workbook also marks subject21 data sharing NO; exclude both",
+      "publication_policy": "no participant images or raw reference traces in repository"
+    },
+    {
+      "label": "Toolbox source license",
+      "url": "https://raw.githubusercontent.com/ubicomplab/rPPG-Toolbox/b7500b848f84ad7f86e277b4612563b69f4f88f9/LICENSE",
+      "status": "DOWNLOADED_LOCAL_ONLY",
+      "bytes": 8886,
+      "sha256": "a2d16c386a18fc6c88ce0ff9d4593082f74a041c96e92ca9e2d89731955f1e1c"
+    },
+    {
+      "label": "PhysNet source",
+      "url": "https://raw.githubusercontent.com/ubicomplab/rPPG-Toolbox/b7500b848f84ad7f86e277b4612563b69f4f88f9/neural_methods/model/PhysNet.py",
+      "status": "DOWNLOADED_LOCAL_ONLY",
+      "bytes": 4425,
+      "sha256": "48a5a3132d9cb737f0dd782d354d27bf36c723a3ce018b4a1ec0cc3571905d9a",
+      "expected_sha256": "48a5a3132d9cb737f0dd782d354d27bf36c723a3ce018b4a1ec0cc3571905d9a",
+      "matches_lock": true,
+      "weight_expected_sha256": "cf295ff0b7a43ee638b9a8ce5a9c62801d5f196b360b3a589fdd5aa43ce623f8",
+      "weight_current_run": "NOT_DOWNLOADED_OR_EXECUTED: independent weight permission unresolved; no real video acquired"
+    },
+    {
+      "label": "EfficientPhys source",
+      "url": "https://raw.githubusercontent.com/ubicomplab/rPPG-Toolbox/b7500b848f84ad7f86e277b4612563b69f4f88f9/neural_methods/model/EfficientPhys.py",
+      "status": "DOWNLOADED_LOCAL_ONLY",
+      "bytes": 5134,
+      "sha256": "384b01b5c99d6d280b5ddb9e2358631f89747e40e3181b6a174e26d6e74798c9",
+      "expected_sha256": "384b01b5c99d6d280b5ddb9e2358631f89747e40e3181b6a174e26d6e74798c9",
+      "matches_lock": true,
+      "weight_expected_sha256": "e65a962e07bcac32a668e6acb9f8ed43cdb1b01cfb97262654dc5b55c0cf3a49",
+      "weight_current_run": "NOT_DOWNLOADED_OR_EXECUTED: independent weight permission unresolved; no real video acquired"
+    },
+    {
+      "label": "PhysFormer source",
+      "url": "https://raw.githubusercontent.com/ubicomplab/rPPG-Toolbox/b7500b848f84ad7f86e277b4612563b69f4f88f9/neural_methods/model/PhysFormer.py",
+      "status": "DOWNLOADED_LOCAL_ONLY",
+      "bytes": 12037,
+      "sha256": "da33e0195d2148cadcd68c6f3ea3eb6a22b94b49f5ec8b086339b1c1b93bc314",
+      "expected_sha256": "da33e0195d2148cadcd68c6f3ea3eb6a22b94b49f5ec8b086339b1c1b93bc314",
+      "matches_lock": true,
+      "weight_expected_sha256": "d27eac3aba0bf7473e528154cbcf714a6384cd9b074ba8d641269e4cac5cb09e",
+      "weight_current_run": "NOT_DOWNLOADED_OR_EXECUTED: independent weight permission unresolved; no real video acquired"
+    },
+    {
+      "label": "PhysMamba source",
+      "url": "https://raw.githubusercontent.com/ubicomplab/rPPG-Toolbox/b7500b848f84ad7f86e277b4612563b69f4f88f9/neural_methods/model/PhysMamba.py",
+      "status": "DOWNLOADED_LOCAL_ONLY",
+      "bytes": 9195,
+      "sha256": "1b3c4063a98ab59e5cd76876afa3a1bc718428b03da83615b8c478c5b8de83eb",
+      "expected_sha256": "1b3c4063a98ab59e5cd76876afa3a1bc718428b03da83615b8c478c5b8de83eb",
+      "matches_lock": true,
+      "weight_expected_sha256": "2da6b9bc7e8728c20743c8f359eb43eefd2a96665098a29302fed2b09bc6b7d7",
+      "weight_current_run": "NOT_DOWNLOADED_OR_EXECUTED: independent weight permission unresolved; no real video acquired"
+    },
+    {
+      "label": "UBFC subject1 video",
+      "url": "https://drive.google.com/file/d/1qBlkbaB8y3-KlWC_A61KsY42Wjo66ss4/view",
+      "status": "BLOCKED",
+      "reason": "FileURLRetrievalError: Failed to retrieve file url:\n\n\tToo many users have viewed or downloaded this file recently. Please\n\ttry accessing the file again later. If the file you are trying to\n\taccess is particularly large or is shared with many people, it may\n\ttake up to 24 hours to be able to view or download the file. If you\n\tstill can't access a file after 24 hours, contact your domain\n\tadministrator.\n\nYou may still be able to access the file from the browser:\n\n\thttps://drive.google.com/uc?id=1qBlkbaB8y3-KlWC_A61KsY42Wjo66ss4\n\nbut Gdown can't. Please check connections and permissions."
+    },
+    {
+      "label": "UBFC subject3 video",
+      "url": "https://drive.google.com/file/d/1tL5EX50qFD8n6VO0wX9x_iOrPKyVR2-W/view",
+      "status": "BLOCKED",
+      "reason": "FileURLRetrievalError: Failed to retrieve file url:\n\n\tToo many users have viewed or downloaded this file recently. Please\n\ttry accessing the file again later. If the file you are trying to\n\taccess is particularly large or is shared with many people, it may\n\ttake up to 24 hours to be able to view or download the file. If you\n\tstill can't access a file after 24 hours, contact your domain\n\tadministrator.\n\nYou may still be able to access the file from the browser:\n\n\thttps://drive.google.com/uc?id=1tL5EX50qFD8n6VO0wX9x_iOrPKyVR2-W\n\nbut Gdown can't. Please check connections and permissions."
+    }
+  ]
+}

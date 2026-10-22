@@ -28,6 +28,17 @@ def call(arguments, filename, expected):
 
 call(['-m','pytest','-q'],'pytest.log',{0})
 call(['-m','benchmark.spectral_check','--out',str(out/'spectral.json')],'spectral.log',{0})
+call(['-m','benchmark.adversarial','--out',str(out/'adversarial')],'adversarial.log',{1})
+adversarial=json.loads((out/'adversarial/summary.json').read_text())
+adversarial_rows=[json.loads(s) for s in (out/'adversarial/windows.jsonl').read_text().splitlines()]
+if any(r['status']=='failed' or (r['status']!='ok' and r['predicted_bpm'] is not None) for r in adversarial_rows):
+    raise SystemExit('Unexpected adversarial inference failure or leaked rejected BPM')
+for m in adversarial['metrics']:
+    if m['algorithm'] in ('POS','CHROM'):
+        if m['positive_metrics']['coverage'] != 1 or m['false_accept_rate'] > .09:
+            raise SystemExit('Adversarial coverage/regression failed; see retained evidence')
+    elif m['status'] != 'NOT_RUN':
+        raise SystemExit('Unexpected synthetic deep model status')
 if a.toolbox and a.acknowledge_toolbox_license:
     call(['-m','benchmark.parity','--toolbox',a.toolbox,'--acknowledge-toolbox-license',
           '--out',str(out/'parity.json')],'parity.log',{0})

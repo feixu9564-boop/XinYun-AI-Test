@@ -1,5 +1,17 @@
 # XinYun AI — 离线 rPPG 基准研究
 
+## 当前：Issue #5 第三阶段（BLOCKED，待审查，不合并）
+
+新增信号质量拒绝、13类对抗场景、逐窗CSV与受试者簇置信区间。
+**真实视频评测仍为0，阈值未在真人验证集标定；仍有已记录的周期性色彩干扰误报。**
+本分支基于未合并的 PR #4，完整增量说明、99项测试、六算法状态及下载失败证据见
+[第三阶段报告](reports/phase3.md)与[数据许可核查](docs/phase3-data-license.md)。下面的 PR #4 章节保留为历史背景，最新状态以第三阶段报告为准。
+
+安装依赖后跨平台执行：`python scripts/validate-benchmark.py --out outputs/phase3-new`。
+真实输入还需逐帧质量CSV（`timestamp_s,face_count,roi_valid`，时间与帧CSV逐行一致），
+导入时加 `--quality-csv data/quality.csv --quality-source "核验方法与证据位置"`。
+缺少核验信息时拒绝输出；不能把全1人工占位作为真实检测结果。
+
 Issue #3：POS、CHROM、PhysNet、EfficientPhys、PhysFormer、PhysMamba 六算法统一离线评测框架。
 仅做心率生理信号研究，不做焦虑、情绪、HRV、呼吸或医疗诊断。**没有真人精度结果。**
 
