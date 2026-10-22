@@ -1,0 +1,15 @@
+{"case": "clean", "algorithm": "POS", "max_wave_error": 2.0816681711721685e-17, "bpm": 71.25, "reason": ""}
+{"case": "clean", "algorithm": "CHROM", "max_wave_error": 5.551115123125783e-17, "bpm": 71.25, "reason": ""}
+{"case": "no_pulse", "algorithm": "POS", "max_wave_error": 0, "bpm": null, "reason": "constant_waveform"}
+{"case": "no_pulse", "algorithm": "CHROM", "max_wave_error": 0, "bpm": null, "reason": "constant_waveform"}
+{"case": "second_harmonic", "algorithm": "POS", "max_wave_error": 1.1102230246251565e-16, "bpm": null, "reason": "harmonic_ambiguity"}
+{"case": "second_harmonic", "algorithm": "CHROM", "max_wave_error": 1.6653345369377348e-16, "bpm": null, "reason": "harmonic_ambiguity"}
+{"case": "mixed_motion", "algorithm": "POS", "max_wave_error": 1.1102230246251565e-16, "bpm": null, "reason": "competing_periodicity"}
+{"case": "mixed_motion", "algorithm": "CHROM", "max_wave_error": 2.220446049250313e-16, "bpm": null, "reason": "competing_periodicity"}
+{"case": "noise", "algorithm": "POS", "max_wave_error": 5.551115123125783e-17, "bpm": null, "reason": "diffuse_spectrum"}
+{"case": "noise", "algorithm": "CHROM", "max_wave_error": 1.1102230246251565e-16, "bpm": null, "reason": "diffuse_spectrum"}
+{"case": "indistinguishable_color_artifact", "algorithm": "POS", "max_wave_error": 2.7755575615628914e-17, "bpm": 97.5, "reason": ""}
+{"case": "indistinguishable_color_artifact", "algorithm": "CHROM", "max_wave_error": 4.163336342344337e-17, "bpm": 97.5, "reason": ""}
+PASS: 12 existing-fixture JS/Python extraction and spectral comparisons; NOT human validation
+
+--- STDERR ---

@@ -1,0 +1,20 @@
+{
+  "status": "ENGINEERING_PASS",
+  "human_sessions": 0,
+  "iphone_safari": "DEVICE_TEST_REQUIRED",
+  "android_chrome": "DEVICE_TEST_REQUIRED",
+  "human_accuracy": "NOT_VALIDATED",
+  "node_tests": 7,
+  "python_csv_tests": 5,
+  "existing_fixture_comparisons": 12,
+  "browser_scenarios": 3,
+  "caveat": "Desktop engines; actual FaceMesh no-face fake-camera check and explicit lifecycle mocks. No simulated result counted as a human test.",
+  "source_sha256": {
+    "web/app.js": "a2a4fbe220c75e5976efc16fb3420834b2f04900040e98457f96d5b1d543f1dd",
+    "web/index.html": "f19edc04a808d3af1e00503b8c5d68360a9d58cb0c3e996a8f5b73fefeb8acd4",
+    "web/records.js": "10b0b8eae027fcd4b3c2d16ddaa16f73ba5fdd92c732b2ffacd0412c4ad7996a",
+    "web/roi.js": "1998d42d47ed4d19cbc45baf4d05c3af0449d6bbf9dc580123dd3a59ab0a09c6",
+    "web/signal.js": "3d9774d8adca396eb8c430201e69ce5a261322b761439d32a1de4ee7de836c86",
+    "web/style.css": "f60c356c04046ba3b170dda23e9d4ee47de2dfd8c9849fa962220c5fef6cbfb7"
+  }
+}

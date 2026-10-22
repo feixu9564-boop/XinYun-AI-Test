@@ -1,0 +1,13 @@
+# Optional: create a NEW standalone Netlify project; never attach production.
+[build]
+command = "npm ci --ignore-scripts && npm run build"
+publish = "dist"
+[build.environment]
+NODE_VERSION = "22"
+[[headers]]
+for = "/*"
+[headers.values]
+Permissions-Policy = "camera=(self), microphone=()"
+Referrer-Policy = "no-referrer"
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"

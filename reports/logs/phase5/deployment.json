@@ -1,0 +1,18 @@
+{
+  "id": "appgdep_6ad9dd2fbde481919c32fa91bdfdb1c2",
+  "project_id": "appgprj_6ad9d57da1f88191a980deff951d298d",
+  "title": "心云 · 手机心率研究测试",
+  "version_id": "appgprj_6ad9d57da1f88191a980deff951d298d~appgver_ffe0572364348191819d5927f786b9dd",
+  "type": "publish",
+  "status": "succeeded",
+  "url": "https://xinyun-mobile-research-20261022.tasty-iris-5068.chatgpt.site",
+  "has_mcp": false,
+  "screenshot_asset_pointer": null,
+  "provider_deployment_id": "site---6ad9d57da1f88191a980deff951d298d",
+  "failure_message": null,
+  "env_set_revision": 0,
+  "updated_at": "2026-10-22T09:53:59.744919+00:00",
+  "site_source_commit": "fbf0e17cecbb34fb29f538c940d8da9bc5842c72",
+  "audience": "owner-private",
+  "phone_validation": "DEVICE_TEST_REQUIRED"
+}
