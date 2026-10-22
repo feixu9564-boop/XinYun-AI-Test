@@ -1,0 +1,50 @@
+[
+  {
+    "command": [
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "exit_code": 0,
+    "log": "pytest.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.fixture",
+      "--out",
+      "/tmp/xinyun-engineering-4agdd375/fixture"
+    ],
+    "exit_code": 0,
+    "log": "fixture.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.run",
+      "/tmp/xinyun-engineering-4agdd375/fixture/manifest.json",
+      "--out",
+      "/workspace/XinYun-AI-Test/reports/logs/final-validation/smoke",
+      "--smoke",
+      "--toolbox",
+      "/tmp/rppg-research/toolbox",
+      "--acknowledge-toolbox-license"
+    ],
+    "exit_code": 1,
+    "log": "smoke.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.run",
+      "/tmp/xinyun-engineering-4agdd375/fixture/manifest.json",
+      "--out",
+      "/workspace/XinYun-AI-Test/reports/logs/final-validation/full",
+      "--toolbox",
+      "/tmp/rppg-research/toolbox",
+      "--acknowledge-toolbox-license"
+    ],
+    "exit_code": 1,
+    "log": "full.log"
+  }
+]

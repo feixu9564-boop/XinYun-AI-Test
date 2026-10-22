@@ -1,0 +1,15 @@
+$ python -m benchmark.run /tmp/xinyun-engineering-4agdd375/fixture/manifest.json --out /workspace/XinYun-AI-Test/reports/logs/final-validation/full --toolbox /tmp/rppg-research/toolbox --acknowledge-toolbox-license
+{
+  "out": "/workspace/XinYun-AI-Test/reports/logs/final-validation/full",
+  "rows": 24,
+  "mode": "full",
+  "status_counts": {
+    "ok": 15,
+    "rejected": 6,
+    "blocked": 3,
+    "failed": 0
+  },
+  "synthetic": true
+}
+
+EXIT_CODE=1

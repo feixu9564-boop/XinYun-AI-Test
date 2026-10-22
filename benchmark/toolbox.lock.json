@@ -1,0 +1,42 @@
+{
+  "repository": "https://github.com/ubicomplab/rPPG-Toolbox",
+  "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+  "models": {
+    "PhysNet": {
+      "source": "neural_methods/model/PhysNet.py",
+      "weight": "final_model_release/PURE_PhysNet_DiffNormalized.pth",
+      "source_sha256": "48a5a3132d9cb737f0dd782d354d27bf36c723a3ce018b4a1ec0cc3571905d9a",
+      "weight_sha256": "cf295ff0b7a43ee638b9a8ce5a9c62801d5f196b360b3a589fdd5aa43ce623f8",
+      "size": 72,
+      "chunk": 128,
+      "normalization": "DiffNormalized"
+    },
+    "EfficientPhys": {
+      "source": "neural_methods/model/EfficientPhys.py",
+      "weight": "final_model_release/PURE_EfficientPhys.pth",
+      "source_sha256": "384b01b5c99d6d280b5ddb9e2358631f89747e40e3181b6a174e26d6e74798c9",
+      "weight_sha256": "e65a962e07bcac32a668e6acb9f8ed43cdb1b01cfb97262654dc5b55c0cf3a49",
+      "size": 72,
+      "chunk": 180,
+      "normalization": "Standardized"
+    },
+    "PhysFormer": {
+      "source": "neural_methods/model/PhysFormer.py",
+      "weight": "final_model_release/PURE_PhysFormer_DiffNormalized.pth",
+      "source_sha256": "da33e0195d2148cadcd68c6f3ea3eb6a22b94b49f5ec8b086339b1c1b93bc314",
+      "weight_sha256": "d27eac3aba0bf7473e528154cbcf714a6384cd9b074ba8d641269e4cac5cb09e",
+      "size": 128,
+      "chunk": 160,
+      "normalization": "DiffNormalized"
+    },
+    "PhysMamba": {
+      "source": "neural_methods/model/PhysMamba.py",
+      "weight": "final_model_release/PURE_PhysMamba_DiffNormalized.pth",
+      "source_sha256": "1b3c4063a98ab59e5cd76876afa3a1bc718428b03da83615b8c478c5b8de83eb",
+      "weight_sha256": "2da6b9bc7e8728c20743c8f359eb43eefd2a96665098a29302fed2b09bc6b7d7",
+      "size": 128,
+      "chunk": 128,
+      "normalization": "DiffNormalized"
+    }
+  }
+}
