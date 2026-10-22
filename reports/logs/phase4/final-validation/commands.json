@@ -1,0 +1,45 @@
+[
+  {
+    "command": [
+      "-m",
+      "pip",
+      "freeze"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.8979380999990099,
+    "log": "environment.freeze.txt"
+  },
+  {
+    "command": [
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 30.415403799999694,
+    "log": "pytest.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.ingest_ubfc",
+      "docs/phase4-empty-plan.json",
+      "--out",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-22\\ji\\work\\XinYun-AI-Test\\reports\\logs\\phase4\\final-validation\\real-preflight"
+    ],
+    "exit_code": 1,
+    "elapsed_s": 0.16218619999926887,
+    "log": "real-preflight.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.adversarial",
+      "--out",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-22\\ji\\work\\XinYun-AI-Test\\reports\\logs\\phase4\\final-validation\\pr6-regression"
+    ],
+    "exit_code": 1,
+    "elapsed_s": 3.854291400000875,
+    "log": "pr6-regression.log"
+  }
+]

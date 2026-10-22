@@ -1,0 +1,7 @@
+{
+  "engineering": "PASS",
+  "physiological_acceptance": "BLOCKED",
+  "quality_threshold_calibration": "NOT_RUN: no real validation subjects",
+  "synthetic_regression": "unchanged PR6 6/72 false accepts per baseline",
+  "quality_source_sha256": "41dddf95ed82269a3feca0803c595c163f3920fd188cf26fce6909be6c3e2754"
+}

@@ -42,7 +42,7 @@ def load_manifest(path):
         if not isinstance(r['conditions'], dict):
             raise ValueError('conditions must be a mapping')
         for key, value in r['conditions'].items():
-            if key not in ('lighting', 'motion', 'skin_tone') or not isinstance(value, str):
+            if key not in ('lighting', 'motion', 'device', 'skin_tone') or not isinstance(value, str):
                 raise ValueError('invalid condition label')
         if r['conditions'] and not r.get('label_provenance'):
             raise ValueError('condition labels require reliable dataset provenance')

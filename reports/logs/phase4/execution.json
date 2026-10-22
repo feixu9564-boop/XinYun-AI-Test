@@ -1,0 +1,11 @@
+{
+  "source_audit_exit_code": 1,
+  "source_audit_log": "access-command.log",
+  "ubfc_retry_exit_code": 1,
+  "ubfc_retry_log": "ubfc-retry.log",
+  "first_ingestion_tests_exit_code": 0,
+  "first_full_validation_exit_code": 0,
+  "final_full_validation_exit_code": 0,
+  "final_validation_log": "final-validation-command.log",
+  "final_subcommands": "final-validation/commands.json"
+}
