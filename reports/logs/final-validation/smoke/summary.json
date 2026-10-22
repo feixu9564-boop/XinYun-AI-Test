@@ -1,0 +1,426 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "mode": "smoke",
+  "seed": 2026,
+  "hardware": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "processor": "",
+    "numpy": "2.2.6",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "torch": "2.6.0+cpu",
+    "cuda": false,
+    "gpu": null
+  },
+  "adapters": {
+    "POS": {
+      "status": "ready",
+      "implementation": "independent projection baseline",
+      "load_s": 3.1439999474969227e-06
+    },
+    "CHROM": {
+      "status": "ready",
+      "implementation": "independent projection baseline",
+      "load_s": 1.4820000160398195e-06
+    },
+    "PhysNet": {
+      "status": "loaded",
+      "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+      "weight_sha256": "cf295ff0b7a43ee638b9a8ce5a9c62801d5f196b360b3a589fdd5aa43ce623f8",
+      "training_datasets": [
+        "PURE"
+      ],
+      "device": "cpu",
+      "chunk_frames": 128,
+      "resize": 72,
+      "normalization": "DiffNormalized",
+      "load_s": 1.4539742009999372
+    },
+    "EfficientPhys": {
+      "status": "loaded",
+      "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+      "weight_sha256": "e65a962e07bcac32a668e6acb9f8ed43cdb1b01cfb97262654dc5b55c0cf3a49",
+      "training_datasets": [
+        "PURE"
+      ],
+      "device": "cpu",
+      "chunk_frames": 180,
+      "resize": 72,
+      "normalization": "Standardized",
+      "load_s": 0.02657008500000302
+    },
+    "PhysFormer": {
+      "status": "loaded",
+      "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+      "weight_sha256": "d27eac3aba0bf7473e528154cbcf714a6384cd9b074ba8d641269e4cac5cb09e",
+      "training_datasets": [
+        "PURE"
+      ],
+      "device": "cpu",
+      "chunk_frames": 160,
+      "resize": 128,
+      "normalization": "DiffNormalized",
+      "load_s": 0.14171677599995292
+    },
+    "PhysMamba": {
+      "status": "blocked",
+      "reason": "RuntimeError: environment blocked: PhysMamba selective-scan requires CUDA/mamba_ssm",
+      "load_s": 0.004915656999969542
+    }
+  },
+  "metrics": [
+    {
+      "algorithm": "CHROM",
+      "group": "all",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 0.2535348749999571
+    },
+    {
+      "algorithm": "CHROM",
+      "group": "motion:synthetic-static",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 0.2535348749999571
+    },
+    {
+      "algorithm": "CHROM",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 1,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 0.23179193199996462
+    },
+    {
+      "algorithm": "CHROM",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 1,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 0.27527781799994955
+    },
+    {
+      "algorithm": "EfficientPhys",
+      "group": "all",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 3.503390689000014
+    },
+    {
+      "algorithm": "EfficientPhys",
+      "group": "motion:synthetic-static",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 3.503390689000014
+    },
+    {
+      "algorithm": "EfficientPhys",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 1,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 3.4220580300000165
+    },
+    {
+      "algorithm": "EfficientPhys",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 1,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 3.5847233480000114
+    },
+    {
+      "algorithm": "POS",
+      "group": "all",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 0.20486761299997625
+    },
+    {
+      "algorithm": "POS",
+      "group": "motion:synthetic-static",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 0.20486761299997625
+    },
+    {
+      "algorithm": "POS",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 1,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 0.2084219050000229
+    },
+    {
+      "algorithm": "POS",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 1,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 0.2013133209999296
+    },
+    {
+      "algorithm": "PhysFormer",
+      "group": "all",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 6.785075848499957
+    },
+    {
+      "algorithm": "PhysFormer",
+      "group": "motion:synthetic-static",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 6.785075848499957
+    },
+    {
+      "algorithm": "PhysFormer",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 1,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 7.359368615999983
+    },
+    {
+      "algorithm": "PhysFormer",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 1,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 6.210783080999931
+    },
+    {
+      "algorithm": "PhysMamba",
+      "group": "all",
+      "total_windows": 2,
+      "valid_windows": 0,
+      "mae_bpm": null,
+      "rmse_bpm": null,
+      "bias_bpm": null,
+      "coverage": 0.0,
+      "failure_rate": 1.0,
+      "mean_inference_s": null
+    },
+    {
+      "algorithm": "PhysMamba",
+      "group": "motion:synthetic-static",
+      "total_windows": 2,
+      "valid_windows": 0,
+      "mae_bpm": null,
+      "rmse_bpm": null,
+      "bias_bpm": null,
+      "coverage": 0.0,
+      "failure_rate": 1.0,
+      "mean_inference_s": null
+    },
+    {
+      "algorithm": "PhysMamba",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 1,
+      "valid_windows": 0,
+      "mae_bpm": null,
+      "rmse_bpm": null,
+      "bias_bpm": null,
+      "coverage": 0.0,
+      "failure_rate": 1.0,
+      "mean_inference_s": null
+    },
+    {
+      "algorithm": "PhysMamba",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 1,
+      "valid_windows": 0,
+      "mae_bpm": null,
+      "rmse_bpm": null,
+      "bias_bpm": null,
+      "coverage": 0.0,
+      "failure_rate": 1.0,
+      "mean_inference_s": null
+    },
+    {
+      "algorithm": "PhysNet",
+      "group": "all",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 1.9771759445000043
+    },
+    {
+      "algorithm": "PhysNet",
+      "group": "motion:synthetic-static",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 1.9771759445000043
+    },
+    {
+      "algorithm": "PhysNet",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 1,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 1.972121383000058
+    },
+    {
+      "algorithm": "PhysNet",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 1,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 1.9822305059999508
+    }
+  ],
+  "elapsed_s": 27.646337530999972,
+  "manifest_sha256": "889654bac6f0849777db1f7f56dd9ee225ebfea3690489dcf0907171194c2b7b",
+  "recordings": [
+    {
+      "id": "synthetic-0",
+      "dataset": "SYNTHETIC-NOT-HUMAN",
+      "subject_id": "synthetic-subject-0",
+      "split": "test",
+      "sha256": "ac08095b04057167a5139e49a3d7aa131a431e8bb24cf6e6c22c6da36dd1a86d",
+      "duration_s": 32,
+      "reference_offset_s": 0,
+      "conditions": {
+        "motion": "synthetic-static"
+      },
+      "label_provenance": "generated fixture; not a human label",
+      "source_url": "local:benchmark.fixture",
+      "research_authorization": "generated nonhuman pixels",
+      "input_provenance": {
+        "video_sha256": "a0660fc047a3697d4e99fbb7789bd84c0ccb59467ec6d35d3557076df3858f74",
+        "timestamp_csv_sha256": "658e62e206310a9f26a813f3b6dc515083ecd21ed3ed01287b187099631c710c",
+        "reference_csv_sha256": "409df485c91fd8312e9f7ce138b65fef37166041dc25b7bc91aad94768b8c103",
+        "roi_xywh": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "nominal_fps": 30.0,
+        "opencv": "4.12.0"
+      }
+    },
+    {
+      "id": "synthetic-1",
+      "dataset": "SYNTHETIC-NOT-HUMAN",
+      "subject_id": "synthetic-subject-1",
+      "split": "test",
+      "sha256": "102eb95ee9c53ed4924e215a7faa053a10d65c1cfb868c6f730b8f2ba03887b5",
+      "duration_s": 32,
+      "reference_offset_s": 0,
+      "conditions": {
+        "motion": "synthetic-static"
+      },
+      "label_provenance": "generated fixture; not a human label",
+      "source_url": "local:benchmark.fixture",
+      "research_authorization": "generated nonhuman pixels",
+      "input_provenance": {
+        "video_sha256": "a0660fc047a3697d4e99fbb7789bd84c0ccb59467ec6d35d3557076df3858f74",
+        "timestamp_csv_sha256": "658e62e206310a9f26a813f3b6dc515083ecd21ed3ed01287b187099631c710c",
+        "reference_csv_sha256": "409df485c91fd8312e9f7ce138b65fef37166041dc25b7bc91aad94768b8c103",
+        "roi_xywh": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "nominal_fps": 30.0,
+        "opencv": "4.12.0"
+      }
+    }
+  ],
+  "window_s": 16,
+  "target_fps": 30,
+  "trailing_partial_windows": "excluded; duration floor to multiples of 16 s",
+  "preprocessing": "shared 128px ROI, nearest timestamp resampling; model-specific resize/normalize/chunk/edge pad; see docs/protocol.md"
+}

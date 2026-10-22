@@ -1,0 +1,73 @@
+[
+  {
+    "command": [
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "exit_code": 0,
+    "log": "pytest.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.spectral_check",
+      "--out",
+      "/workspace/XinYun-AI-Test/reports/logs/review-r1/validation/spectral.json"
+    ],
+    "exit_code": 0,
+    "log": "spectral.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.parity",
+      "--toolbox",
+      "/tmp/rppg-toolbox",
+      "--acknowledge-toolbox-license",
+      "--out",
+      "/workspace/XinYun-AI-Test/reports/logs/review-r1/validation/parity.json"
+    ],
+    "exit_code": 0,
+    "log": "parity.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.fixture",
+      "--out",
+      "/tmp/xinyun-engineering-zcwhwcg9/fixture"
+    ],
+    "exit_code": 0,
+    "log": "fixture.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.run",
+      "/tmp/xinyun-engineering-zcwhwcg9/fixture/manifest.json",
+      "--out",
+      "/workspace/XinYun-AI-Test/reports/logs/review-r1/validation/smoke",
+      "--smoke",
+      "--toolbox",
+      "/tmp/rppg-toolbox",
+      "--acknowledge-toolbox-license"
+    ],
+    "exit_code": 1,
+    "log": "smoke.log"
+  },
+  {
+    "command": [
+      "-m",
+      "benchmark.run",
+      "/tmp/xinyun-engineering-zcwhwcg9/fixture/manifest.json",
+      "--out",
+      "/workspace/XinYun-AI-Test/reports/logs/review-r1/validation/full",
+      "--toolbox",
+      "/tmp/rppg-toolbox",
+      "--acknowledge-toolbox-license"
+    ],
+    "exit_code": 1,
+    "log": "full.log"
+  }
+]

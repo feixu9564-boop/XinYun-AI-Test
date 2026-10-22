@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "synthetic": false,
+  "records": [
+    {
+      "id": "authorized-dataset-recording-01",
+      "dataset": "UBFC-rPPG",
+      "subject_id": "canonical-anonymous-subject-01",
+      "split": "test",
+      "path": "subject01.npz",
+      "sha256": "REPLACE_WITH_THE_64_CHARACTER_SHA256_FROM_PREPARE_OUTPUT",
+      "duration_s": 32,
+      "reference_offset_s": 0,
+      "conditions": {},
+      "source_url": "https://sites.google.com/view/ybenezeth/ubfcrppg",
+      "research_authorization": "REPLACE_WITH_LOCAL_AUTHORIZATION_RECORD_AND_TERMS"
+    }
+  ]
+}

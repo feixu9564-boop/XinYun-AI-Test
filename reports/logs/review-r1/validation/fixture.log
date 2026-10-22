@@ -1,0 +1,21 @@
+$ python -m benchmark.fixture --out /tmp/xinyun-engineering-zcwhwcg9/fixture
+{
+  "sha256": "ac08095b04057167a5139e49a3d7aa131a431e8bb24cf6e6c22c6da36dd1a86d",
+  "frames": 960,
+  "provenance": {
+    "video_sha256": "a0660fc047a3697d4e99fbb7789bd84c0ccb59467ec6d35d3557076df3858f74",
+    "timestamp_csv_sha256": "658e62e206310a9f26a813f3b6dc515083ecd21ed3ed01287b187099631c710c",
+    "reference_csv_sha256": "409df485c91fd8312e9f7ce138b65fef37166041dc25b7bc91aad94768b8c103",
+    "roi_xywh": [
+      0,
+      0,
+      32,
+      32
+    ],
+    "nominal_fps": 30.0,
+    "opencv": "4.12.0"
+  }
+}
+SYNTHETIC fixture manifest: /tmp/xinyun-engineering-zcwhwcg9/fixture/manifest.json
+
+EXIT_CODE=0

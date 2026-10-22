@@ -1,0 +1,85 @@
+{
+  "synthetic": true,
+  "seed": 2026,
+  "hardware": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "processor": "",
+    "numpy": "2.2.6",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "torch": "2.6.0+cpu",
+    "cuda": false,
+    "gpu": null
+  },
+  "models": {
+    "POS": {
+      "status": "ready",
+      "implementation": "independent projection baseline",
+      "load_s": 3.5349999620848394e-06,
+      "forward": "passed",
+      "output_samples": 480,
+      "forward_s": 0.21356611099997735
+    },
+    "CHROM": {
+      "status": "ready",
+      "implementation": "independent projection baseline",
+      "load_s": 1.7220000358975085e-06,
+      "forward": "passed",
+      "output_samples": 480,
+      "forward_s": 0.18179188799996382
+    },
+    "PhysNet": {
+      "status": "loaded",
+      "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+      "weight_sha256": "cf295ff0b7a43ee638b9a8ce5a9c62801d5f196b360b3a589fdd5aa43ce623f8",
+      "training_datasets": [
+        "PURE"
+      ],
+      "device": "cpu",
+      "chunk_frames": 128,
+      "resize": 72,
+      "normalization": "DiffNormalized",
+      "load_s": 1.974006987999985,
+      "forward": "passed",
+      "output_samples": 480,
+      "forward_s": 1.9358755330000008
+    },
+    "EfficientPhys": {
+      "status": "loaded",
+      "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+      "weight_sha256": "e65a962e07bcac32a668e6acb9f8ed43cdb1b01cfb97262654dc5b55c0cf3a49",
+      "training_datasets": [
+        "PURE"
+      ],
+      "device": "cpu",
+      "chunk_frames": 180,
+      "resize": 72,
+      "normalization": "Standardized",
+      "load_s": 0.08303390600002558,
+      "forward": "passed",
+      "output_samples": 480,
+      "forward_s": 3.264946723000037
+    },
+    "PhysFormer": {
+      "status": "loaded",
+      "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+      "weight_sha256": "d27eac3aba0bf7473e528154cbcf714a6384cd9b074ba8d641269e4cac5cb09e",
+      "training_datasets": [
+        "PURE"
+      ],
+      "device": "cpu",
+      "chunk_frames": 160,
+      "resize": 128,
+      "normalization": "DiffNormalized",
+      "load_s": 0.32091876800001273,
+      "forward": "passed",
+      "output_samples": 480,
+      "forward_s": 7.3122308569999745
+    },
+    "PhysMamba": {
+      "status": "blocked",
+      "reason": "RuntimeError: environment blocked: PhysMamba selective-scan requires CUDA/mamba_ssm",
+      "load_s": 0.007169567000005372
+    }
+  }
+}

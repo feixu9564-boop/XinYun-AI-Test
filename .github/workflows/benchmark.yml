@@ -1,0 +1,27 @@
+name: Offline benchmark engineering checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  synthetic-engineering:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned CPU baseline dependencies
+        run: bash scripts/install-benchmark.sh
+      - name: Unit tests, synthetic video smoke and full fixture
+        run: bash scripts/test-benchmark.sh
+      - name: Preserve synthetic engineering logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-benchmark-logs
+          path: outputs/validation
+          if-no-files-found: warn

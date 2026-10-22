@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+data/
+weights/
+outputs/
+*.pth
+*.pt
+*.pkl
+*.avi
+*.mp4
+*.npz
