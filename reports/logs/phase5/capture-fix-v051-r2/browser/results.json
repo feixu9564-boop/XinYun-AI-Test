@@ -1,0 +1,32 @@
+{
+  "evidence": "ENGINEERING_ONLY; no human or physical phone tests",
+  "iphone": "DEVICE_TEST_REQUIRED",
+  "android": "DEVICE_TEST_REQUIRED",
+  "results": [
+    {
+      "name": "Chromium real bundled FaceMesh/WASM: fake no-face camera, 16s failed window, CSV, stop/restart",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 45000ms exceeded.\n    at C:\\Users\\Administrator\\Documents\\Codex\\2026-10-22\\ji\\work\\XinYun-AI-Test\\tests\\mobile-browser.mjs:15:16\n    at async scenario (C:\\Users\\Administrator\\Documents\\Codex\\2026-10-22\\ji\\work\\XinYun-AI-Test\\tests\\mobile-browser.mjs:8:61)\n    at async file:///C:/Users/Administrator/Documents/Codex/2026-10-22/ji/work/XinYun-AI-Test/tests/mobile-browser.mjs:10:1"
+    },
+    {
+      "name": "Chromium mobile UI lifecycle fault injection, permission, cancellation, background, export",
+      "status": "PASS",
+      "elapsed_ms": 1450
+    },
+    {
+      "name": "Chromium stalled video-callback recovery, frozen-frame rejection and hung-model diagnostics",
+      "status": "PASS",
+      "elapsed_ms": 11707
+    },
+    {
+      "name": "WebKit mobile UI lifecycle fault injection, permission, cancellation, background, export",
+      "status": "PASS",
+      "elapsed_ms": 1959
+    },
+    {
+      "name": "WebKit stalled video-callback recovery, frozen-frame rejection and hung-model diagnostics",
+      "status": "PASS",
+      "elapsed_ms": 35144
+    }
+  ]
+}

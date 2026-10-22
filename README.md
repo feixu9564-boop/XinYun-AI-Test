@@ -1,6 +1,33 @@
-# XinYun AI — 离线 rPPG 基准研究
+# XinYun AI — 手机摄像头心率研究与离线基准
 
-## 当前：Issue #7 第四阶段（真实数据 BLOCKED）
+## 当前：Issue #9 手机测试版本
+
+v0.5.1：修补回调停滞时的连续采样调度，测量中保留可见预览，增加可导出的故障诊断。
+[修补报告](reports/capture-v051.md)。尚需手机复测，不能把此前失败测量计作成功。
+
+[打开独立 HTTPS 手机测试站](https://xinyun-mobile-research-20261022.tasty-iris-5068.chatgpt.site)
+（访问模式以托管平台当前设置为准）。请用 iPhone Safari 或 Android Chrome。
+填写匿名编号、确认成年自愿参与，点击开始并允许摄像头，固定手机正对面部至少16秒。
+支持停止/重测、指夹参考值、成功与失败记录、本地保存、CSV/JSON下载与CSV分享。
+不上传或保存视频，不做医疗/心理诊断。**尚未真机验证；真人准确性未验证。**
+
+本分支基于 PR #8，选择性复用 PR #1 网页和锁定模型依赖，移植 PR #6 POS/CHROM质量门。
+没有合并任何旧PR。新的独立站点与原生产系统无关。
+
+```sh
+npm ci --ignore-scripts
+npm run build
+npm start
+```
+
+本机开发页面为 `http://127.0.0.1:4173`，手机必须使用上方HTTPS网址或独立HTTPS部署。
+自动化：`npm test`；安装Playwright浏览器后运行 `npm run test:browser`（先启动页面）。
+完整日志：安装 `requirements-benchmark.lock` 后，运行
+`python scripts/validate-mobile.py --out outputs/mobile-new`。
+
+[第五阶段报告](reports/phase5.md) · [手机使用/部署/CSV规范](docs/mobile-testing.md) · [执行日志](reports/logs/phase5/release)
+
+## 历史：Issue #7 第四阶段（真实数据 BLOCKED）
 
 用户已确认没有已获批的真人数据或可用IEEE DataPort账号。本分支继续PR #6的代码，交付
 UBFC DATASET_2本地接入、官方渠道审计、材料/哈希/同步/受试者划分验证和完整工程日志。

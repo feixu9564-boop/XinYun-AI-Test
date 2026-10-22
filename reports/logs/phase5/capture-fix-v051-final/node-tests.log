@@ -1,0 +1,90 @@
+TAP version 13
+# Subtest: stalled callback falls back only when media time advances
+ok 1 - stalled callback falls back only when media time advances
+  ---
+  duration_ms: 3.9935
+  type: 'test'
+  ...
+# Subtest: frozen decoded counter overrides an advancing media clock
+ok 2 - frozen decoded counter overrides an advancing media clock
+  ---
+  duration_ms: 0.6465
+  type: 'test'
+  ...
+# Subtest: missing metadata uses actual currentTime; never undefined-equality deadlock
+ok 3 - missing metadata uses actual currentTime; never undefined-equality deadlock
+  ---
+  duration_ms: 0.6415
+  type: 'test'
+  ...
+# Subtest: constant media timestamp with advancing presented frames keeps sampling
+ok 4 - constant media timestamp with advancing presented frames keeps sampling
+  ---
+  duration_ms: 1.0024
+  type: 'test'
+  ...
+# Subtest: hung model remains serialized, timeout diagnostic differs from video stall
+ok 5 - hung model remains serialized, timeout diagnostic differs from video stall
+  ---
+  duration_ms: 0.6279
+  type: 'test'
+  ...
+# Subtest: frozen video never acquires invented samples, and stopped callbacks cannot resume
+ok 6 - frozen video never acquires invented samples, and stopped callbacks cannot resume
+  ---
+  duration_ms: 0.3654
+  type: 'test'
+  ...
+# Subtest: reference pairing uses actual midpoint, session and subject; no retrospective guessing
+ok 7 - reference pairing uses actual midpoint, session and subject; no retrospective guessing
+  ---
+  duration_ms: 1.383
+  type: 'test'
+  ...
+# Subtest: manual reference range and future timestamp validation
+ok 8 - manual reference range and future timestamp validation
+  ---
+  duration_ms: 0.3556
+  type: 'test'
+  ...
+# Subtest: CSV preserves failed windows, timestamps, BOM and escapes formula/text
+ok 9 - CSV preserves failed windows, timestamps, BOM and escapes formula/text
+  ---
+  duration_ms: 0.4572
+  type: 'test'
+  ...
+# Subtest: storage persists reload/clear and preserves memory on quota error
+ok 10 - storage persists reload/clear and preserves memory on quota error
+  ---
+  duration_ms: 0.3678
+  type: 'test'
+  ...
+# Subtest: corrupt storage is protected rather than overwritten
+ok 11 - corrupt storage is protected rather than overwritten
+  ---
+  duration_ms: 0.1908
+  type: 'test'
+  ...
+# Subtest: anonymous IDs reject spreadsheet formulas and names with whitespace
+ok 12 - anonymous IDs reject spreadsheet formulas and names with whitespace
+  ---
+  duration_ms: 0.1653
+  type: 'test'
+  ...
+# Subtest: missing/no-face/short/constant inputs fail closed
+ok 13 - missing/no-face/short/constant inputs fail closed
+  ---
+  duration_ms: 0.6925
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 72.7871
+
+--- STDERR ---

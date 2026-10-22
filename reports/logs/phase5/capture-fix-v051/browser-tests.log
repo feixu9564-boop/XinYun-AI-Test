@@ -1,0 +1,28 @@
+
+--- STDERR ---
+FAIL Chromium real bundled FaceMesh/WASM: fake no-face camera, 16s failed window, CSV, stop/restart: page.waitForFunction: Timeout 45000ms exceeded.
+    at C:\Users\Administrator\Documents\Codex\2026-10-22\ji\work\XinYun-AI-Test\tests\mobile-browser.mjs:15:16
+    at async scenario (C:\Users\Administrator\Documents\Codex\2026-10-22\ji\work\XinYun-AI-Test\tests\mobile-browser.mjs:8:61)
+    at async file:///C:/Users/Administrator/Documents/Codex/2026-10-22/ji/work/XinYun-AI-Test/tests/mobile-browser.mjs:10:1
+FAIL Chromium mobile UI lifecycle fault injection, permission, cancellation, background, export: AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+false !== true
+
+    at file:///C:/Users/Administrator/Documents/Codex/2026-10-22/ji/work/XinYun-AI-Test/tests/mobile-browser.mjs:63:14
+    at async scenario (file:///C:/Users/Administrator/Documents/Codex/2026-10-22/ji/work/XinYun-AI-Test/tests/mobile-browser.mjs:8:61)
+    at async file:///C:/Users/Administrator/Documents/Codex/2026-10-22/ji/work/XinYun-AI-Test/tests/mobile-browser.mjs:34:3
+FAIL Chromium stalled video-callback recovery, frozen-frame rejection and hung-model diagnostics: page.waitForFunction: Timeout 30000ms exceeded.
+    at C:\Users\Administrator\Documents\Codex\2026-10-22\ji\work\XinYun-AI-Test\tests\mobile-browser.mjs:105:18
+    at async scenario (C:\Users\Administrator\Documents\Codex\2026-10-22\ji\work\XinYun-AI-Test\tests\mobile-browser.mjs:8:61)
+    at async file:///C:/Users/Administrator/Documents/Codex/2026-10-22/ji/work/XinYun-AI-Test/tests/mobile-browser.mjs:76:3
+FAIL WebKit mobile UI lifecycle fault injection, permission, cancellation, background, export: AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+false !== true
+
+    at file:///C:/Users/Administrator/Documents/Codex/2026-10-22/ji/work/XinYun-AI-Test/tests/mobile-browser.mjs:63:14
+    at async scenario (file:///C:/Users/Administrator/Documents/Codex/2026-10-22/ji/work/XinYun-AI-Test/tests/mobile-browser.mjs:8:61)
+    at async file:///C:/Users/Administrator/Documents/Codex/2026-10-22/ji/work/XinYun-AI-Test/tests/mobile-browser.mjs:34:3
+FAIL WebKit stalled video-callback recovery, frozen-frame rejection and hung-model diagnostics: page.waitForFunction: Timeout 30000ms exceeded.
+    at C:\Users\Administrator\Documents\Codex\2026-10-22\ji\work\XinYun-AI-Test\tests\mobile-browser.mjs:105:18
+    at async scenario (C:\Users\Administrator\Documents\Codex\2026-10-22\ji\work\XinYun-AI-Test\tests\mobile-browser.mjs:8:61)
+    at async file:///C:/Users/Administrator/Documents/Codex/2026-10-22/ji/work/XinYun-AI-Test/tests/mobile-browser.mjs:76:3

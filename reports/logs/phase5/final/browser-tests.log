@@ -1,0 +1,5 @@
+PASS Chromium real bundled FaceMesh/WASM: fake no-face camera, 16s failed window, CSV, stop/restart
+PASS Chromium mobile UI lifecycle fault injection, permission, cancellation, background, export
+PASS WebKit mobile UI lifecycle fault injection, permission, cancellation, background, export
+
+--- STDERR ---

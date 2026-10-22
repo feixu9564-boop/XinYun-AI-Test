@@ -1,0 +1,22 @@
+{
+  "evidence": "ENGINEERING_ONLY; no human or physical phone tests",
+  "iphone": "DEVICE_TEST_REQUIRED",
+  "android": "DEVICE_TEST_REQUIRED",
+  "results": [
+    {
+      "name": "Chromium real bundled FaceMesh/WASM: fake no-face camera, 16s failed window, CSV, stop/restart",
+      "status": "PASS",
+      "elapsed_ms": 17969
+    },
+    {
+      "name": "Chromium mobile UI lifecycle fault injection, permission, cancellation, background, export",
+      "status": "PASS",
+      "elapsed_ms": 1278
+    },
+    {
+      "name": "WebKit mobile UI lifecycle fault injection, permission, cancellation, background, export",
+      "status": "PASS",
+      "elapsed_ms": 1918
+    }
+  ]
+}

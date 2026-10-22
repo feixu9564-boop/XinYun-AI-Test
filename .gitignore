@@ -10,3 +10,7 @@ outputs/
 *.avi
 *.mp4
 *.npz
+node_modules/
+dist/
+test-results/
+reports/logs/phase5/**/*.png

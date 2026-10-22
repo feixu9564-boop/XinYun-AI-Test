@@ -1,0 +1,1 @@
+{"name":"xinyun-rppg-research","private":true,"type":"module","scripts":{"test":"node --test tests/*.test.js","build":"node scripts/build-mobile.mjs","start":"node scripts/serve-mobile.mjs","test:browser":"node tests/mobile-browser.mjs"},"dependencies":{"@mediapipe/face_mesh":"0.4.1633559619"},"devDependencies":{"playwright":"1.62.1"}}
