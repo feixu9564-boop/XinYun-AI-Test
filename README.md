@@ -1,6 +1,23 @@
 # XinYun AI — 离线 rPPG 基准研究
 
-## 当前：Issue #5 第三阶段（BLOCKED，待审查，不合并）
+## 当前：Issue #7 第四阶段（真实数据 BLOCKED）
+
+用户已确认没有已获批的真人数据或可用IEEE DataPort账号。本分支继续PR #6的代码，交付
+UBFC DATASET_2本地接入、官方渠道审计、材料/哈希/同步/受试者划分验证和完整工程日志。
+没有真实准确率结果，没有阈值调优；PR #1/#4/#6及本分支均不合并，不修改生产部署。
+当前结果以 [第四阶段报告](reports/phase4.md) 和 [数据许可与接入指南](docs/phase4-data-access.md) 为准。
+
+安装 `requirements-benchmark.lock` 后，一键复现本轮工程验证：
+
+```text
+python scripts/validate-phase4.py --out outputs/phase4-new
+```
+
+该命令执行单元/导入测试、明确阻塞的真实数据预检和原有PR #6对抗回归，不下载真人视频。
+真实结果表全部NOT_RUN/null；真实窗口CSV只有表头，JSONL为空，不虚构匿名受试者或窗口。
+CI工程通过不代表真人验收通过。待取得授权文件后，按接入指南运行 `python -m benchmark.ingest_ubfc`。
+
+## 历史：Issue #5 第三阶段（BLOCKED，待审查，不合并）
 
 新增信号质量拒绝、13类对抗场景、逐窗CSV与受试者簇置信区间。
 **真实视频评测仍为0，阈值未在真人验证集标定；仍有已记录的周期性色彩干扰误报。**

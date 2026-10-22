@@ -16,12 +16,12 @@ jobs:
           python-version: '3.12'
       - name: Install pinned CPU baseline dependencies
         run: bash scripts/install-benchmark.sh
-      - name: Unit tests, synthetic video smoke and full fixture
-        run: bash scripts/test-benchmark.sh
+      - name: Ingestion contracts, explicit real-data blocker and existing PR6 regression
+        run: .venv/bin/python scripts/validate-phase4.py --out outputs/phase4-validation
       - name: Preserve synthetic engineering logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: synthetic-benchmark-logs
-          path: outputs/validation
+          name: phase4-engineering-logs
+          path: outputs/phase4-validation
           if-no-files-found: warn

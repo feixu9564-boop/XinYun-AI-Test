@@ -1,0 +1,17 @@
+{
+  "id": "anonymous-recording-001",
+  "subject_id": "canonical-anonymous-subject-001",
+  "split": "validation",
+  "duration_s": 60,
+  "reference_offset_s": 0,
+  "roi": [100, 50, 80, 40],
+  "quality_source": "REPLACE: actual skin ROI and face-count verification method with local evidence",
+  "sync_method": "REPLACE: verified mapping video_time=reference_time+offset; zero is not assumed",
+  "conditions": {},
+  "label_provenance": null,
+  "video": {"path": "subject-local/vid.avi", "sha256": "REPLACE_WITH_VERIFIED_SHA256"},
+  "ground_truth": {"path": "subject-local/ground_truth.txt", "sha256": "REPLACE_WITH_VERIFIED_SHA256"},
+  "timestamps": {"path": "subject-local/frames.csv", "sha256": "REPLACE_WITH_VERIFIED_SHA256"},
+  "quality": {"path": "subject-local/quality.csv", "sha256": "REPLACE_WITH_VERIFIED_SHA256"},
+  "sync_evidence": {"path": "subject-local/synchronization-review.txt", "sha256": "REPLACE_WITH_VERIFIED_SHA256"}
+}

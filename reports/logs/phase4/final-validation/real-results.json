@@ -1,0 +1,117 @@
+{
+  "status": "BLOCKED",
+  "real_recordings": 0,
+  "real_subjects": 0,
+  "real_windows": 0,
+  "reason": "No approved real recordings in the supplied empty plan; no real evaluation run",
+  "algorithms": {
+    "POS": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed",
+      "metrics": {
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "coverage": null,
+        "rejection_rate": null,
+        "negative_false_accept_rate": null,
+        "inference_latency_s": null,
+        "throughput_windows_s": null,
+        "subject_cluster_ci95": null
+      }
+    },
+    "CHROM": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed",
+      "metrics": {
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "coverage": null,
+        "rejection_rate": null,
+        "negative_false_accept_rate": null,
+        "inference_latency_s": null,
+        "throughput_windows_s": null,
+        "subject_cluster_ci95": null
+      }
+    },
+    "PhysNet": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed",
+      "metrics": {
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "coverage": null,
+        "rejection_rate": null,
+        "negative_false_accept_rate": null,
+        "inference_latency_s": null,
+        "throughput_windows_s": null,
+        "subject_cluster_ci95": null
+      }
+    },
+    "EfficientPhys": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed",
+      "metrics": {
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "coverage": null,
+        "rejection_rate": null,
+        "negative_false_accept_rate": null,
+        "inference_latency_s": null,
+        "throughput_windows_s": null,
+        "subject_cluster_ci95": null
+      }
+    },
+    "PhysFormer": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed",
+      "metrics": {
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "coverage": null,
+        "rejection_rate": null,
+        "negative_false_accept_rate": null,
+        "inference_latency_s": null,
+        "throughput_windows_s": null,
+        "subject_cluster_ci95": null
+      }
+    },
+    "PhysMamba": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed",
+      "metrics": {
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "coverage": null,
+        "rejection_rate": null,
+        "negative_false_accept_rate": null,
+        "inference_latency_s": null,
+        "throughput_windows_s": null,
+        "subject_cluster_ci95": null
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "dataset": "PURE",
+      "source_url": "https://www.tu-ilmenau.de/en/university/departments/department-of-computer-science-and-automation/profile/institutes-and-groups/institute-of-computer-and-systems-engineering/group-for-neuroinformatics-and-cognitive-robotics/data-sets-code/pulse-rate-detection-dataset-pure",
+      "reviewed_constraint": "Academic institutional application required; no approval held",
+      "checked_at_utc": "2026-10-22T08:35:27.272003+00:00",
+      "page_status": "BLOCKED",
+      "reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
+      "elapsed_s": 2.1666339999992488
+    },
+    {
+      "dataset": "UBFC-rPPG",
+      "source_url": "https://sites.google.com/view/ybenezeth/ubfcrppg",
+      "reviewed_constraint": "Official Drive route; research sharing and participant consent reviewed in phase3; quota is not bypassed",
+      "checked_at_utc": "2026-10-22T08:35:27.272003+00:00",
+      "http_status": 200,
+      "final_url": "https://sites.google.com/view/ybenezeth/ubfcrppg",
+      "bytes": 133002,
+      "sha256": "4ca90af92246032ab8c225fa8434009f370652fc7436925a8ecf5d5d91fde35d",
+      "page_status": "READ",
+      "constraint_markers_found": {
+        "research purpose": true
+      },
+      "elapsed_s": 1.640001800000391
+    },
+    {
+      "dataset": "COHFACE",
+      "source_url": "https://zenodo.org/records/4081054",
+      "reviewed_constraint": "Restricted files; noncommercial research EULA and permanent institutional signatory required",
+      "checked_at_utc": "2026-10-22T08:35:27.272999+00:00",
+      "page_status": "BLOCKED",
+      "reason": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
+      "elapsed_s": 0.7665299999989656
+    },
+    {
+      "dataset": "MMPD",
+      "source_url": "https://raw.githubusercontent.com/McJackTang/MMPD_rPPG_dataset/main/README.md",
+      "reviewed_constraint": "Academic-only; faculty institutional application and signed release required",
+      "checked_at_utc": "2026-10-22T08:35:27.272999+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/McJackTang/MMPD_rPPG_dataset/main/README.md",
+      "bytes": 11405,
+      "sha256": "4154b94894729403c63887691d06296f10dbe9d46d25963d8e79457d6be92904",
+      "page_status": "READ",
+      "constraint_markers_found": {
+        "commercial usage is banned": true,
+        "faculty": true
+      },
+      "elapsed_s": 1.0204957999994804
+    },
+    {
+      "dataset": "LGI-PPGI",
+      "source_url": "https://raw.githubusercontent.com/partofthestars/LGI-PPGI-DB/master/README.md",
+      "reviewed_constraint": "Author reports downloads unavailable; no third-party mirror used",
+      "checked_at_utc": "2026-10-22T08:35:28.039717+00:00",
+      "page_status": "BLOCKED",
+      "reason": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
+      "elapsed_s": 0.9042908999999781
+    },
+    {
+      "dataset": "UBFC-Phys-author",
+      "source_url": "https://sites.google.com/view/ybenezeth/ubfc-phys",
+      "reviewed_constraint": "Official alternative dataset; separately verify download-host terms",
+      "checked_at_utc": "2026-10-22T08:35:28.293615+00:00",
+      "page_status": "BLOCKED",
+      "reason": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
+      "elapsed_s": 0.7717149000000063
+    },
+    {
+      "dataset": "UBFC-Phys-dataport",
+      "source_url": "https://ieee-dataport.org/open-access/ubfc-phys-2",
+      "reviewed_constraint": "Host access/license unverified; no account creation or terms submission",
+      "checked_at_utc": "2026-10-22T08:35:28.912904+00:00",
+      "http_status": 200,
+      "final_url": "https://ieee-dataport.org/open-access/ubfc-phys-2",
+      "bytes": 97850,
+      "sha256": "b282b6f9f3a8c2c88782954de3750fe8beff2c59b1b2e883b197be88b48fa70e",
+      "page_status": "READ",
+      "constraint_markers_found": {},
+      "elapsed_s": 2.3073765999997704
+    },
+    {
+      "dataset": "UBFC-Phys-dataubfc",
+      "source_url": "https://search-data.ubfc.fr/FR-18008901306731-2022-05-05_UBFC-Phys-A-Multimodal-Dataset-For.html",
+      "reviewed_constraint": "Official author-linked alternative endpoint; access unverified",
+      "checked_at_utc": "2026-10-22T08:35:28.944196+00:00",
+      "page_status": "BLOCKED",
+      "reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
+      "elapsed_s": 2.487588699999833
+    },
+    {
+      "dataset": "UBFC-rPPG-video-probe",
+      "source_url": "https://drive.google.com/file/d/1qBlkbaB8y3-KlWC_A61KsY42Wjo66ss4/view",
+      "status": "BLOCKED",
+      "reason": "SSLError: HTTPSConnectionPool(host='drive.google.com', port=443): Max retries exceeded with url: /uc?id=1qBlkbaB8y3-KlWC_A61KsY42Wjo66ss4 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+    }
+  ],
+  "acquisition_only": true,
+  "completed_real_evaluations": 0,
+  "acceptance": "BLOCKED: access audit is not a synchronized evaluation"
+}
+EXIT_CODE=1

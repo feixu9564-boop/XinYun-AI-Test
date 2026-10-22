@@ -1,0 +1,9 @@
+{
+  "source": "explicit requester clarification in current task",
+  "approved_work": "data ingestion, license audit, automated tests, full logs, independent PR",
+  "available_approved_real_dataset": false,
+  "available_ieee_dataport_account": false,
+  "real_validation": "BLOCKED",
+  "no_quota_bypass": true,
+  "merge_authorized": false
+}

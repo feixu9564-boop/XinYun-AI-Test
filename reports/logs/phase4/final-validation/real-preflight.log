@@ -1,0 +1,47 @@
+$ python -m benchmark.ingest_ubfc docs/phase4-empty-plan.json --out C:\Users\Administrator\Documents\Codex\2026-10-22\ji\work\XinYun-AI-Test\reports\logs\phase4\final-validation\real-preflight
+{
+  "schema_version": 1,
+  "status": "BLOCKED",
+  "blockers": [
+    "NO_REAL_RECORDINGS: provide approved video, synchronized reference and per-frame sidecars",
+    "MISSING_DATASET_VERSION",
+    "MISSING_PERMISSION_REVIEW",
+    "MISSING_PRETRAINING_OVERLAP_REVIEW",
+    "AUTHORIZATION_EVIDENCE: file path and SHA256 required"
+  ],
+  "records": [],
+  "planned_recordings": 0,
+  "planned_subjects": 0,
+  "real_evaluated_recordings": 0,
+  "real_evaluated_subjects": 0,
+  "plan_sha256": "409e5c3d8acddce34d9f20e214353da5eb60750fc90cb09da8765eb37b2bb0b7",
+  "algorithms": {
+    "POS": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed"
+    },
+    "CHROM": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed"
+    },
+    "PhysNet": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed"
+    },
+    "EfficientPhys": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed"
+    },
+    "PhysFormer": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed"
+    },
+    "PhysMamba": {
+      "status": "NOT_RUN",
+      "reason": "preflight only; no synchronized evaluation executed"
+    }
+  },
+  "note": "Evidence documents and operator reviews are recorded, not independently authenticated by software"
+}
+
+EXIT_CODE=1

@@ -1,0 +1,15 @@
+{
+  "diff_check": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "compileall": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "quality_policy_unchanged_from_pr6": true,
+  "base_commit": "4d99c3c6903a41e0c2a72db250d5f0bec8824dbb",
+  "quality_source_sha256": "41dddf95ed82269a3feca0803c595c163f3920fd188cf26fce6909be6c3e2754"
+}

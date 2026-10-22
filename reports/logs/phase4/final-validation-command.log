@@ -1,0 +1,2 @@
+PASS engineering checks only. Real-data acceptance BLOCKED. No threshold tuning; no merge.
+EXIT_CODE=0

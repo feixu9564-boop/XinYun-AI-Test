@@ -1,0 +1,625 @@
+algorithm,subject_id,split,case,status,reason,reference_bpm,predicted_bpm,raw_candidate_bpm,inference_s
+POS,synthetic-0,validation,clean,ok,,54.0,52.5,52.5,0.02840710000054969
+CHROM,synthetic-0,validation,clean,ok,,54.0,52.5,52.5,0.015418299999510054
+PhysNet,synthetic-0,validation,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,54.0,,,7.999988156370819e-07
+EfficientPhys,synthetic-0,validation,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,54.0,,,5.000001692678779e-07
+PhysFormer,synthetic-0,validation,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,54.0,,,5.000001692678779e-07
+PhysMamba,synthetic-0,validation,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,54.0,,,9.999894245993346e-08
+POS,synthetic-0,validation,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.01441750000049069
+CHROM,synthetic-0,validation,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.014822400000412017
+PhysNet,synthetic-0,validation,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+EfficientPhys,synthetic-0,validation,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysFormer,synthetic-0,validation,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysMamba,synthetic-0,validation,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-0,validation,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,78.75,0.014861399999062996
+CHROM,synthetic-0,validation,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,78.75,0.014929900000424823
+PhysNet,synthetic-0,validation,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,7.999988156370819e-07
+EfficientPhys,synthetic-0,validation,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+PhysFormer,synthetic-0,validation,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-0,validation,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-0,validation,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.014999900000475463
+CHROM,synthetic-0,validation,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.014639600000009523
+PhysNet,synthetic-0,validation,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+EfficientPhys,synthetic-0,validation,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-0,validation,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-0,validation,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,4.999983502784744e-07
+POS,synthetic-0,validation,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.015020699998785858
+CHROM,synthetic-0,validation,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.014893599998686113
+PhysNet,synthetic-0,validation,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.000006346264854e-07
+EfficientPhys,synthetic-0,validation,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysFormer,synthetic-0,validation,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-0,validation,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+POS,synthetic-0,validation,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,52.5,0.014408999999432126
+CHROM,synthetic-0,validation,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,52.5,0.014605100001062965
+PhysNet,synthetic-0,validation,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.0000003385357559e-06
+EfficientPhys,synthetic-0,validation,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-0,validation,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-0,validation,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-0,validation,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.014458499999818741
+CHROM,synthetic-0,validation,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.014461799999480718
+PhysNet,synthetic-0,validation,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,7.00001692166552e-07
+EfficientPhys,synthetic-0,validation,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-0,validation,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-0,validation,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+POS,synthetic-0,validation,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,6.22000006842427e-05
+CHROM,synthetic-0,validation,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,3.509999987727497e-05
+PhysNet,synthetic-0,validation,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+EfficientPhys,synthetic-0,validation,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-0,validation,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysMamba,synthetic-0,validation,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-0,validation,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,52.5,0.012929000000440283
+CHROM,synthetic-0,validation,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,52.5,0.013127899999744841
+PhysNet,synthetic-0,validation,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-0,validation,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-0,validation,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysMamba,synthetic-0,validation,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-0,validation,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,52.5,0.01274579999881098
+CHROM,synthetic-0,validation,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,52.5,0.012798100000509294
+PhysNet,synthetic-0,validation,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-0,validation,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-0,validation,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+PhysMamba,synthetic-0,validation,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-0,validation,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,52.5,0.012833999999202206
+CHROM,synthetic-0,validation,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,52.5,0.012984900000446942
+PhysNet,synthetic-0,validation,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,4.999983502784744e-07
+EfficientPhys,synthetic-0,validation,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-0,validation,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-0,validation,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+POS,synthetic-0,validation,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,52.5,0.012710599999991246
+CHROM,synthetic-0,validation,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,52.5,0.013199700000768644
+PhysNet,synthetic-0,validation,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+EfficientPhys,synthetic-0,validation,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-0,validation,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysMamba,synthetic-0,validation,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+POS,synthetic-0,validation,indistinguishable_color_artifact,ok,,,97.5,97.5,0.014800800001466996
+CHROM,synthetic-0,validation,indistinguishable_color_artifact,ok,,,97.5,97.5,0.014859900000374182
+PhysNet,synthetic-0,validation,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+EfficientPhys,synthetic-0,validation,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysFormer,synthetic-0,validation,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-0,validation,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+POS,synthetic-1,validation,clean,ok,,72.0,71.25,71.25,0.014508000000205357
+CHROM,synthetic-1,validation,clean,ok,,72.0,71.25,71.25,0.014831700000286219
+PhysNet,synthetic-1,validation,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,,5.999991117278114e-07
+EfficientPhys,synthetic-1,validation,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,,3.0000046535860747e-07
+PhysFormer,synthetic-1,validation,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,,1.9999970390927047e-07
+PhysMamba,synthetic-1,validation,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,,3.9999940781854093e-07
+POS,synthetic-1,validation,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.014523399999234243
+CHROM,synthetic-1,validation,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.016644799999994575
+PhysNet,synthetic-1,validation,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.999995770864189e-07
+EfficientPhys,synthetic-1,validation,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-1,validation,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-1,validation,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-1,validation,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,172.5,0.014823599998635473
+CHROM,synthetic-1,validation,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,172.5,0.018591799998830538
+PhysNet,synthetic-1,validation,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-1,validation,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-1,validation,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-1,validation,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-1,validation,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.014473000001089531
+CHROM,synthetic-1,validation,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.014627099999415805
+PhysNet,synthetic-1,validation,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-1,validation,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-1,validation,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-1,validation,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-1,validation,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.014396900000065216
+CHROM,synthetic-1,validation,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.01482410000062373
+PhysNet,synthetic-1,validation,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.0000003385357559e-06
+EfficientPhys,synthetic-1,validation,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-1,validation,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-1,validation,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+POS,synthetic-1,validation,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,71.25,0.014319699999759905
+CHROM,synthetic-1,validation,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,71.25,0.014677199998914148
+PhysNet,synthetic-1,validation,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999985195463523e-07
+EfficientPhys,synthetic-1,validation,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-1,validation,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-1,validation,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-1,validation,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.014653599999292055
+CHROM,synthetic-1,validation,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.014438700000027893
+PhysNet,synthetic-1,validation,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-1,validation,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysFormer,synthetic-1,validation,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-1,validation,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,4.999983502784744e-07
+POS,synthetic-1,validation,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,0.0001258000011148397
+CHROM,synthetic-1,validation,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,3.149999974993989e-05
+PhysNet,synthetic-1,validation,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+EfficientPhys,synthetic-1,validation,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-1,validation,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-1,validation,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-1,validation,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,71.25,0.012972799999261042
+CHROM,synthetic-1,validation,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,71.25,0.013160900000002584
+PhysNet,synthetic-1,validation,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-1,validation,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysFormer,synthetic-1,validation,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-1,validation,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-1,validation,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,71.25,0.013098499999614432
+CHROM,synthetic-1,validation,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,71.25,0.01307740000083868
+PhysNet,synthetic-1,validation,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-1,validation,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-1,validation,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-1,validation,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+POS,synthetic-1,validation,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,71.25,0.012933500000144704
+CHROM,synthetic-1,validation,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,71.25,0.013432100000500213
+PhysNet,synthetic-1,validation,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.0999992809956893e-06
+EfficientPhys,synthetic-1,validation,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-1,validation,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-1,validation,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-1,validation,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,71.25,0.01405469999917841
+CHROM,synthetic-1,validation,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,71.25,0.015487700000448967
+PhysNet,synthetic-1,validation,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.0000003385357559e-06
+EfficientPhys,synthetic-1,validation,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-1,validation,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysMamba,synthetic-1,validation,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-1,validation,indistinguishable_color_artifact,ok,,,97.5,97.5,0.01573650000136695
+CHROM,synthetic-1,validation,indistinguishable_color_artifact,ok,,,97.5,97.5,0.017774199999621487
+PhysNet,synthetic-1,validation,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,7.999988156370819e-07
+EfficientPhys,synthetic-1,validation,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-1,validation,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-1,validation,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,4.000012268079445e-07
+POS,synthetic-2,test,clean,ok,,83.2,82.5,82.5,0.016971199998806696
+CHROM,synthetic-2,test,clean,ok,,83.2,82.5,82.5,0.017054300000381772
+PhysNet,synthetic-2,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,83.2,,,5.999991117278114e-07
+EfficientPhys,synthetic-2,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,83.2,,,3.0000046535860747e-07
+PhysFormer,synthetic-2,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,83.2,,,3.0000046535860747e-07
+PhysMamba,synthetic-2,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,83.2,,,1.9999970390927047e-07
+POS,synthetic-2,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.014992800000982243
+CHROM,synthetic-2,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.016681099999914295
+PhysNet,synthetic-2,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.000006346264854e-07
+EfficientPhys,synthetic-2,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+PhysFormer,synthetic-2,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-2,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-2,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,82.5,0.01449030000003404
+CHROM,synthetic-2,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,82.5,0.01488229999995383
+PhysNet,synthetic-2,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.000006346264854e-07
+EfficientPhys,synthetic-2,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-2,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysMamba,synthetic-2,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-2,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.014513500000248314
+CHROM,synthetic-2,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.014849699999103905
+PhysNet,synthetic-2,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.999995770864189e-07
+EfficientPhys,synthetic-2,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-2,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-2,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+POS,synthetic-2,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.015072700000018813
+CHROM,synthetic-2,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.014754200001334539
+PhysNet,synthetic-2,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,7.999988156370819e-07
+EfficientPhys,synthetic-2,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysFormer,synthetic-2,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-2,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-2,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,82.5,0.014561899999534944
+CHROM,synthetic-2,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,82.5,0.014592600000469247
+PhysNet,synthetic-2,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.999995770864189e-07
+EfficientPhys,synthetic-2,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+PhysFormer,synthetic-2,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-2,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-2,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.01437179999993532
+CHROM,synthetic-2,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.014819699999861768
+PhysNet,synthetic-2,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.999995770864189e-07
+EfficientPhys,synthetic-2,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-2,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-2,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-2,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,6.959999882383272e-05
+CHROM,synthetic-2,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,3.2699999792384915e-05
+PhysNet,synthetic-2,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+EfficientPhys,synthetic-2,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+PhysFormer,synthetic-2,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+PhysMamba,synthetic-2,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-2,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,82.5,0.012805799999114242
+CHROM,synthetic-2,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,82.5,0.012921599998662714
+PhysNet,synthetic-2,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,7.00001692166552e-07
+EfficientPhys,synthetic-2,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-2,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-2,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+POS,synthetic-2,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,82.5,0.01281100000051083
+CHROM,synthetic-2,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,82.5,0.013090700000248034
+PhysNet,synthetic-2,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-2,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysFormer,synthetic-2,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-2,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-2,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,82.5,0.013597199998912401
+CHROM,synthetic-2,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,82.5,0.013006300001507043
+PhysNet,synthetic-2,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+EfficientPhys,synthetic-2,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysFormer,synthetic-2,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+PhysMamba,synthetic-2,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-2,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,82.5,0.013300800001161406
+CHROM,synthetic-2,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,82.5,0.013879699999961304
+PhysNet,synthetic-2,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-2,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,4.000012268079445e-07
+PhysFormer,synthetic-2,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-2,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-2,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.014825700000073994
+CHROM,synthetic-2,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.015216999998301617
+PhysNet,synthetic-2,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999985195463523e-07
+EfficientPhys,synthetic-2,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysFormer,synthetic-2,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-2,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+POS,synthetic-3,test,clean,ok,,108.0,108.75,108.75,0.015326700000514393
+CHROM,synthetic-3,test,clean,ok,,108.0,108.75,108.75,0.01471529999980703
+PhysNet,synthetic-3,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,108.0,,,1.0999992809956893e-06
+EfficientPhys,synthetic-3,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,108.0,,,1.9999970390927047e-07
+PhysFormer,synthetic-3,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,108.0,,,3.0000046535860747e-07
+PhysMamba,synthetic-3,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,108.0,,,9.999894245993346e-08
+POS,synthetic-3,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.014791499999773805
+CHROM,synthetic-3,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.01547500000015134
+PhysNet,synthetic-3,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-3,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-3,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+PhysMamba,synthetic-3,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-3,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,161.25,0.018017100001088693
+CHROM,synthetic-3,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,161.25,0.014907899998434004
+PhysNet,synthetic-3,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+EfficientPhys,synthetic-3,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-3,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-3,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-3,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.014440500001001055
+CHROM,synthetic-3,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.01476840000032098
+PhysNet,synthetic-3,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-3,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-3,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-3,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+POS,synthetic-3,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.014322999999421882
+CHROM,synthetic-3,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.014691899999888847
+PhysNet,synthetic-3,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-3,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysFormer,synthetic-3,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-3,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-3,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,108.75,0.014487299999018433
+CHROM,synthetic-3,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,108.75,0.014437699999689357
+PhysNet,synthetic-3,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,7.999988156370819e-07
+EfficientPhys,synthetic-3,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-3,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-3,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-3,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.014437499999985448
+CHROM,synthetic-3,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.01438840000082564
+PhysNet,synthetic-3,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.2000000424450263e-06
+EfficientPhys,synthetic-3,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysFormer,synthetic-3,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-3,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+POS,synthetic-3,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,8.170000000973232e-05
+CHROM,synthetic-3,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,3.190000097674783e-05
+PhysNet,synthetic-3,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+EfficientPhys,synthetic-3,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-3,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysMamba,synthetic-3,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-3,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,108.75,0.01290809999954945
+CHROM,synthetic-3,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,108.75,0.013821299999108305
+PhysNet,synthetic-3,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-3,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+PhysFormer,synthetic-3,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-3,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+POS,synthetic-3,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,108.75,0.012989000000743545
+CHROM,synthetic-3,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,108.75,0.013259199999083648
+PhysNet,synthetic-3,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.000006346264854e-07
+EfficientPhys,synthetic-3,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysFormer,synthetic-3,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-3,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-3,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,108.75,0.013061300000117626
+CHROM,synthetic-3,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,108.75,0.013018600000577862
+PhysNet,synthetic-3,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.999995770864189e-07
+EfficientPhys,synthetic-3,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-3,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-3,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-3,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,108.75,0.013104600000588107
+CHROM,synthetic-3,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,108.75,0.012881000000561471
+PhysNet,synthetic-3,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-3,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysFormer,synthetic-3,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-3,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+POS,synthetic-3,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.014764600000489736
+CHROM,synthetic-3,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.015561700000034762
+PhysNet,synthetic-3,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.999995770864189e-07
+EfficientPhys,synthetic-3,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-3,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-3,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-4,test,clean,ok,,127.3,127.5,127.5,0.01543120000133058
+CHROM,synthetic-4,test,clean,ok,,127.3,127.5,127.5,0.01515069999913976
+PhysNet,synthetic-4,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,127.3,,,1.1000010999850929e-06
+EfficientPhys,synthetic-4,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,127.3,,,2.999986463692039e-07
+PhysFormer,synthetic-4,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,127.3,,,3.9999940781854093e-07
+PhysMamba,synthetic-4,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,127.3,,,1.9999970390927047e-07
+POS,synthetic-4,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.01410040000155277
+CHROM,synthetic-4,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.014237299999876996
+PhysNet,synthetic-4,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.000006346264854e-07
+EfficientPhys,synthetic-4,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-4,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-4,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+POS,synthetic-4,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,63.75,0.014584300000933581
+CHROM,synthetic-4,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,63.75,0.015103200001249206
+PhysNet,synthetic-4,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.0000003385357559e-06
+EfficientPhys,synthetic-4,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-4,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-4,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-4,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.015307400000892812
+CHROM,synthetic-4,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.01650570000128937
+PhysNet,synthetic-4,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.000006346264854e-07
+EfficientPhys,synthetic-4,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-4,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-4,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-4,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.014670599999590195
+CHROM,synthetic-4,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.015064799999890965
+PhysNet,synthetic-4,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-4,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-4,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-4,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-4,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,127.5,0.015036599999803002
+CHROM,synthetic-4,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,127.5,0.01515549999930954
+PhysNet,synthetic-4,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-4,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-4,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-4,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-4,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.014827200000581797
+CHROM,synthetic-4,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.015289999999367865
+PhysNet,synthetic-4,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-4,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-4,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-4,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-4,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,6.41999995423248e-05
+CHROM,synthetic-4,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,3.060000017285347e-05
+PhysNet,synthetic-4,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+EfficientPhys,synthetic-4,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysFormer,synthetic-4,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+PhysMamba,synthetic-4,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-4,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,127.5,0.012884600000688806
+CHROM,synthetic-4,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,127.5,0.013112200000250596
+PhysNet,synthetic-4,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-4,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+PhysFormer,synthetic-4,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-4,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+POS,synthetic-4,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,127.5,0.012902599999506492
+CHROM,synthetic-4,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,127.5,0.012983599999643047
+PhysNet,synthetic-4,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-4,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-4,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-4,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-4,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,127.5,0.013386300001002382
+CHROM,synthetic-4,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,127.5,0.012931399998706183
+PhysNet,synthetic-4,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+EfficientPhys,synthetic-4,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-4,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-4,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-4,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,127.5,0.012967800001206342
+CHROM,synthetic-4,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,127.5,0.013375500000620377
+PhysNet,synthetic-4,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.000013960758224e-07
+EfficientPhys,synthetic-4,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysFormer,synthetic-4,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysMamba,synthetic-4,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-4,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.014671000000817003
+CHROM,synthetic-4,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.014547400000083144
+PhysNet,synthetic-4,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-4,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysFormer,synthetic-4,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-4,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+POS,synthetic-5,test,clean,ok,,150.0,150.0,150.0,0.01462820000051579
+CHROM,synthetic-5,test,clean,ok,,150.0,150.0,150.0,0.014580799999748706
+PhysNet,synthetic-5,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,150.0,,,6.999998731771484e-07
+EfficientPhys,synthetic-5,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,150.0,,,1.9999970390927047e-07
+PhysFormer,synthetic-5,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,150.0,,,3.9999940781854093e-07
+PhysMamba,synthetic-5,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,150.0,,,2.999986463692039e-07
+POS,synthetic-5,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.014319900001282804
+CHROM,synthetic-5,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.014572199999747681
+PhysNet,synthetic-5,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.000013960758224e-07
+EfficientPhys,synthetic-5,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysFormer,synthetic-5,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,4.000012268079445e-07
+PhysMamba,synthetic-5,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+POS,synthetic-5,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,138.75,0.014561199999661767
+CHROM,synthetic-5,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,138.75,0.0149329999985639
+PhysNet,synthetic-5,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.000006346264854e-07
+EfficientPhys,synthetic-5,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysFormer,synthetic-5,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-5,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+POS,synthetic-5,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.014496600000711624
+CHROM,synthetic-5,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.014859099999739556
+PhysNet,synthetic-5,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.000013960758224e-07
+EfficientPhys,synthetic-5,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-5,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-5,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-5,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.014631000000008498
+CHROM,synthetic-5,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.014592800000173156
+PhysNet,synthetic-5,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-5,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-5,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-5,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+POS,synthetic-5,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,150.0,0.014289600001575309
+CHROM,synthetic-5,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,150.0,0.014481199999863748
+PhysNet,synthetic-5,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-5,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-5,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-5,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-5,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.014215100000001257
+CHROM,synthetic-5,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.01431109999975888
+PhysNet,synthetic-5,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.0999992809956893e-06
+EfficientPhys,synthetic-5,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-5,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-5,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-5,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,6.369999937305693e-05
+CHROM,synthetic-5,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,3.0299999707494862e-05
+PhysNet,synthetic-5,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+EfficientPhys,synthetic-5,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-5,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-5,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-5,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,150.0,0.012306399999943096
+CHROM,synthetic-5,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,150.0,0.012971800000741496
+PhysNet,synthetic-5,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-5,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysFormer,synthetic-5,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-5,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+POS,synthetic-5,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,150.0,0.012722299999950337
+CHROM,synthetic-5,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,150.0,0.012908800001241616
+PhysNet,synthetic-5,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-5,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,4.000012268079445e-07
+PhysFormer,synthetic-5,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-5,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-5,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,150.0,0.013165899999876274
+CHROM,synthetic-5,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,150.0,0.013034499999776017
+PhysNet,synthetic-5,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-5,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-5,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysMamba,synthetic-5,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+POS,synthetic-5,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,150.0,0.012795700000424404
+CHROM,synthetic-5,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,150.0,0.013049099999989267
+PhysNet,synthetic-5,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+EfficientPhys,synthetic-5,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-5,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-5,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-5,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.01461149999886402
+CHROM,synthetic-5,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.01482170000053884
+PhysNet,synthetic-5,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-5,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,4.000012268079445e-07
+PhysFormer,synthetic-5,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-5,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-6,test,clean,ok,,54.0,52.5,52.5,0.014704700000947923
+CHROM,synthetic-6,test,clean,ok,,54.0,52.5,52.5,0.01492330000110087
+PhysNet,synthetic-6,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,54.0,,,8.999995770864189e-07
+EfficientPhys,synthetic-6,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,54.0,,,3.0000046535860747e-07
+PhysFormer,synthetic-6,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,54.0,,,2.999986463692039e-07
+PhysMamba,synthetic-6,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,54.0,,,1.9999970390927047e-07
+POS,synthetic-6,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.01469580000048154
+CHROM,synthetic-6,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.014550900001268019
+PhysNet,synthetic-6,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.999995770864189e-07
+EfficientPhys,synthetic-6,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-6,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-6,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-6,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,150.0,0.014632100001108483
+CHROM,synthetic-6,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,150.0,0.014998700000433018
+PhysNet,synthetic-6,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-6,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-6,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-6,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-6,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.01504219999878842
+CHROM,synthetic-6,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.01471029999993334
+PhysNet,synthetic-6,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-6,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-6,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-6,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-6,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.016463500000099884
+CHROM,synthetic-6,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.015021299999716575
+PhysNet,synthetic-6,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-6,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-6,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-6,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-6,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,52.5,0.014427000000068801
+CHROM,synthetic-6,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,52.5,0.01502020000043558
+PhysNet,synthetic-6,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.000006346264854e-07
+EfficientPhys,synthetic-6,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-6,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-6,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+POS,synthetic-6,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.014495400000669179
+CHROM,synthetic-6,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.014886499999192893
+PhysNet,synthetic-6,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.000006346264854e-07
+EfficientPhys,synthetic-6,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-6,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-6,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-6,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,0.00012830000014218967
+CHROM,synthetic-6,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,3.570000080799218e-05
+PhysNet,synthetic-6,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.999995770864189e-07
+EfficientPhys,synthetic-6,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-6,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysMamba,synthetic-6,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-6,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,52.5,0.013182900000174413
+CHROM,synthetic-6,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,52.5,0.013081200000669924
+PhysNet,synthetic-6,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-6,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysFormer,synthetic-6,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-6,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-6,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,52.5,0.015432100000907667
+CHROM,synthetic-6,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,52.5,0.012979899998754263
+PhysNet,synthetic-6,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999985195463523e-07
+EfficientPhys,synthetic-6,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysFormer,synthetic-6,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysMamba,synthetic-6,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+POS,synthetic-6,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,52.5,0.012790400000085356
+CHROM,synthetic-6,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,52.5,0.01288869999916642
+PhysNet,synthetic-6,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-6,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysFormer,synthetic-6,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.000001692678779e-07
+PhysMamba,synthetic-6,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-6,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,52.5,0.012871800001448719
+CHROM,synthetic-6,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,52.5,0.01292739999917103
+PhysNet,synthetic-6,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-6,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-6,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-6,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-6,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.014702099999340135
+CHROM,synthetic-6,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.01478569999926549
+PhysNet,synthetic-6,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-6,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-6,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-6,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-7,test,clean,ok,,72.0,71.25,71.25,0.014582699999664328
+CHROM,synthetic-7,test,clean,ok,,72.0,71.25,71.25,0.014672400000563357
+PhysNet,synthetic-7,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,,8.000006346264854e-07
+EfficientPhys,synthetic-7,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,,3.0000046535860747e-07
+PhysFormer,synthetic-7,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,,1.9999970390927047e-07
+PhysMamba,synthetic-7,test,clean,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,72.0,,,1.9999970390927047e-07
+POS,synthetic-7,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.01427759999933187
+CHROM,synthetic-7,test,no_pulse,insufficient_signal,insufficient_signal: no_chromatic_pulse_evidence,,,,0.01441539999905217
+PhysNet,synthetic-7,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-7,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-7,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-7,test,no_pulse,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-7,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,168.75,0.014334299999973155
+CHROM,synthetic-7,test,noise,insufficient_signal,insufficient_signal: diffuse_spectrum,,,168.75,0.01458220000131405
+PhysNet,synthetic-7,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,7.00001692166552e-07
+EfficientPhys,synthetic-7,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-7,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-7,test,noise,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-7,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.01528870000038296
+CHROM,synthetic-7,test,second_harmonic,insufficient_signal,insufficient_signal: harmonic_ambiguity,,,142.5,0.015155299999605631
+PhysNet,synthetic-7,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+EfficientPhys,synthetic-7,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysFormer,synthetic-7,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-7,test,second_harmonic,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+POS,synthetic-7,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.014568600001439336
+CHROM,synthetic-7,test,mixed_motion,insufficient_signal,insufficient_signal: competing_periodicity,,,97.5,0.014746000000741333
+PhysNet,synthetic-7,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-7,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysFormer,synthetic-7,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-7,test,mixed_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+POS,synthetic-7,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,71.25,0.014772099999390775
+CHROM,synthetic-7,test,spatial_motion,insufficient_signal,insufficient_signal: excessive_motion,,,71.25,0.01460399999996298
+PhysNet,synthetic-7,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.999995770864189e-07
+EfficientPhys,synthetic-7,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-7,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-7,test,spatial_motion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-7,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.01424609999958193
+CHROM,synthetic-7,test,illumination,insufficient_signal,insufficient_signal: illumination_variation,,,48.75,0.014663600000858423
+PhysNet,synthetic-7,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,5.999991117278114e-07
+EfficientPhys,synthetic-7,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-7,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysMamba,synthetic-7,test,illumination,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,9.999894245993346e-08
+POS,synthetic-7,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,0.0001292000015382655
+CHROM,synthetic-7,test,low_fps,insufficient_signal,insufficient_signal: low FPS or dropped-frame gap,,,,3.6499999623629265e-05
+PhysNet,synthetic-7,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+EfficientPhys,synthetic-7,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.9999940781854093e-07
+PhysFormer,synthetic-7,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+PhysMamba,synthetic-7,test,low_fps,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+POS,synthetic-7,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,71.25,0.012737600000036764
+CHROM,synthetic-7,test,occlusion,insufficient_signal,insufficient_signal: unstable_or_occluded_roi,,,71.25,0.01307989999986603
+PhysNet,synthetic-7,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.000009307172149e-07
+EfficientPhys,synthetic-7,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-7,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-7,test,occlusion,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-7,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,71.25,0.013223500000094646
+CHROM,synthetic-7,test,multiple_faces,insufficient_signal,insufficient_signal: not_single_face,,,71.25,0.013017299999773968
+PhysNet,synthetic-7,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-7,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.00001522898674e-07
+PhysFormer,synthetic-7,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-7,test,multiple_faces,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+POS,synthetic-7,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,71.25,0.012763400000039837
+CHROM,synthetic-7,test,lost_face,insufficient_signal,insufficient_signal: not_single_face,,,71.25,0.012891600001239567
+PhysNet,synthetic-7,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,8.999995770864189e-07
+EfficientPhys,synthetic-7,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysFormer,synthetic-7,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-7,test,lost_face,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+POS,synthetic-7,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,71.25,0.012842899999668589
+CHROM,synthetic-7,test,unknown_roi,insufficient_signal,insufficient_signal: invalid_roi_valid_telemetry,,,71.25,0.013008400001126574
+PhysNet,synthetic-7,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-7,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-7,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07
+PhysMamba,synthetic-7,test,unknown_roi,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.00000761449337e-07
+POS,synthetic-7,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.014517000001433189
+CHROM,synthetic-7,test,indistinguishable_color_artifact,ok,,,97.5,97.5,0.01474659999985306
+PhysNet,synthetic-7,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,6.999998731771484e-07
+EfficientPhys,synthetic-7,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,3.0000046535860747e-07
+PhysFormer,synthetic-7,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,2.999986463692039e-07
+PhysMamba,synthetic-7,test,indistinguishable_color_artifact,NOT_RUN,RuntimeError: license restricted: acknowledge upstream research terms explicitly,,,,1.9999970390927047e-07

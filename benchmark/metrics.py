@@ -14,6 +14,7 @@ def metrics(rows):
             'rejection_rate': sum(r['status'] in ('rejected', 'insufficient_signal') for r in rows)/n if n else None,
             'blocked_rate': sum(r['status'] in ('blocked', 'NOT_RUN') for r in rows)/n if n else None,
             'absolute_error_p50_bpm': float(np.quantile(np.abs(errors), .5)) if k else None,
+            'absolute_error_p90_bpm': float(np.quantile(np.abs(errors), .9)) if k else None,
             'absolute_error_p95_bpm': float(np.quantile(np.abs(errors), .95)) if k else None,
             'wrong_output_threshold_bpm': 10,
             'wrong_output_rate_all_windows': wrong/n if n and k else None,

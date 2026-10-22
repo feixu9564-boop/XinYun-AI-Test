@@ -1,0 +1,536 @@
+$ python -m benchmark.adversarial --out C:\Users\Administrator\Documents\Codex\2026-10-22\ji\work\XinYun-AI-Test\reports\logs\phase4\validation\pr6-regression
+{
+  "synthetic": true,
+  "seed": 2026,
+  "policy": {
+    "version": "experimental-v1",
+    "calibration": "NOT_CALIBRATED_ON_REAL_VALIDATION",
+    "min_peak_fraction": 0.6,
+    "max_secondary_ratio": 0.04,
+    "min_subharmonic_ratio": 0.04,
+    "max_motion_p95": 3.0,
+    "max_brightness_cv": 0.08,
+    "min_chromatic_std": 0.0005
+  },
+  "hardware": {
+    "python": "3.12.14",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "processor": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+    "numpy": "2.2.6",
+    "torch": null,
+    "cuda": false,
+    "gpu": null
+  },
+  "threshold_selection": "fixed engineering defaults; validation split diagnostic only; no human calibration",
+  "elapsed_s": 3.747474700001476,
+  "rows": 624,
+  "metrics": [
+    {
+      "algorithm": "POS",
+      "split": "validation",
+      "status": "RUN_SYNTHETIC_ONLY",
+      "positive_metrics": {
+        "total_windows": 2,
+        "valid_windows": 2,
+        "mae_bpm": 1.125,
+        "rmse_bpm": 1.1858541225631423,
+        "bias_bpm": -1.125,
+        "coverage": 1.0,
+        "failure_rate": 0.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 0.0,
+        "absolute_error_p50_bpm": 1.125,
+        "absolute_error_p90_bpm": 1.425,
+        "absolute_error_p95_bpm": 1.4625,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": 0.0,
+        "wrong_output_rate_accepted": 0.0,
+        "mean_inference_s": 0.021457550000377523
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 2,
+        "mae_ci95": [
+          0.75,
+          1.5
+        ],
+        "coverage_ci95": [
+          1.0,
+          1.0
+        ],
+        "draws_without_output": 0
+      },
+      "negative_windows": 24,
+      "false_accepts": 2,
+      "false_accept_rate": 0.08333333333333333,
+      "raw_false_accepts": 20,
+      "rejection_rate": 0.8461538461538461,
+      "all_window_coverage": 0.15384615384615385
+    },
+    {
+      "algorithm": "POS",
+      "split": "test",
+      "status": "RUN_SYNTHETIC_ONLY",
+      "positive_metrics": {
+        "total_windows": 6,
+        "valid_windows": 6,
+        "mae_bpm": 0.6500000000000009,
+        "rmse_bpm": 0.806742420685397,
+        "bias_bpm": -0.3333333333333333,
+        "coverage": 1.0,
+        "failure_rate": 0.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 0.0,
+        "absolute_error_p50_bpm": 0.7250000000000014,
+        "absolute_error_p90_bpm": 1.125,
+        "absolute_error_p95_bpm": 1.3125,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": 0.0,
+        "wrong_output_rate_accepted": 0.0,
+        "mean_inference_s": 0.015274116666963286
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 6,
+        "mae_ci95": [
+          0.30833333333333474,
+          1.025000000000001
+        ],
+        "coverage_ci95": [
+          1.0,
+          1.0
+        ],
+        "draws_without_output": 0
+      },
+      "negative_windows": 72,
+      "false_accepts": 6,
+      "false_accept_rate": 0.08333333333333333,
+      "raw_false_accepts": 60,
+      "rejection_rate": 0.8461538461538461,
+      "all_window_coverage": 0.15384615384615385
+    },
+    {
+      "algorithm": "CHROM",
+      "split": "validation",
+      "status": "RUN_SYNTHETIC_ONLY",
+      "positive_metrics": {
+        "total_windows": 2,
+        "valid_windows": 2,
+        "mae_bpm": 1.125,
+        "rmse_bpm": 1.1858541225631423,
+        "bias_bpm": -1.125,
+        "coverage": 1.0,
+        "failure_rate": 0.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 0.0,
+        "absolute_error_p50_bpm": 1.125,
+        "absolute_error_p90_bpm": 1.425,
+        "absolute_error_p95_bpm": 1.4625,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": 0.0,
+        "wrong_output_rate_accepted": 0.0,
+        "mean_inference_s": 0.015124999999898137
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 2,
+        "mae_ci95": [
+          0.75,
+          1.5
+        ],
+        "coverage_ci95": [
+          1.0,
+          1.0
+        ],
+        "draws_without_output": 0
+      },
+      "negative_windows": 24,
+      "false_accepts": 2,
+      "false_accept_rate": 0.08333333333333333,
+      "raw_false_accepts": 20,
+      "rejection_rate": 0.8461538461538461,
+      "all_window_coverage": 0.15384615384615385
+    },
+    {
+      "algorithm": "CHROM",
+      "split": "test",
+      "status": "RUN_SYNTHETIC_ONLY",
+      "positive_metrics": {
+        "total_windows": 6,
+        "valid_windows": 6,
+        "mae_bpm": 0.6500000000000009,
+        "rmse_bpm": 0.806742420685397,
+        "bias_bpm": -0.3333333333333333,
+        "coverage": 1.0,
+        "failure_rate": 0.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 0.0,
+        "absolute_error_p50_bpm": 0.7250000000000014,
+        "absolute_error_p90_bpm": 1.125,
+        "absolute_error_p95_bpm": 1.3125,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": 0.0,
+        "wrong_output_rate_accepted": 0.0,
+        "mean_inference_s": 0.015182800000123583
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 6,
+        "mae_ci95": [
+          0.30833333333333474,
+          1.025000000000001
+        ],
+        "coverage_ci95": [
+          1.0,
+          1.0
+        ],
+        "draws_without_output": 0
+      },
+      "negative_windows": 72,
+      "false_accepts": 6,
+      "false_accept_rate": 0.08333333333333333,
+      "raw_false_accepts": 60,
+      "rejection_rate": 0.8461538461538461,
+      "all_window_coverage": 0.15384615384615385
+    },
+    {
+      "algorithm": "PhysNet",
+      "split": "validation",
+      "status": "NOT_RUN",
+      "positive_metrics": {
+        "total_windows": 2,
+        "valid_windows": 0,
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "coverage": 0.0,
+        "failure_rate": 1.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 1.0,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": null,
+        "wrong_output_rate_accepted": null,
+        "mean_inference_s": null
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 2,
+        "mae_ci95": null,
+        "coverage_ci95": [
+          0.0,
+          0.0
+        ],
+        "draws_without_output": 1000
+      },
+      "negative_windows": 24,
+      "false_accepts": null,
+      "false_accept_rate": null,
+      "raw_false_accepts": null,
+      "rejection_rate": null,
+      "all_window_coverage": null
+    },
+    {
+      "algorithm": "PhysNet",
+      "split": "test",
+      "status": "NOT_RUN",
+      "positive_metrics": {
+        "total_windows": 6,
+        "valid_windows": 0,
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "coverage": 0.0,
+        "failure_rate": 1.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 1.0,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": null,
+        "wrong_output_rate_accepted": null,
+        "mean_inference_s": null
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 6,
+        "mae_ci95": null,
+        "coverage_ci95": [
+          0.0,
+          0.0
+        ],
+        "draws_without_output": 1000
+      },
+      "negative_windows": 72,
+      "false_accepts": null,
+      "false_accept_rate": null,
+      "raw_false_accepts": null,
+      "rejection_rate": null,
+      "all_window_coverage": null
+    },
+    {
+      "algorithm": "EfficientPhys",
+      "split": "validation",
+      "status": "NOT_RUN",
+      "positive_metrics": {
+        "total_windows": 2,
+        "valid_windows": 0,
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "coverage": 0.0,
+        "failure_rate": 1.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 1.0,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": null,
+        "wrong_output_rate_accepted": null,
+        "mean_inference_s": null
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 2,
+        "mae_ci95": null,
+        "coverage_ci95": [
+          0.0,
+          0.0
+        ],
+        "draws_without_output": 1000
+      },
+      "negative_windows": 24,
+      "false_accepts": null,
+      "false_accept_rate": null,
+      "raw_false_accepts": null,
+      "rejection_rate": null,
+      "all_window_coverage": null
+    },
+    {
+      "algorithm": "EfficientPhys",
+      "split": "test",
+      "status": "NOT_RUN",
+      "positive_metrics": {
+        "total_windows": 6,
+        "valid_windows": 0,
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "coverage": 0.0,
+        "failure_rate": 1.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 1.0,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": null,
+        "wrong_output_rate_accepted": null,
+        "mean_inference_s": null
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 6,
+        "mae_ci95": null,
+        "coverage_ci95": [
+          0.0,
+          0.0
+        ],
+        "draws_without_output": 1000
+      },
+      "negative_windows": 72,
+      "false_accepts": null,
+      "false_accept_rate": null,
+      "raw_false_accepts": null,
+      "rejection_rate": null,
+      "all_window_coverage": null
+    },
+    {
+      "algorithm": "PhysFormer",
+      "split": "validation",
+      "status": "NOT_RUN",
+      "positive_metrics": {
+        "total_windows": 2,
+        "valid_windows": 0,
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "coverage": 0.0,
+        "failure_rate": 1.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 1.0,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": null,
+        "wrong_output_rate_accepted": null,
+        "mean_inference_s": null
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 2,
+        "mae_ci95": null,
+        "coverage_ci95": [
+          0.0,
+          0.0
+        ],
+        "draws_without_output": 1000
+      },
+      "negative_windows": 24,
+      "false_accepts": null,
+      "false_accept_rate": null,
+      "raw_false_accepts": null,
+      "rejection_rate": null,
+      "all_window_coverage": null
+    },
+    {
+      "algorithm": "PhysFormer",
+      "split": "test",
+      "status": "NOT_RUN",
+      "positive_metrics": {
+        "total_windows": 6,
+        "valid_windows": 0,
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "coverage": 0.0,
+        "failure_rate": 1.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 1.0,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": null,
+        "wrong_output_rate_accepted": null,
+        "mean_inference_s": null
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 6,
+        "mae_ci95": null,
+        "coverage_ci95": [
+          0.0,
+          0.0
+        ],
+        "draws_without_output": 1000
+      },
+      "negative_windows": 72,
+      "false_accepts": null,
+      "false_accept_rate": null,
+      "raw_false_accepts": null,
+      "rejection_rate": null,
+      "all_window_coverage": null
+    },
+    {
+      "algorithm": "PhysMamba",
+      "split": "validation",
+      "status": "NOT_RUN",
+      "positive_metrics": {
+        "total_windows": 2,
+        "valid_windows": 0,
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "coverage": 0.0,
+        "failure_rate": 1.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 1.0,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": null,
+        "wrong_output_rate_accepted": null,
+        "mean_inference_s": null
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 2,
+        "mae_ci95": null,
+        "coverage_ci95": [
+          0.0,
+          0.0
+        ],
+        "draws_without_output": 1000
+      },
+      "negative_windows": 24,
+      "false_accepts": null,
+      "false_accept_rate": null,
+      "raw_false_accepts": null,
+      "rejection_rate": null,
+      "all_window_coverage": null
+    },
+    {
+      "algorithm": "PhysMamba",
+      "split": "test",
+      "status": "NOT_RUN",
+      "positive_metrics": {
+        "total_windows": 6,
+        "valid_windows": 0,
+        "mae_bpm": null,
+        "rmse_bpm": null,
+        "bias_bpm": null,
+        "coverage": 0.0,
+        "failure_rate": 1.0,
+        "rejection_rate": 0.0,
+        "blocked_rate": 1.0,
+        "absolute_error_p50_bpm": null,
+        "absolute_error_p90_bpm": null,
+        "absolute_error_p95_bpm": null,
+        "wrong_output_threshold_bpm": 10,
+        "wrong_output_rate_all_windows": null,
+        "wrong_output_rate_accepted": null,
+        "mean_inference_s": null
+      },
+      "positive_ci": {
+        "method": "subject-cluster percentile bootstrap",
+        "seed": 2026,
+        "repeats": 1000,
+        "subjects": 6,
+        "mae_ci95": null,
+        "coverage_ci95": [
+          0.0,
+          0.0
+        ],
+        "draws_without_output": 1000
+      },
+      "negative_windows": 72,
+      "false_accepts": null,
+      "false_accept_rate": null,
+      "raw_false_accepts": null,
+      "rejection_rate": null,
+      "all_window_coverage": null
+    }
+  ],
+  "caveat": "Color artifacts identical to a pulse remain false accepts. No human or product accuracy claim."
+}
+
+EXIT_CODE=1
