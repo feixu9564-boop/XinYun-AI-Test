@@ -37,3 +37,23 @@
 | [iBVP](https://github.com/PhysiologicAILab/iBVP-Dataset) | 30 FPS RGB/热成像与耳部 PPG、参考质量标签；官方描述 124×3min | 学术主管签署 [EULA](https://github.com/PhysiologicAILab/iBVP-Dataset/blob/main/assets/EULA_iBVP-Dataset.pdf)，作者审核通过后提供链接；压缩约400GB。部分参与者有媒体使用限制。未获 EULA 授权，不自动申请、不下载；其 PPG 需额外生成接触式参考 HR，本提交不冒称已有 iBVP 专用导入器 |
 
 没有取得同时满足合法研究使用、同步参考和可审阅许可的本地真人数据。因此交付可执行通用视频/时间戳/参考 HR 导入器、固定本地清单格式和阻塞列表；不提供编造的真人成绩。
+
+## PR #4 复审：许可与授权仍有阻塞
+
+2026-10-22 再次读取锁定 checkout 的 `LICENSE`、三个推理配置和发布权重目录。
+源码仍是 Responsible AI Source Code License v1.1；`final_model_release/` 只有发布的 `.pth`，
+没有找到单独权重许可文件。权重存在、下载成功和 SHA256 匹配**都不证明权利已获授权**，
+CLI 的 acknowledge 参数也只是操作者声明，不能替代许可。此次仅使用非真人合成输入做研究工程对照，不再分发上游源码或权重。
+
+| 项目 | 已确认的事实 | 尚缺证据 / 本次处理 |
+|---|---|---|
+| Toolbox 源码 | 锁定版 LICENSE 的受限条款可读取 | 不能标为任意商业使用；用途须逐项核对 |
+| 三个 CPU checkpoint | 发布路径和摘要匹配，真实加载/forward | 未找到权重独立授权；不宣称获准再分发、商业或真人应用 |
+| UBFC-rPPG | 有官方入口及同步参考格式说明 | 无本项目可审阅授权、本地视频、参考与同步核验记录；真人评测 blocked |
+| PURE | 四 checkpoint 的训练集；需申请获取 | 无本项目授权；同训练集测试仍被程序阻止 |
+| iBVP | 存在 EULA/审核获取流程 | 无签署获批凭证；未申请或下载真人数据 |
+
+复审同输入数值对照见 [比较报告](../reports/comparison.md)：仅在共享已裁剪 ROI、CPU、batch=1 下验证，
+不是官方人脸检测/数据集解码/HR后处理完整流水线的复现。EfficientPhys 输入 Standardized，
+**输出仍是 DiffNormalized，已修复原桥接遗漏的累积和**。旧 probe 仅记录修复前工程 forward，不能作为新版本波形等价证据。
+PhysMamba 继续 CUDA/mamba_ssm 阻塞；不提供替代输出。

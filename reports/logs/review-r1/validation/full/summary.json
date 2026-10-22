@@ -1,0 +1,436 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "mode": "full",
+  "seed": 2026,
+  "hardware": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "processor": "",
+    "numpy": "2.2.6",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "torch": "2.6.0+cpu",
+    "cuda": false,
+    "gpu": null
+  },
+  "adapters": {
+    "POS": {
+      "status": "ready",
+      "implementation": "independent projection baseline",
+      "load_s": 3.5780000189333805e-06
+    },
+    "CHROM": {
+      "status": "ready",
+      "implementation": "independent projection baseline",
+      "load_s": 1.9750000319618266e-06
+    },
+    "PhysNet": {
+      "status": "loaded",
+      "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+      "weight_sha256": "cf295ff0b7a43ee638b9a8ce5a9c62801d5f196b360b3a589fdd5aa43ce623f8",
+      "training_datasets": [
+        "PURE"
+      ],
+      "device": "cpu",
+      "chunk_frames": 128,
+      "resize": 72,
+      "normalization": "DiffNormalized",
+      "output_label": "DiffNormalized",
+      "batch_size": 1,
+      "tail_policy": "edge-pad then trim",
+      "load_s": 1.3618392060000133
+    },
+    "EfficientPhys": {
+      "status": "loaded",
+      "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+      "weight_sha256": "e65a962e07bcac32a668e6acb9f8ed43cdb1b01cfb97262654dc5b55c0cf3a49",
+      "training_datasets": [
+        "PURE"
+      ],
+      "device": "cpu",
+      "chunk_frames": 180,
+      "resize": 72,
+      "normalization": "Standardized",
+      "output_label": "DiffNormalized",
+      "batch_size": 1,
+      "tail_policy": "edge-pad then trim",
+      "load_s": 0.03298810199999025
+    },
+    "PhysFormer": {
+      "status": "loaded",
+      "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+      "weight_sha256": "d27eac3aba0bf7473e528154cbcf714a6384cd9b074ba8d641269e4cac5cb09e",
+      "training_datasets": [
+        "PURE"
+      ],
+      "device": "cpu",
+      "chunk_frames": 160,
+      "resize": 128,
+      "normalization": "DiffNormalized",
+      "output_label": "DiffNormalized",
+      "batch_size": 1,
+      "tail_policy": "edge-pad then trim",
+      "load_s": 0.16664188199996488
+    },
+    "PhysMamba": {
+      "status": "blocked",
+      "reason": "RuntimeError: environment blocked: PhysMamba selective-scan requires CUDA/mamba_ssm",
+      "load_s": 0.005952526000044145
+    }
+  },
+  "metrics": [
+    {
+      "algorithm": "CHROM",
+      "group": "all",
+      "total_windows": 4,
+      "valid_windows": 3,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.75,
+      "failure_rate": 0.25,
+      "mean_inference_s": 0.19746165066667723
+    },
+    {
+      "algorithm": "CHROM",
+      "group": "motion:synthetic-static",
+      "total_windows": 4,
+      "valid_windows": 3,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.75,
+      "failure_rate": 0.25,
+      "mean_inference_s": 0.19746165066667723
+    },
+    {
+      "algorithm": "CHROM",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 0.19694305900000586
+    },
+    {
+      "algorithm": "CHROM",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 2,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.5,
+      "failure_rate": 0.5,
+      "mean_inference_s": 0.19849883400002
+    },
+    {
+      "algorithm": "EfficientPhys",
+      "group": "all",
+      "total_windows": 4,
+      "valid_windows": 3,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.75,
+      "failure_rate": 0.25,
+      "mean_inference_s": 5.039598691333329
+    },
+    {
+      "algorithm": "EfficientPhys",
+      "group": "motion:synthetic-static",
+      "total_windows": 4,
+      "valid_windows": 3,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.75,
+      "failure_rate": 0.25,
+      "mean_inference_s": 5.039598691333329
+    },
+    {
+      "algorithm": "EfficientPhys",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 4.503363572499978
+    },
+    {
+      "algorithm": "EfficientPhys",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 2,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.5,
+      "failure_rate": 0.5,
+      "mean_inference_s": 6.112068929000031
+    },
+    {
+      "algorithm": "POS",
+      "group": "all",
+      "total_windows": 4,
+      "valid_windows": 3,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.75,
+      "failure_rate": 0.25,
+      "mean_inference_s": 0.2082449496666451
+    },
+    {
+      "algorithm": "POS",
+      "group": "motion:synthetic-static",
+      "total_windows": 4,
+      "valid_windows": 3,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.75,
+      "failure_rate": 0.25,
+      "mean_inference_s": 0.2082449496666451
+    },
+    {
+      "algorithm": "POS",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 0.17791803999998024
+    },
+    {
+      "algorithm": "POS",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 2,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.5,
+      "failure_rate": 0.5,
+      "mean_inference_s": 0.2688987689999749
+    },
+    {
+      "algorithm": "PhysFormer",
+      "group": "all",
+      "total_windows": 4,
+      "valid_windows": 3,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.75,
+      "failure_rate": 0.25,
+      "mean_inference_s": 7.408445469666674
+    },
+    {
+      "algorithm": "PhysFormer",
+      "group": "motion:synthetic-static",
+      "total_windows": 4,
+      "valid_windows": 3,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.75,
+      "failure_rate": 0.25,
+      "mean_inference_s": 7.408445469666674
+    },
+    {
+      "algorithm": "PhysFormer",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 6.276471468500006
+    },
+    {
+      "algorithm": "PhysFormer",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 2,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.5,
+      "failure_rate": 0.5,
+      "mean_inference_s": 9.67239347200001
+    },
+    {
+      "algorithm": "PhysMamba",
+      "group": "all",
+      "total_windows": 4,
+      "valid_windows": 0,
+      "mae_bpm": null,
+      "rmse_bpm": null,
+      "bias_bpm": null,
+      "coverage": 0.0,
+      "failure_rate": 1.0,
+      "mean_inference_s": null
+    },
+    {
+      "algorithm": "PhysMamba",
+      "group": "motion:synthetic-static",
+      "total_windows": 4,
+      "valid_windows": 0,
+      "mae_bpm": null,
+      "rmse_bpm": null,
+      "bias_bpm": null,
+      "coverage": 0.0,
+      "failure_rate": 1.0,
+      "mean_inference_s": null
+    },
+    {
+      "algorithm": "PhysMamba",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 2,
+      "valid_windows": 0,
+      "mae_bpm": null,
+      "rmse_bpm": null,
+      "bias_bpm": null,
+      "coverage": 0.0,
+      "failure_rate": 1.0,
+      "mean_inference_s": null
+    },
+    {
+      "algorithm": "PhysMamba",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 2,
+      "valid_windows": 0,
+      "mae_bpm": null,
+      "rmse_bpm": null,
+      "bias_bpm": null,
+      "coverage": 0.0,
+      "failure_rate": 1.0,
+      "mean_inference_s": null
+    },
+    {
+      "algorithm": "PhysNet",
+      "group": "all",
+      "total_windows": 4,
+      "valid_windows": 3,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.75,
+      "failure_rate": 0.25,
+      "mean_inference_s": 2.415155804333305
+    },
+    {
+      "algorithm": "PhysNet",
+      "group": "motion:synthetic-static",
+      "total_windows": 4,
+      "valid_windows": 3,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.75,
+      "failure_rate": 0.25,
+      "mean_inference_s": 2.415155804333305
+    },
+    {
+      "algorithm": "PhysNet",
+      "group": "subject:synthetic-subject-0",
+      "total_windows": 2,
+      "valid_windows": 2,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 1.0,
+      "failure_rate": 0.0,
+      "mean_inference_s": 2.066657238999966
+    },
+    {
+      "algorithm": "PhysNet",
+      "group": "subject:synthetic-subject-1",
+      "total_windows": 2,
+      "valid_windows": 1,
+      "mae_bpm": 0.75,
+      "rmse_bpm": 0.75,
+      "bias_bpm": -0.75,
+      "coverage": 0.5,
+      "failure_rate": 0.5,
+      "mean_inference_s": 3.1121529349999832
+    }
+  ],
+  "elapsed_s": 48.287344265,
+  "manifest_sha256": "889654bac6f0849777db1f7f56dd9ee225ebfea3690489dcf0907171194c2b7b",
+  "recordings": [
+    {
+      "id": "synthetic-0",
+      "dataset": "SYNTHETIC-NOT-HUMAN",
+      "subject_id": "synthetic-subject-0",
+      "split": "test",
+      "sha256": "ac08095b04057167a5139e49a3d7aa131a431e8bb24cf6e6c22c6da36dd1a86d",
+      "duration_s": 32,
+      "reference_offset_s": 0,
+      "conditions": {
+        "motion": "synthetic-static"
+      },
+      "label_provenance": "generated fixture; not a human label",
+      "source_url": "local:benchmark.fixture",
+      "research_authorization": "generated nonhuman pixels",
+      "input_provenance": {
+        "video_sha256": "a0660fc047a3697d4e99fbb7789bd84c0ccb59467ec6d35d3557076df3858f74",
+        "timestamp_csv_sha256": "658e62e206310a9f26a813f3b6dc515083ecd21ed3ed01287b187099631c710c",
+        "reference_csv_sha256": "409df485c91fd8312e9f7ce138b65fef37166041dc25b7bc91aad94768b8c103",
+        "roi_xywh": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "nominal_fps": 30.0,
+        "opencv": "4.12.0"
+      }
+    },
+    {
+      "id": "synthetic-1",
+      "dataset": "SYNTHETIC-NOT-HUMAN",
+      "subject_id": "synthetic-subject-1",
+      "split": "test",
+      "sha256": "102eb95ee9c53ed4924e215a7faa053a10d65c1cfb868c6f730b8f2ba03887b5",
+      "duration_s": 32,
+      "reference_offset_s": 0,
+      "conditions": {
+        "motion": "synthetic-static"
+      },
+      "label_provenance": "generated fixture; not a human label",
+      "source_url": "local:benchmark.fixture",
+      "research_authorization": "generated nonhuman pixels",
+      "input_provenance": {
+        "video_sha256": "a0660fc047a3697d4e99fbb7789bd84c0ccb59467ec6d35d3557076df3858f74",
+        "timestamp_csv_sha256": "658e62e206310a9f26a813f3b6dc515083ecd21ed3ed01287b187099631c710c",
+        "reference_csv_sha256": "409df485c91fd8312e9f7ce138b65fef37166041dc25b7bc91aad94768b8c103",
+        "roi_xywh": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "nominal_fps": 30.0,
+        "opencv": "4.12.0"
+      }
+    }
+  ],
+  "window_s": 16,
+  "target_fps": 30,
+  "hr_estimator": "linear detrend + Hann + FFT bin peak; no interpolation or artifact rejection",
+  "trailing_partial_windows": "excluded; duration floor to multiples of 16 s",
+  "preprocessing": "shared 128px ROI, nearest timestamp resampling; model-specific resize/normalize/chunk/edge pad; see docs/protocol.md"
+}

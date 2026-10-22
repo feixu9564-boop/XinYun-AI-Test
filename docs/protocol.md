@@ -50,9 +50,9 @@
 - 所有算法使用相同 ROI、相同时间戳最近邻重采样，等距时选前帧；大于250ms缺口不插值伪造连续记录。
 - 参考需覆盖窗口两端、间隔≤1.5秒、HR 30–240且没有缺测；对参考设备 HR 线性插值并时间积分取均值。不同于对相位差求HR，窗口 HR 波动可导致该定义与频谱峰不同，需在真人报告披露。
 - POS/CHROM：1.6秒局部均值归一、投影/标准差比、Hann 重叠相加；独立研究实现，不保证与上游逐点相同。
-- 深度模型采用 inventory 指定 resize/输入布局/归一化。DiffNormalized 为相邻帧差和比除以标准差，末帧补0；Standardized 为整个评价窗 z-score。之后按模型 chunk 分块，尾部复制边缘帧补足、输出裁回原始长度；EfficientPhys 额外重复1帧供内部 diff。导数模型拼接输出后累积和重建，统一去趋势。
-- 480帧下 PhysNet/PhysMamba 尾部补32帧，EfficientPhys 补60帧，PhysFormer 不补。分块边界/整窗归一可能影响成绩；这是明确的适配器选择，未证明与上游全流水线数值等价，须后续做同样本对照与敏感性分析。
-- 六种输出统一线性去趋势、Hann、FFT，0.7–3Hz峰值×60得到 BPM，16秒频率分辨率3.75 BPM；无峰值插值、谐波消歧。恒定/NaN/短输出失败，不返回替代算法值。
+- 深度模型采用 inventory 指定 resize/输入布局/归一化。resize 后先与官方一致保留 float64，DiffNormalized 相邻帧差和比写入 float32 后除以标准差，末帧补0；Standardized 为整个评价窗 float64 z-score，进入网络前转 float32。之后按模型 chunk 分块，尾部复制边缘帧补足、输出裁回原始长度；EfficientPhys 额外重复1帧供内部 diff。四个所选 checkpoint 的输出标签均为 DiffNormalized（包括输入 Standardized 的 EfficientPhys），拼接输出后累积和重建，统一去趋势。
+- 480帧下 PhysNet/PhysMamba 尾部补32帧，EfficientPhys 补60帧，PhysFormer 不补。分块边界/整窗归一可能影响成绩；这是明确的适配器选择。官方 BaseLoader.chunk 丢弃尾块；本框架保留全部 480 点，不能声称官方端到端等价。同输入实测与边界详见比较报告。batch=1 与官方配置 batch=4 的差异也独立记录，尤其 EfficientPhys 跨块内部差分。
+- 六种输出统一线性去趋势、Hann、FFT，0.7–3Hz峰值×60得到 BPM，16秒频率分辨率3.75 BPM；默认不插值，也不做谐波消歧或运动识别。`heart_rate(..., interpolate=True)` 仅供离线峰位实验，采用相邻 log-power 抛物线，偏移限制半个 bin，频带边界不插值；不改变 benchmark 默认算法。`benchmark.spectral_check` 记录纯正弦和已知误判负例，插值不能增加16秒观测信息或证明真人精度提升。恒定/NaN/短输出失败，不返回替代算法值。
 
 ## 结果定义与复现
 

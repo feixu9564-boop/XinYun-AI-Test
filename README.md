@@ -18,7 +18,7 @@ Python 3.12.x，Linux x86_64 CPU；不需要 Node。基础依赖完全固定在 
 bash scripts/install-benchmark.sh
 ```
 
-一条测试命令（40项测试→合成视频 smoke→完整合成样本，日志在新的 `outputs/validation/`）：
+一条测试命令（76项测试→FFT插值/伪影实验→合成视频 smoke→完整合成样本，日志在新的 `outputs/validation/`）：
 
 ```bash
 bash scripts/test-benchmark.sh
@@ -33,7 +33,7 @@ bash scripts/test-benchmark.sh
 先阅读 [模型与许可清单](docs/model_inventory.md) 和上游条款。
 当前上游确实原生包含四模型及权重，但 PhysMamba 还需要兼容 CUDA/mamba_ssm/timm。
 CPU 验证环境的全部已安装版本见 [environment.freeze.txt](reports/logs/environment.freeze.txt)。
-以下 clone 约663MB（含多个发布模型）；源码/权重保留本地，不提交本仓库。
+提供 toolbox 并确认条款时，测试命令还会运行三模型同输入官方管线数值对照。以下 clone 约663MB（含多个发布模型）；源码/权重保留本地，不提交本仓库。
 
 ```bash
 .venv/bin/python -m pip install -r requirements-models-cpu.lock
@@ -68,3 +68,29 @@ CUDA 版本仍未验证，暂不提供声称能运行 PhysMamba 的安装命令�
 数据、结果和权重默认本地处理；提交的日志仅为生成的合成测试，不包含真人录像。
 
 实际结果与限制见 [reports/comparison.md](reports/comparison.md)。模型加载成功不等于算法准确、临床有效或许可证无限制。
+
+## PR #4 复审复现
+
+最新修复、数值差异与阻塞逐项见 [比较报告](reports/comparison.md)。旧 `final-validation/` 是修复前历史记录，
+当前日志在 `reports/logs/review-r1/validation/`。已修正 EfficientPhys 输出累积和和三模型预处理 dtype。
+
+安装基础和可选 CPU 依赖并准备锁定 toolbox 后，一条命令执行76项测试、FFT实验、官方数值对照、smoke/full：
+
+```bash
+bash scripts/test-benchmark.sh --out outputs/review-r1 \
+  --toolbox /tmp/rppg-toolbox --acknowledge-toolbox-license
+```
+
+单独复现（输出路径必须不存在）：
+
+```bash
+.venv/bin/python -m benchmark.parity --toolbox /tmp/rppg-toolbox \
+  --acknowledge-toolbox-license --out outputs/parity.json
+.venv/bin/python -m benchmark.spectral_check --out outputs/spectral.json
+```
+
+对照直接执行锁定源码中的 BaseLoader 和 Trainer.test 方法，以 AST 选择原方法，避免引入训练/人脸检测依赖；
+安全加载使用 `weights_only=True`，只在指标入口捕获输出。共享 ROI、CPU、batch=1 的结果与官方配置 batch=4 差异分开记录。
+官方丢尾块，本框架补帧；共同有效前缀与补帧扩展分别比较。比较的重建波形止于累积和、在 HR 去趋势/滤波之前；
+没有验证官方面部检测、原始数据集解码或全部 HR 后处理等价。峰值插值是可选实验，默认基准仍是3.75 BPM栅格，
+谐波/运动可产生错误心率。真人授权、同步对照与 PhysMamba CUDA 仍阻塞，PR #1/#4 保持未合并。

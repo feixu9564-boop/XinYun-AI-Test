@@ -1,0 +1,3 @@
+$ python -m benchmark.spectral_check --out /workspace/XinYun-AI-Test/reports/logs/review-r1/base-validation/spectral.json
+
+EXIT_CODE=0

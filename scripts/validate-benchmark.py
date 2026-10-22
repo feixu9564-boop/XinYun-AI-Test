@@ -21,11 +21,16 @@ def call(arguments, filename, expected):
     result=subprocess.run([sys.executable,*arguments], cwd=root, capture_output=True,text=True)
     (out/filename).write_text('$ python '+ ' '.join(arguments)+'\n'+result.stdout+result.stderr+f'\nEXIT_CODE={result.returncode}\n')
     commands.append(dict(command=arguments,exit_code=result.returncode,log=filename))
+    (out/'commands.json').write_text(json.dumps(commands,indent=2)+'\n')
     if result.returncode not in expected:
         raise SystemExit(f'Unexpected failure; see {out/filename}')
 
 
 call(['-m','pytest','-q'],'pytest.log',{0})
+call(['-m','benchmark.spectral_check','--out',str(out/'spectral.json')],'spectral.log',{0})
+if a.toolbox and a.acknowledge_toolbox_license:
+    call(['-m','benchmark.parity','--toolbox',a.toolbox,'--acknowledge-toolbox-license',
+          '--out',str(out/'parity.json')],'parity.log',{0})
 with tempfile.TemporaryDirectory(prefix='xinyun-engineering-') as tmp:
     fixture=Path(tmp)/'fixture'
     call(['-m','benchmark.fixture','--out',str(fixture)],'fixture.log',{0})

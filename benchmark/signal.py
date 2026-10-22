@@ -24,7 +24,12 @@ def pulse(rgb, fs, method):
     return np.divide(out, weights, out=np.zeros_like(out), where=weights > 1e-8)
 
 
-def heart_rate(wave, fs=30):
+def heart_rate(wave, fs=30, *, interpolate=False):
+    """Hann FFT peak; optional log-power parabola, not a quality/identity test.
+
+    Default retains the fixed FFT bin estimator. Interpolation refines a peak
+    location only; it cannot distinguish pulse, harmonics, or periodic motion.
+    """
     wave = np.asarray(wave, dtype=float).reshape(-1)
     if len(wave) < fs * 4 or not np.isfinite(wave).all():
         raise ValueError('invalid or short waveform')
@@ -37,4 +42,11 @@ def heart_rate(wave, fs=30):
     valid = (frequencies >= .7) & (frequencies <= 3)
     if power[valid].sum() < 1e-12:
         raise ValueError('no in-band signal')
-    return float(frequencies[valid][np.argmax(power[valid])] * 60)
+    index = np.flatnonzero(valid)[np.argmax(power[valid])]
+    offset = 0.
+    if interpolate and 0 < index < len(power)-1 and valid[index-1] and valid[index+1]:
+        a, b, c = np.log(np.maximum(power[index-1:index+2], np.finfo(float).tiny))
+        denominator = a - 2*b + c
+        if denominator < -1e-12:
+            offset = float(np.clip(.5*(a-c)/denominator, -.5, .5))
+    return float((index+offset) * fs/len(wave) * 60)

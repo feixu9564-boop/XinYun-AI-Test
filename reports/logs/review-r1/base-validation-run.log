@@ -1,0 +1,3 @@
+smoke : 12 rows; expected blocked/rejected rows retained
+full : 24 rows; expected blocked/rejected rows retained
+PASS engineering validation. Synthetic only; blocked models are not passed models.

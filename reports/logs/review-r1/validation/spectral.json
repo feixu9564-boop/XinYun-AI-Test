@@ -1,0 +1,219 @@
+{
+  "synthetic": true,
+  "window_s": 16,
+  "fft_grid_bpm": 3.75,
+  "interpolation": "optional log-power parabola; default estimator unchanged",
+  "conclusion": "clean-sine peak localization only; interpolation does not resolve harmonics or motion",
+  "rows": [
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 45.0,
+      "phase": 0.0,
+      "bin_bpm": 45.0,
+      "interpolated_bpm": 45.0
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 45.0,
+      "phase": 0.7,
+      "bin_bpm": 45.0,
+      "interpolated_bpm": 45.0
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 45.0,
+      "phase": 2.0,
+      "bin_bpm": 45.0,
+      "interpolated_bpm": 45.0
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 54.0,
+      "phase": 0.0,
+      "bin_bpm": 52.5,
+      "interpolated_bpm": 54.04529985469532
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 54.0,
+      "phase": 0.7,
+      "bin_bpm": 52.5,
+      "interpolated_bpm": 54.04530807441213
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 54.0,
+      "phase": 2.0,
+      "bin_bpm": 52.5,
+      "interpolated_bpm": 54.04520771092803
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 60.0,
+      "phase": 0.0,
+      "bin_bpm": 60.0,
+      "interpolated_bpm": 60.00000892423951
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 60.0,
+      "phase": 0.7,
+      "bin_bpm": 60.0,
+      "interpolated_bpm": 60.000006399352884
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 60.0,
+      "phase": 2.0,
+      "bin_bpm": 60.0,
+      "interpolated_bpm": 60.000001541614346
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 72.0,
+      "phase": 0.0,
+      "bin_bpm": 71.25,
+      "interpolated_bpm": 72.05172497955888
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 72.0,
+      "phase": 0.7,
+      "bin_bpm": 71.25,
+      "interpolated_bpm": 72.05173178653344
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 72.0,
+      "phase": 2.0,
+      "bin_bpm": 71.25,
+      "interpolated_bpm": 72.05172629675059
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 83.2,
+      "phase": 0.0,
+      "bin_bpm": 82.5,
+      "interpolated_bpm": 83.24942184276783
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 83.2,
+      "phase": 0.7,
+      "bin_bpm": 82.5,
+      "interpolated_bpm": 83.2494253345894
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 83.2,
+      "phase": 2.0,
+      "bin_bpm": 82.5,
+      "interpolated_bpm": 83.24942310585705
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 108.0,
+      "phase": 0.0,
+      "bin_bpm": 108.75,
+      "interpolated_bpm": 107.94827116225575
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 108.0,
+      "phase": 0.7,
+      "bin_bpm": 108.75,
+      "interpolated_bpm": 107.94826885688599
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 108.0,
+      "phase": 2.0,
+      "bin_bpm": 108.75,
+      "interpolated_bpm": 107.9482726124723
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 127.3,
+      "phase": 0.0,
+      "bin_bpm": 127.5,
+      "interpolated_bpm": 127.2838622547352
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 127.3,
+      "phase": 0.7,
+      "bin_bpm": 127.5,
+      "interpolated_bpm": 127.28386223552326
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 127.3,
+      "phase": 2.0,
+      "bin_bpm": 127.5,
+      "interpolated_bpm": 127.28386257560273
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 150.0,
+      "phase": 0.0,
+      "bin_bpm": 150.0,
+      "interpolated_bpm": 150.00000005262868
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 150.0,
+      "phase": 0.7,
+      "bin_bpm": 150.0,
+      "interpolated_bpm": 150.0000000516567
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 150.0,
+      "phase": 2.0,
+      "bin_bpm": 150.0,
+      "interpolated_bpm": 150.00000004484613
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 172.5,
+      "phase": 0.0,
+      "bin_bpm": 172.5,
+      "interpolated_bpm": 172.5000000200584
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 172.5,
+      "phase": 0.7,
+      "bin_bpm": 172.5,
+      "interpolated_bpm": 172.50000002070576
+    },
+    {
+      "kind": "clean_sinusoid",
+      "reference_bpm": 172.5,
+      "phase": 2.0,
+      "bin_bpm": 172.5,
+      "interpolated_bpm": 172.50000002927132
+    },
+    {
+      "kind": "dominant_second_harmonic",
+      "reference_bpm": 72.0,
+      "bin_bpm": 142.5,
+      "interpolated_bpm": 144.04523486447442,
+      "expected_limitation": "FFT accepts periodic artifact; no physiological validity or quality gate"
+    },
+    {
+      "kind": "periodic_motion_dominates",
+      "reference_bpm": 72.0,
+      "bin_bpm": 97.5,
+      "interpolated_bpm": 95.95438852083038,
+      "expected_limitation": "FFT accepts periodic artifact; no physiological validity or quality gate"
+    },
+    {
+      "kind": "motion_only_no_pulse",
+      "reference_bpm": null,
+      "bin_bpm": 97.5,
+      "interpolated_bpm": 95.95474099954403,
+      "expected_limitation": "FFT accepts periodic artifact; no physiological validity or quality gate"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "commands": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "benchmark.parity",
+        "--toolbox",
+        "/tmp/rppg-toolbox",
+        "--acknowledge-toolbox-license",
+        "--out",
+        "reports/logs/review-r1/final-parity.json"
+      ],
+      "exit_code": 0,
+      "log": "final-parity.log"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "benchmark",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

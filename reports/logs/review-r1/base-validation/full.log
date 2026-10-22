@@ -1,0 +1,15 @@
+$ python -m benchmark.run /tmp/xinyun-engineering-tzn953cl/fixture/manifest.json --out /workspace/XinYun-AI-Test/reports/logs/review-r1/base-validation/full
+{
+  "out": "/workspace/XinYun-AI-Test/reports/logs/review-r1/base-validation/full",
+  "rows": 24,
+  "mode": "full",
+  "status_counts": {
+    "ok": 6,
+    "rejected": 6,
+    "blocked": 12,
+    "failed": 0
+  },
+  "synthetic": true
+}
+
+EXIT_CODE=1

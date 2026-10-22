@@ -88,6 +88,7 @@ def run(manifest_path, out, smoke=False, toolbox=None, device='cpu', acknowledge
                'manifest_sha256': sha256(manifest_path),
                'recordings': [{k:v for k,v in r.items() if k not in ('_path', 'path')} for r in records],
                'window_s':16, 'target_fps':30,
+               'hr_estimator': 'linear detrend + Hann + FFT bin peak; no interpolation or artifact rejection',
                'trailing_partial_windows': 'excluded; duration floor to multiples of 16 s',
                'preprocessing': 'shared 128px ROI, nearest timestamp resampling; model-specific resize/normalize/chunk/edge pad; see docs/protocol.md'}
     (output/'summary.json').write_text(json.dumps(summary, indent=2, allow_nan=False)+'\n')

@@ -67,18 +67,35 @@ class ToolboxAdapter:
         self.info = {'status': 'loaded', 'commit': commit, 'weight_sha256': entry['weight_sha256'],
                      'training_datasets': ['PURE'], 'device': device,
                      'chunk_frames': entry['chunk'], 'resize': entry['size'],
-                     'normalization': entry['normalization']}
+                     'normalization': entry['normalization'], 'output_label': 'DiffNormalized',
+                     'batch_size': 1, 'tail_policy': 'edge-pad then trim'}
 
-    def predict(self, frames):
+    def preprocess(self, frames):
+        """Match pinned BaseLoader math on a shared, already cropped ROI.
+
+        Resize into float64 as upstream does, then normalize before chunking.
+        Tail edge padding is our explicit 16-second protocol extension.
+        """
+        size = self.entry['size']
+        x = np.stack([cv2.resize(f, (size, size), interpolation=cv2.INTER_AREA)
+                      for f in frames]).astype(np.float64)
+        with np.errstate(divide='ignore', invalid='ignore'):
+            if self.entry['normalization'] == 'DiffNormalized':
+                diff = (np.diff(x, axis=0) / (x[1:] + x[:-1] + 1e-7)).astype(np.float32)
+                diff /= diff.std()
+                x = np.concatenate((diff, np.zeros_like(diff[:1])), axis=0)
+            else:
+                x = (x-x.mean()) / x.std()
+        x[np.isnan(x)] = 0  # upstream's constant-input convention
+        if not np.isfinite(x).all():
+            raise ValueError('nonfinite preprocessed input')
+        return x.astype(np.float32)
+
+    def predict_raw(self, frames):
+        """Return derivative outputs before concatenated cumsum; batch size one."""
         torch, entry = self.torch, self.entry
-        size, chunk = entry['size'], entry['chunk']
-        x = np.stack([cv2.resize(f, (size, size), interpolation=cv2.INTER_AREA) for f in frames]).astype(np.float32)
-        if entry['normalization'] == 'DiffNormalized':
-            diff = np.diff(x, axis=0) / (x[1:] + x[:-1] + 1e-7)
-            diff /= max(float(diff.std()), 1e-8)
-            x = np.concatenate((diff, np.zeros_like(diff[:1])), axis=0)
-        else:
-            x = (x-x.mean()) / max(float(x.std()), 1e-8)
+        chunk = entry['chunk']
+        x = self.preprocess(frames)
         results = []
         with torch.inference_mode():
             for start in range(0, len(x), chunk):
@@ -99,8 +116,12 @@ class ToolboxAdapter:
                 if len(values) != chunk or not np.isfinite(values).all():
                     raise ValueError('invalid model output shape or values')
                 results.append(values[:count])
-        wave = np.concatenate(results)
-        return np.cumsum(wave) if entry['normalization'] == 'DiffNormalized' else wave
+        return np.concatenate(results)
+
+    def predict(self, frames):
+        # All four selected checkpoints use LABEL_TYPE=DiffNormalized, including
+        # EfficientPhys whose *input* DATA_TYPE is Standardized.
+        return np.cumsum(self.predict_raw(frames))
 
 
 def build_adapters(root=None, device='cpu', acknowledge_license=False):

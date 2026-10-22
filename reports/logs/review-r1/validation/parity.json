@@ -1,0 +1,274 @@
+{
+  "seed": 2026,
+  "frames": 480,
+  "input_sha256": "7a93be5ddd83afd108b2d7aec15d099ae026fa247ad5700ed6a33b82e194eacd",
+  "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+  "hardware": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "processor": "",
+    "numpy": "2.2.6",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "torch": "2.6.0+cpu",
+    "cuda": false,
+    "gpu": null
+  },
+  "scope": "Compare bridge with executable methods from the pinned official source.\n\nNo upstream files are copied. AST selects unmodified method bodies to avoid\nimporting training/face-detector dependencies. Real weights and real forwards\nare used. Scope: shared ROI, CPU, official preprocessing/chunk/test/reassembly;\nnot face detection, dataset decoding, HR filtering, or end-to-end equivalence.\n",
+  "sources": {
+    "dataset/data_loader/BaseLoader.py": "8424eca26a90d45cfdb1db592591130666d1efe46468778ecbc33f7d5ec4e5a5",
+    "evaluation/metrics.py": "c0cd5495a6c87488ec7f5067eabc307b108c68300a6d6903e0aea6e0a2d1efb5",
+    "evaluation/post_process.py": "e7bd06b26440e741f6303b08aa01c012f72823732510b867e77fd8bf6438882b",
+    "neural_methods/trainer/PhysnetTrainer.py": "ac545e5a603b398887225e2458892585794ea6d303da02f6e4efb8e905c6f619",
+    "configs/infer_configs/PURE_UBFC-rPPG_PHYSNET_BASIC.yaml": "751c4d36c06c53d8b348b04fbe762e0c0ea671af4642d232c67066524f8e033f",
+    "neural_methods/trainer/EfficientPhysTrainer.py": "21336fa95a36524eb754710ae7837ba3fdc37e9b370c3be67456db3024e3c5e8",
+    "configs/infer_configs/PURE_UBFC-rPPG_EFFICIENTPHYS.yaml": "579105d1799307b8e11b56d68b53f401f1f32ff59c65be6fd5f1fcafc6ece370",
+    "neural_methods/trainer/PhysFormerTrainer.py": "2d9c8766b1f81bae847097b6454837a7c5542e3383be59e38e64faa1dc2b885e",
+    "configs/infer_configs/PURE_UBFC-rPPG_PHYSFORMER_BASIC.yaml": "e3d1f46b050b1994dc1f8e18633d904f662e66e6f934f4325bbd889f5a4bd8f5"
+  },
+  "models": {
+    "PhysNet": {
+      "preprocessing": {
+        "shape_a": [
+          480,
+          72,
+          72,
+          3
+        ],
+        "shape_b": [
+          480,
+          72,
+          72,
+          3
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "official_complete_chunk_prefix": {
+        "shape_a": [
+          384
+        ],
+        "shape_b": [
+          384
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "padded_extension": {
+        "shape_a": [
+          480
+        ],
+        "shape_b": [
+          480
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "reconstructed_waveform": {
+        "shape_a": [
+          480
+        ],
+        "shape_b": [
+          480
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "official_batch1_vs_config_batch4": {
+        "shape_a": [
+          384
+        ],
+        "shape_b": [
+          384
+        ],
+        "max_abs": 4.351139068603516e-06,
+        "rmse": 1.3528412791041765e-06,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": false
+      },
+      "official_output_frames": 384,
+      "bridge_output_frames": 480,
+      "tail_padding_frames": 32,
+      "output_label": "DiffNormalized",
+      "weight_sha256": "cf295ff0b7a43ee638b9a8ce5a9c62801d5f196b360b3a589fdd5aa43ce623f8",
+      "official_tail_policy": "drop incomplete chunk",
+      "bridge_tail_policy": "edge pad then trim",
+      "passed": true
+    },
+    "EfficientPhys": {
+      "preprocessing": {
+        "shape_a": [
+          480,
+          72,
+          72,
+          3
+        ],
+        "shape_b": [
+          480,
+          72,
+          72,
+          3
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "official_complete_chunk_prefix": {
+        "shape_a": [
+          360
+        ],
+        "shape_b": [
+          360
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "padded_extension": {
+        "shape_a": [
+          480
+        ],
+        "shape_b": [
+          480
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "reconstructed_waveform": {
+        "shape_a": [
+          480
+        ],
+        "shape_b": [
+          480
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "official_batch1_vs_config_batch4": {
+        "shape_a": [
+          360
+        ],
+        "shape_b": [
+          360
+        ],
+        "max_abs": 0.06242656707763672,
+        "rmse": 0.0036464707380526947,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": false
+      },
+      "official_output_frames": 360,
+      "bridge_output_frames": 480,
+      "tail_padding_frames": 60,
+      "output_label": "DiffNormalized",
+      "weight_sha256": "e65a962e07bcac32a668e6acb9f8ed43cdb1b01cfb97262654dc5b55c0cf3a49",
+      "official_tail_policy": "drop incomplete chunk",
+      "bridge_tail_policy": "edge pad then trim",
+      "passed": true
+    },
+    "PhysFormer": {
+      "preprocessing": {
+        "shape_a": [
+          480,
+          128,
+          128,
+          3
+        ],
+        "shape_b": [
+          480,
+          128,
+          128,
+          3
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "official_complete_chunk_prefix": {
+        "shape_a": [
+          480
+        ],
+        "shape_b": [
+          480
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "padded_extension": {
+        "shape_a": [
+          480
+        ],
+        "shape_b": [
+          480
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "reconstructed_waveform": {
+        "shape_a": [
+          480
+        ],
+        "shape_b": [
+          480
+        ],
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "official_batch1_vs_config_batch4": {
+        "shape_a": [
+          480
+        ],
+        "shape_b": [
+          480
+        ],
+        "max_abs": 3.2782554626464844e-07,
+        "rmse": 8.399183157111162e-08,
+        "atol": 1e-06,
+        "rtol": 1e-05,
+        "allclose": true
+      },
+      "official_output_frames": 480,
+      "bridge_output_frames": 480,
+      "tail_padding_frames": 0,
+      "output_label": "DiffNormalized",
+      "weight_sha256": "d27eac3aba0bf7473e528154cbcf714a6384cd9b074ba8d641269e4cac5cb09e",
+      "official_tail_policy": "drop incomplete chunk",
+      "bridge_tail_policy": "edge pad then trim",
+      "passed": true
+    }
+  },
+  "passed": true
+}
