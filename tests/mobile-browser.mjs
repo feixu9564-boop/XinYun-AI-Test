@@ -7,18 +7,19 @@ const url=process.env.TEST_URL||'http://127.0.0.1:4173',out=process.env.TEST_OUT
 await mkdir(out,{recursive:true});const results=[];
 async function scenario(name,fn){const start=Date.now();try{await fn();results.push({name,status:'PASS',elapsed_ms:Date.now()-start});console.log(`PASS ${name}`);}catch(e){results.push({name,status:'FAIL',error:e.stack});console.error(`FAIL ${name}: ${e.stack}`);process.exitCode=1;}}
 const browser=await chromium.launch({headless:true,args:['--use-fake-device-for-media-stream','--use-fake-ui-for-media-stream']});
-await scenario('Chromium real bundled FaceMesh/WASM: fake no-face camera, 16s failed window, CSV, stop/restart',async()=>{
+await scenario('Chromium real bundled FaceMesh/WASM: fake no-face camera, 16s unaligned telemetry, CSV, stop/restart',async()=>{
   const context=await browser.newContext({viewport:{width:390,height:844},permissions:['camera']});
   try{const page=await context.newPage(),errors=[],external=[],requests=[];
     page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(!r.url().startsWith(url+'/'))external.push(r.url());if(r.method()!=='GET')requests.push(r.method()+' '+r.url());});
     await page.goto(url);await page.locator('#consent').check();await page.locator('#start').click();
     await page.waitForFunction(()=>document.querySelector('#face').textContent==='未检测到人脸',null,{timeout:45000});
     assert.equal(await page.locator('#bpm').innerText(),'—');
+    await page.waitForFunction(()=>JSON.parse(localStorage.getItem('xinyun-mobile-v1')).filter(r=>r.record_type==='telemetry').length>=15,null,{timeout:25000});
+    await page.locator('#stop').click();
     await page.locator('#reference').fill('72');await page.locator('#save-reference').click();
-    await page.waitForFunction(()=>JSON.parse(localStorage.getItem('xinyun-mobile-v1')).some(r=>r.record_type==='window'),null,{timeout:25000});
     const rows=await page.evaluate(()=>JSON.parse(localStorage.getItem('xinyun-mobile-v1')));
     const windows=rows.filter(r=>r.record_type==='window');assert.ok(windows.length);assert.ok(windows.every(r=>r.bpm==null&&r.status==='insufficient_signal'));
-    await page.locator('#stop').click();assert.equal(await page.evaluate(()=>document.querySelector('video').srcObject),null);
+    assert.equal(await page.evaluate(()=>document.querySelector('video').srcObject),null);
     const dl=page.waitForEvent('download');await page.locator('#export').click();const file=await dl;const csv=await readFile(await file.path(),'utf8');assert.ok(csv.includes('insufficient_signal'));assert.ok(csv.includes('reference_observed_at'));
     await page.locator('#reset').click();await page.waitForFunction(()=>document.querySelector('#face').textContent==='未检测到人脸',null,{timeout:45000});
     await page.evaluate(()=>window.dispatchEvent(new Event('pagehide')));assert.equal(await page.evaluate(()=>document.querySelector('video').srcObject),null);
@@ -58,9 +59,10 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       await page.waitForFunction(()=>document.querySelector('video').srcObject!==null);
       assert.equal(await page.evaluate(()=>window.cameraTest.constraints.at(-1).video.facingMode.ideal),'user');
       assert.equal(await page.evaluate(()=>document.querySelector('video').playsInline&&document.querySelector('video').muted),true);
-      await page.locator('#reference').fill('72');await page.locator('#save-reference').click();
-      await page.evaluate(()=>{Object.defineProperty(document,'hidden',{value:true,configurable:true});document.dispatchEvent(new Event('visibilitychange'));});
+        await page.evaluate(()=>{Object.defineProperty(document,'hidden',{value:true,configurable:true});document.dispatchEvent(new Event('visibilitychange'));});
       assert.equal(await page.evaluate(()=>window.cameraTest.tracks.every(t=>t.readyState==='ended')),true);
+    await page.locator('#reference').fill('72');await page.locator('#save-reference').click();
+
       assert.equal(await page.locator('#bpm').innerText(),'—');
       await page.evaluate(()=>Object.defineProperty(document,'hidden',{value:false,configurable:true}));
       await page.locator('#reset').click();await page.waitForFunction(()=>document.querySelector('video').srcObject!==null);
@@ -103,11 +105,11 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       });
       await page.goto(url);await page.clock.install();await page.locator('#consent').check();await page.locator('#start').click();
       await page.waitForFunction(()=>document.querySelector('#placeholder').hidden);
-      await page.locator('#reference').scrollIntoViewIfNeeded();
+      // The camera and controls remain in the fixed measurement viewport.
       assert.equal(await page.evaluate(()=>{const r=document.querySelector('video').getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight;}),true);
       await page.clock.runFor(17000);
-      let rows=await page.evaluate(()=>JSON.parse(localStorage.getItem('xinyun-mobile-v1'))),w=rows.find(r=>r.record_type==='window');
-      assert.ok(w?.sample_count>100);assert.equal(w.scheduler_source,'media_time_fallback');assert.equal(w.bpm,null);assert.equal(w.reason,'no_face');assert.ok(w.fps>12);assert.equal(w.preview_visible,true);
+      let rows=await page.evaluate(()=>JSON.parse(localStorage.getItem('xinyun-mobile-v1'))),w=rows.filter(r=>r.record_type==='telemetry').at(-1);
+      assert.ok(w?.model_results>100);assert.equal(w.scheduler_source,'media_time_fallback');assert.ok(w.bpm==null);assert.equal(w.reason,'no_face');assert.equal(w.effective_seconds,0);assert.equal(w.preview_visible,true);
       await page.locator('#stop').click();
       assert.equal(await page.evaluate(()=>document.body.classList.contains('measuring')),false);
       await page.evaluate(()=>{window.pumpTest.mode='frozen';window.pumpTest.callbacks=0;});await page.locator('#reset').click();await page.waitForFunction(()=>document.querySelector('#placeholder').hidden);await page.clock.runFor(9500);
@@ -117,9 +119,11 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       rows=await page.evaluate(()=>JSON.parse(localStorage.getItem('xinyun-mobile-v1')));end=rows.filter(r=>r.record_type==='session_end').at(-1);
       assert.equal(end.reason,'model_timeout');assert.equal(end.frames_submitted,1);assert.equal(end.model_completions,0);assert.equal(end.model_results,1);assert.ok(end.pending_inference_ms>=8000);
       assert.ok(rows.filter(r=>r.record_type==='window').every(r=>r.bpm==null));
-      const dl=page.waitForEvent('download');await page.locator('#export').click();const csv=await readFile(await (await dl).path(),'utf8');assert.ok(csv.includes('capture-v0.5.1'));assert.ok(csv.includes('video_frame_stalled'));assert.ok(csv.includes('model_timeout'));assert.deepEqual(errors,[]);
+      const dl=page.waitForEvent('download');await page.locator('#export').click();const csv=await readFile(await (await dl).path(),'utf8');assert.ok(csv.includes('capture-v0.6.0'));assert.ok(csv.includes('video_frame_stalled'));assert.ok(csv.includes('model_timeout'));assert.deepEqual(errors,[]);
     }finally{await b.close();}
   });
 }
 await writeFile(`${out}/results.json`,JSON.stringify({evidence:'ENGINEERING_ONLY; no human or physical phone tests',iphone:'DEVICE_TEST_REQUIRED',android:'DEVICE_TEST_REQUIRED',results},null,2));
 if(process.exitCode)process.exit(process.exitCode);
+
+await import('./measurement-browser.mjs');
