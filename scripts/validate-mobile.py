@@ -24,8 +24,9 @@ def main(out):
         if p.returncode: raise RuntimeError(f'{name} failed; see log')
     run('node-version',['node','--version'])
     run('build',['node','scripts/build-mobile.mjs'])
-    run('node-tests',['node','--test','tests/mobile.test.js','tests/frame-pump.test.js','tests/measurement.test.js'])
+    run('node-tests',['node','--test','tests/mobile.test.js','tests/frame-pump.test.js','tests/measurement.test.js','tests/v062.test.js'])
     run('python-csv-tests',[sys.executable,'-m','pytest','tests/test_mobile_csv.py','-q'])
+    run('v062-numerical-reference',[sys.executable,'scripts/check-v062.py'])
     run('algorithm-port-parity',[sys.executable,'scripts/check-mobile-parity.py'])
     run('diff-check',['git','diff','--check'])
     env=dict(os.environ,PORT='4174',TEST_URL='http://127.0.0.1:4174',TEST_OUT=str(out/'browser'))
@@ -43,7 +44,7 @@ def main(out):
     sources={str(p.relative_to(ROOT)).replace('\\','/'):hashlib.sha256(p.read_bytes()).hexdigest() for p in (ROOT/'web').glob('*') if p.is_file()}
     (out/'summary.json').write_text(json.dumps(dict(status='ENGINEERING_PASS',human_sessions=0,
         iphone_safari='DEVICE_TEST_REQUIRED',android_chrome='DEVICE_TEST_REQUIRED',
-        human_accuracy='NOT_VALIDATED',node_tests=23,python_csv_tests=5,existing_fixture_comparisons=12,browser_scenarios=7,
+        human_accuracy='NOT_VALIDATED',node_tests=31,python_csv_tests=5,existing_fixture_comparisons=12,v062_fixture_comparisons=12,scipy_filter_comparisons=5,browser_scenarios=7,
         caveat='Desktop engines; actual FaceMesh no-face fake-camera check and explicit lifecycle mocks. No simulated result counted as a human test.',source_sha256=sources),indent=2)+'\n',encoding='utf-8')
 
 if __name__=='__main__':
