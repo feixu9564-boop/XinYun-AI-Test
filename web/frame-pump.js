@@ -2,7 +2,7 @@
 // Video callbacks may cease when a WebKit video is not being composited.
 // Keep a foreground RAF watchdog; poll only advancing decoded frames or,
 // where no decoder counter is exposed, an advancing media currentTime.
-export const CAPTURE_VERSION='capture-v0.6.0';
+export const CAPTURE_VERSION='capture-v0.6.1';
 export class FramePump {
   constructor(video,process,onError,{now=()=>performance.now()/1000,raf=fn=>requestAnimationFrame(fn),cancel=id=>cancelAnimationFrame(id)}={}){
     Object.assign(this,{video,process,onError,now,raf,cancel});
