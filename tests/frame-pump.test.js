@@ -8,6 +8,17 @@ function harness(process=async()=>{}){
   const pump=new FramePump(video,async t=>{calls++;return process(t);},()=>{}, {now:()=>time,raf:()=>1,cancel:()=>{}});pump.start();
   return {video,pump,get calls(){return calls;},emit(meta){cb(0,meta);},async tick(t,media=t){time=t;video.currentTime=media;pump.tick();await new Promise(r=>setImmediate(r));}};
 }
+test('advancing callback frame IDs recover a stale decoder counter for over 45s',async()=>{
+ const h=harness();h.video.getVideoPlaybackQuality=()=>({totalVideoFrames:1});
+ for(let i=1;i<=950;i++){h.emit({presentedFrames:i,mediaTime:i/20});await h.tick(i/20,i/20);}
+ assert.equal(h.calls,950);assert.equal(h.pump.stats.scheduler_source,'video_callback');
+ h.emit({presentedFrames:950,mediaTime:47.5});await h.tick(48,48);assert.equal(h.calls,950);
+});
+test('inference rejection is counted and reported; stopped pump cannot retry',async()=>{
+ const h=harness(async()=>{throw Error('injected');});let errors=0;h.pump.onError=()=>errors++;
+ h.emit({presentedFrames:1});await h.tick(.1);assert.equal(errors,1);assert.equal(h.pump.stats.inference_errors,1);
+ h.pump.stop();await h.tick(1);assert.equal(h.calls,1);
+});
 test('stalled callback falls back only when media time advances',async()=>{
   const h=harness();h.emit({mediaTime:0,presentedFrames:1});await h.tick(.01,0);assert.equal(h.calls,1);
   await h.tick(.3,.3);assert.equal(h.calls,1);

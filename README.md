@@ -1,3 +1,5 @@
+> Mobile update: **v0.6.0 / Issue #12** adds aligned 45-second continuous measurement and half-screen preview. [Report and acceptance checklist](reports/issue12.md). iPhone Safari: **DEVICE_TEST_REQUIRED**. HR accuracy: **NOT_VALIDATED**. No PR has been merged by this work.
+
 # XinYun AI — 手机摄像头心率研究与离线基准
 
 ## 当前：Issue #9 手机测试版本

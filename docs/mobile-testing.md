@@ -1,3 +1,7 @@
+# Current mobile version: v0.6.0 / Issue #12
+
+See [the current implementation, acceptance checklist and device procedure](../reports/issue12.md). The sections below describe the historical v0.5/v0.5.1 release; its 120-second rolling-window UI is superseded by a stable-alignment + 45-second continuous acquisition flow. The overall attempt cap remains 120 seconds. Physical iPhone acceptance is DEVICE_TEST_REQUIRED.
+
 # Issue #9 — 手机使用、独立部署与CSV规范
 
 ## 实际部署

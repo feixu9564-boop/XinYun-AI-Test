@@ -8,6 +8,8 @@ jobs:
   mobile:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      BUILD_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
