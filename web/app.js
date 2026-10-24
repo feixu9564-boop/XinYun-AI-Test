@@ -1,16 +1,17 @@
-import {analyze,VERSION} from './signal.js?v=0.6.1';
-import {LocalRecords,validateSubject,makeReference,toCSV,matchedRows} from './records.js?v=0.6.1';
-import {sampleROI} from './roi.js?v=0.6.1';
-import {FramePump,CAPTURE_VERSION} from './frame-pump.js?v=0.6.1';
-import {Measurement} from './measurement.js?v=0.6.1';
-import {BUILD} from './build-info.js?v=0.6.1';
+import {DiagnosticCapture} from './diagnostics.js?v=0.6.2';
+import {analyze,VERSION} from './signal.js?v=0.6.2';
+import {LocalRecords,validateSubject,makeReference,toCSV,matchedRows} from './records.js?v=0.6.2';
+import {sampleROI} from './roi.js?v=0.6.2';
+import {FramePump,CAPTURE_VERSION} from './frame-pump.js?v=0.6.2';
+import {Measurement} from './measurement.js?v=0.6.2';
+import {BUILD} from './build-info.js?v=0.6.2';
 const $=id=>document.getElementById(id),video=$('video'),overlay=$('overlay');
 const capture=document.createElement('canvas');
 let storage;try{storage=window.localStorage;}catch{storage={getItem(){throw Error('浏览器禁止本地存储');},setItem(){throw Error('浏览器禁止本地存储');},removeItem(){}};}
 const records=new LocalRecords(storage);
 const labels={realigned:'已重新对准：上一段已作废，从 45 秒重新采样',analysis_error:'信号分析发生异常，本次未能生成可信结果；请导出日志',invalid_result:'算法返回了无效结果，已禁止显示心率',aligning:'请保持单人正脸稳定至少 1.5 秒',aligned:'已对准，准备测量',measuring:'正在测量，请保持静止',measurement_complete:'45 秒有效采样完成',alignment_timeout:'8 秒内未恢复有效采样，请重新对准后重测',session_timeout:'对准等待超过 120 秒，请检查帧率和光线后重测',video_frame_stalled:'视频帧停止更新，请使用 Safari 并保持预览可见后重试',model_timeout:'人脸模型处理超时，请停止后重试；仍失败请导出诊断日志',model_result_timeout:'模型未返回检测结果，请导出诊断日志',no_face:'未检测到人脸',multiple_faces:'请保持单人画面',face_out_of_frame:'请将完整面部移入画面',face_distance:'请调整距离，让面部居中',face_pose:'请正对镜头，不要侧头',invalid_landmarks:'人脸定位异常',insufficient_roi_pixels:'有效皮肤区域不足，请调整光照或移除遮挡',unstable_roi:'面部区域不稳定',invalid_face_roi:'人脸区域不可用',exposure:'光线过暗或过曝',excessive_motion:'运动过大，请固定手机并保持静止',illumination_variation:'光照变化过大',no_chromatic_pulse_evidence:'未发现足够的颜色脉搏信号',diffuse_spectrum:'信号频谱分散',harmonic_ambiguity:'存在谐波歧义，无法可靠测量',competing_periodicity:'存在多个竞争周期，无法可靠测量',algorithm_disagreement:'POS 与 CHROM 结果不一致',low_fps:'有效帧率不足，需至少 12 FPS',sampling_gap:'摄像头采样中断',window_too_short:'连续采样不足 15 秒',insufficient_samples:'等待有效采样',constant_waveform:'未检测到变化信号',no_in_band_signal:'没有有效心率频带信号',accepted_experimental:'通过实验性质量门；准确性尚未真人验证',user_stop:'已停止，摄像头已关闭',restart:'正在重新测量',page_hidden:'页面进入后台，摄像头已关闭；返回后请重新开始',page_exit:'页面离开，摄像头已关闭',camera_ended:'摄像头断开，请重新开始',camera_muted:'摄像头被系统暂停，请重新开始',frame_timeout:'视频或人脸模型长时间无响应',time_limit:'已达到 120 秒，摄像头已关闭',model_error:'人脸模型运行失败，请重试或更换浏览器',camera_permission_denied:'摄像头权限被拒绝，请在 Safari 网站设置中允许摄像头后重试',camera_not_found:'没有可用摄像头',camera_busy:'摄像头不可用或被其他程序占用',insecure_context:'需要 HTTPS 或本机 localhost',model_missing:'本地人脸模型文件缺失',startup_timeout:'启动超时，请检查权限与模型加载后重试',unsupported_camera:'浏览器不支持摄像头，请使用 Safari 或 Chrome',wrong_camera:'浏览器选中了后置摄像头，已停止；请检查前置摄像头是否可用',storage_limit:'本地记录已达到上限，请先导出并清空',clock_changed:'系统时钟发生变化，本次测量已停止'};
 let running=false,starting=false,token=0,stream=null,mesh=null,pump=null,timer=0,startTimer=0;
-let measurement=null,lastTelemetry=-1,roiSamples=0,lastOutcome=null;
+let measurement=null,lastTelemetry=-1,roiSamples=0,lastOutcome=null,diagnosticCapture=null,diagnosticReport=null;
 let session=null,lastSession=null,samples=[],previous=null,pendingTime=0,lastFrame=0,resultCount=0,faceFrames=0,lastSampleReason='';
 const iso=t=>new Date(t).toISOString();
 function nowSession(){return session.wall+(performance.now()/1000-session.mono)*1000;}
@@ -25,11 +26,11 @@ function showRecords(){
     const tr=document.createElement('tr');for(const value of [new Date(r.recorded_at).toLocaleTimeString(),r.record_type,r.bpm??r.status,r.reference_bpm!=null?`${r.reference_bpm} BPM`:reasonText(r.reason||'')]){const td=document.createElement('td');td.textContent=value;tr.append(td);}$('records').append(tr);
   }
 }
-function append(row){records.add(row);if(!running)showRecords();}
+function append(row){if(diagnosticCapture)diagnosticCapture.event(row.record_type,{t:performance.now()/1000,record:row});records.add(row);if(!running)showRecords();}
 function recordWindow(end,partial=false,stopReason=''){
   // Final estimate uses the same 16-second algorithm window as v0.5.1.
   const selected=samples.filter(s=>s.t>=end-16&&s.t<=end);
-  let result;try{result=analyze(selected);}catch{result={reliable:false,bpm:null,pos:null,chrom:null,score:0,reason:'analysis_error'};}
+  let result;try{result=analyze(selected);}catch(e){result={reliable:false,bpm:null,pos:null,chrom:null,score:0,reason:'analysis_error',analysis_error:{name:e.name,message:String(e.message).slice(0,160)}};}
   if(result.reliable&&![result.bpm,result.pos,result.chrom,result.score].every(Number.isFinite))result={reliable:false,bpm:null,pos:null,chrom:null,score:0,reason:'invalid_result'};
   if(partial)result={...result,reliable:false,bpm:null,pos:null,chrom:null,score:0,reason:stopReason||'window_too_short'};
   append({...base('window'),window_start:iso(session.wall+(Math.max(measurement?.startedAt??end,end-16)-session.mono)*1000),window_end:iso(session.wall+(end-session.mono)*1000),sample_start:selected.length?iso(session.wall+(selected[0].t-session.mono)*1000):'',sample_end:selected.length?iso(session.wall+(selected.at(-1).t-session.mono)*1000):'',status:result.reliable?'accepted':'insufficient_signal',reason:result.reason,bpm:result.bpm,pos_bpm:result.pos,chrom_bpm:result.chrom,quality:result.score,pos_reason:result.pos_reason||'not_evaluated',chrom_reason:result.chrom_reason||'not_evaluated',fps:selected.length>1?(selected.length-1)/(selected.at(-1).t-selected[0].t):0,sample_count:selected.length,stop_reason:stopReason});
@@ -86,6 +87,7 @@ function stop(reason='user_stop',finalResult=null){
     const result=finalResult||recordWindow(performance.now()/1000,true,reason);
     lastOutcome={...base('session_end'),...finalDiagnostic,status:result.reliable?'accepted':'failed',reason:result.reason,final_reason:result.reason,stop_reason:reason,bpm:result.reliable?result.bpm:null,pos_bpm:result.reliable?result.pos:null,chrom_bpm:result.reliable?result.chrom:null,quality:result.score||0,pos_reason:result.pos_reason||'not_evaluated',chrom_reason:result.chrom_reason||'not_evaluated',fps:result.fs??finalDiagnostic.measurement_fps??0,cleanup_errors:cleanup.join(';'),stopped_at:iso(nowSession()),window_start:iso(session.wall),window_end:iso(session.wall+end*1000)};
     append(lastOutcome);lastSession=finished;
+    if(diagnosticCapture){const captureReport=diagnosticCapture;captureReport.finish({...lastOutcome,analysis_error:result.analysis_error||null});$('diagnostic-status').textContent='正在整理本次诊断；不上传数据…';setTimeout(()=>{if(diagnosticCapture!==captureReport)return;try{diagnosticReport=captureReport.report();$('diagnostic-status').textContent='诊断已就绪，含RGB及中间波形。请在重测或刷新前导出；仅保留本次内存数据。';}catch(e){diagnosticReport={schema:'xinyun-diagnostics-error',final:lastOutcome,error:{name:e.name,message:String(e.message).slice(0,160)},samples:captureReport.samples,events:captureReport.events};$('diagnostic-status').textContent='诊断分析失败，仍可导出原始数值和错误。';}},0);}
   }
   session=null;samples=[];previous=null;pump=null;
   safely('canvas_clear',()=>{capture.width=1;capture.height=1;overlay.getContext('2d').clearRect(0,0,overlay.width,overlay.height);});
@@ -103,6 +105,7 @@ function onResults(result,id){
   const event=measurement.observe(pendingTime,immediate);if(event.ignored)return;
   if(!immediate)roiSamples++;
   measurementEvent(event,pendingTime);
+  diagnosticCapture?.add(sample,immediate);
   if(measurement.phase==='measuring'||measurement.phase==='complete')samples.push(sample);
   while(samples.length&&pendingTime-samples[0].t>16.1)samples.shift();
   $('face').textContent=immediate?reasonText(immediate):'已定位单人面部';
@@ -137,7 +140,8 @@ async function start(){
   const subject=$('subject').value.trim();if(!validateSubject(subject)){$('status').textContent='匿名编号须为 1–32 位字母、数字、下划线或短横线';return;}
   if(!$('consent').checked){$('status').textContent='请先确认自愿成年参与及知情同意';return;}
   if(records.readFailed||records.rows.length>=5000){$('status').textContent='请先导出并清空本地记录，再开始测量';return;}
-  document.body.classList.remove('results','completed');$('result-details').hidden=true;$('result-version').textContent='';lastOutcome=null;measurement=new Measurement();roiSamples=0;lastTelemetry=-1;updateMeasurement();starting=true;resultCount=0;faceFrames=0;lastSampleReason='';const id=++token;session={id:crypto.randomUUID(),subject,wall:Date.now(),mono:performance.now()/1000,camera:{}};
+  document.body.classList.remove('results','completed');$('result-details').hidden=true;$('result-version').textContent='';lastOutcome=null;diagnosticReport=null;diagnosticCapture=null;measurement=new Measurement();roiSamples=0;lastTelemetry=-1;updateMeasurement();starting=true;resultCount=0;faceFrames=0;lastSampleReason='';const id=++token;session={id:crypto.randomUUID(),subject,wall:Date.now(),mono:performance.now()/1000,camera:{}};
+  if($('diagnostic-consent').checked)diagnosticCapture=new DiagnosticCapture({app_version:BUILD.version,commit_sha:BUILD.commit,session_id:session.id,subject_id:subject,wall_start:iso(session.wall),monotonic_start:session.mono,user_agent:navigator.userAgent});$('diagnostic-status').textContent=diagnosticCapture?'本次已开启本地数值诊断；重测或刷新会清除。':'未开启波形诊断；普通CSV/JSON不包含波形。';
   append({...base('session_start'),status:'starting',reason:''});$('start').disabled=true;$('reset').disabled=true;$('stop').disabled=false;$('subject').disabled=true;$('consent').disabled=true;
   samples=[];previous=null;resultCount=0;faceFrames=0;lastSampleReason='';fail('insufficient_samples');$('status').textContent='正在请求前置摄像头并加载本地模型…';$('state').textContent='启动中';
   startTimer=setTimeout(()=>{if(id===token)stop('startup_timeout');},30000);
@@ -174,7 +178,11 @@ function exportDownload(json){try{download(exportFile(json));}catch(e){$('export
 $('export').onclick=()=>exportDownload(false);$('export-json').onclick=()=>exportDownload(true);
 async function shareExport(json){try{const data=exportFile(json),file=new File([data.blob],data.name,{type:data.blob.type});if(navigator.canShare?.({files:[file]})){await navigator.share({files:[file],title:'心云研究记录'});$('export-status').textContent='分享面板已完成，请确认文件已保存';}else download(data);}catch(e){$('export-status').textContent=e.name==='AbortError'?'已取消分享，记录仍在本地':`分享失败（${e.name}），请使用导出 ${json?'JSON':'CSV'}`;}}
 $('share').onclick=()=>shareExport(false);$('share-json').onclick=()=>shareExport(true);
-$('clear').onclick=()=>{if(!confirm('确认清空当前浏览器的全部测量记录？请先导出。'))return;if(running||starting)stop();try{records.clear();lastSession=null;lastOutcome=null;showRecords();$('export-status').textContent='已清空本地记录';}catch(e){$('export-status').textContent='清空失败：'+e.message;}};
+function diagnosticFile(){if(!$('diagnostic-consent').checked)throw Error('请先明确同意本地数值诊断，并完成一次测量');if(!diagnosticReport)throw Error('暂无本次诊断，请先完成或停止测量后等待诊断就绪');return {blob:new Blob([JSON.stringify({...diagnosticReport,records:matchedRows(records.rows.filter(r=>r.session_id===diagnosticReport.session_id))})],{type:'application/json'}),name:`xinyun-diagnostic-${Date.now()}.json`};}
+$('diagnostic-consent').onchange=()=>{if(!$('diagnostic-consent').checked){diagnosticCapture=null;diagnosticReport=null;$('diagnostic-status').textContent='已清除内存诊断；历史普通记录保留';}};
+$('export-diagnostics').onclick=()=>{try{download(diagnosticFile());}catch(e){$('diagnostic-status').textContent=e.message;}};
+$('share-diagnostics').onclick=async()=>{try{const data=diagnosticFile(),file=new File([data.blob],data.name,{type:data.blob.type});if(navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'心云数值诊断'});else download(data);}catch(e){$('diagnostic-status').textContent=e.name==='AbortError'?'已取消分享，诊断仍在内存':e.message;}};
+$('clear').onclick=()=>{if(!confirm('确认清空当前浏览器的全部测量记录？请先导出。'))return;if(running||starting)stop();try{records.clear();lastSession=null;lastOutcome=null;diagnosticCapture=null;diagnosticReport=null;showRecords();$('export-status').textContent='已清空本地记录';}catch(e){$('export-status').textContent='清空失败：'+e.message;}};
 showRecords();
 const saved=records.rows.filter(r=>r.record_type==='session_end'&&r.final_reason).at(-1);
 if(saved){lastOutcome=saved;lastSession={id:saved.session_id,subject:saved.subject_id};renderFinal(saved);}

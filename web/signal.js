@@ -1,23 +1,35 @@
+import {butterBandpass,filtfilt} from './dsp.js?v=0.6.2';
 // Research implementation: temporally normalized, sliding-window POS/CHROM.
 export const mean = a => a.reduce((s,v)=>s+v,0)/a.length;
 const std = a => {const m=mean(a);return Math.sqrt(mean(a.map(v=>(v-m)**2)));};
-export function extract(rgb, fs, method='POS') {
-  const n=rgb.length, out=Array(n).fill(0), weight=Array(n).fill(0);
-  const w=Math.min(n,Math.round(1.6*fs));
-  for(let start=0;start+w<=n;start+=Math.max(1,Math.round(fs/5))){
-    const block=rgb.slice(start,start+w), mu=[0,1,2].map(c=>mean(block.map(v=>v[c])));
-    if(mu.some(v=>v<1)) continue;
+export function extract(rgb, fs, method='POS', audit=null) {
+  if(!['POS','CHROM'].includes(method))throw Error('unknown_method');
+  const n=rgb.length,out=Array(n).fill(0),weights=Array(n).fill(0);
+  let w=Math.min(n,Math.ceil(1.6*fs));if(method==='CHROM'&&w%2&&w<n)w++;
+  const step=method==='POS'?1:Math.max(1,Math.floor(w/2)),starts=[];
+  for(let start=0;start+w<=n;start+=step)starts.push(start);
+  if(starts.at(-1)!==n-w)starts.push(n-w);
+  const filter=butterBandpass(fs),alphas=[];
+  for(const start of starts){
+    const block=rgb.slice(start,start+w),mu=[0,1,2].map(c=>mean(block.map(v=>v[c])));
+    if(mu.some(v=>!Number.isFinite(v)||v<=0))throw Error('invalid_rgb_mean');
     const norm=block.map(v=>v.map((x,c)=>x/mu[c]-1));
-    const x=norm.map(([r,g,b])=>method==='POS'?g-b:3*r-2*g);
-    const y=norm.map(([r,g,b])=>method==='POS'?g+b-2*r:1.5*r+g-1.5*b);
-    const alpha=std(x)/Math.max(std(y),1e-10);
-    const h=x.map((v,i)=>v+(method==='POS'?1:-1)*alpha*y[i]), m=mean(h);
-    for(let j=0;j<w;j++){const win=0.5-0.5*Math.cos(2*Math.PI*j/(w-1));out[start+j]+=(h[j]-m)*win;weight[start+j]+=win;}
+    let x=norm.map(([r,g,b])=>method==='POS'?g-b:3*r-2*g);
+    let y=norm.map(([r,g,b])=>method==='POS'?g+b-2*r:1.5*r+g-1.5*b);
+    // CHROM alpha is defined on band-passed chrominance, not broadband drift.
+    if(method==='CHROM'){x=filtfilt(x,filter);y=filtfilt(y,filter);}
+    const alpha=std(x)/Math.max(std(y),1e-10);alphas.push({start,alpha});
+    const h=x.map((v,i)=>v+(method==='POS'?1:-1)*alpha*y[i]),m=mean(h);
+    for(let j=0;j<w;j++){const win=method==='POS'?1:.5-.5*Math.cos(2*Math.PI*j/(w-1));out[start+j]+=(h[j]-m)*win;weights[start+j]+=win;}
   }
-  return out.map((v,i)=>weight[i]>1e-8?v/weight[i]:0);
+  // POS uses sample-by-sample overlap-add. CHROM normalizes Hann coverage;
+  // the final anchored window avoids the old uncovered trailing samples.
+  const wave=method==='POS'?filtfilt(out,filter):out.map((v,i)=>weights[i]>1e-8?v/weights[i]:0);
+  if(audit)Object.assign(audit,{method,window_samples:w,hop_samples:step,filter:{type:'Butterworth',order:3,band_hz:[.7,3],phase:'forward_backward_odd_padding',...filter},alphas,waveform:wave});
+  return wave;
 }
 // Port of benchmark/quality.py experimental-v1; NOT calibrated on humans.
-export const VERSION='mobile-pos-chrom-v1/experimental-v1';
+export const VERSION='mobile-pos-chrom-v2/experimental-v1';
 export const POLICY={minPeakFraction:.60,maxSecondaryRatio:.04,maxSubharmonicRatio:.04,maxMotionP95:3,maxBrightnessCV:.08,minChromaticStd:.0005};
 export const percentile=(a,q)=>{const b=[...a].sort((x,y)=>x-y),i=(b.length-1)*q,j=Math.floor(i);return b[j]+(b[Math.ceil(i)]-b[j])*(i-j);};
 export function spectrum(signal,fs){
@@ -39,10 +51,10 @@ export function spectrum(signal,fs){
   const secondary=Math.max(0,...bins.filter(b=>Math.abs(b.k-peak.k)>1).map(b=>b.p))/peak.p;
   const half=Math.max(0,...bins.filter(b=>Math.abs(b.f-peak.f/2)<=fs/n).map(b=>b.p))/peak.p;
   const reason=fraction<POLICY.minPeakFraction?'diffuse_spectrum':half>POLICY.maxSubharmonicRatio?'harmonic_ambiguity':secondary>POLICY.maxSecondaryRatio?'competing_periodicity':'';
-  return {bpm:reason?null:peak.f*60,reason,concentration:fraction,secondary,subharmonic:half};
+  return {bpm:reason?null:peak.f*60,candidate_bpm:peak.f*60,reason,concentration:fraction,secondary,subharmonic:half,bin_hz:fs/n,peak,secondary_peak:bins.filter(b=>Math.abs(b.k-peak.k)>1).sort((a,b)=>b.p-a.p)[0]||null,bins,rejections:[fraction<POLICY.minPeakFraction?'diffuse_spectrum':'',half>POLICY.maxSubharmonicRatio?'harmonic_ambiguity':'',secondary>POLICY.maxSecondaryRatio?'competing_periodicity':''].filter(Boolean)};
 }
-export function analyze(samples){
-  const fail=(reason,extra={})=>({reliable:false,bpm:null,pos:null,chrom:null,score:0,reason,fs:0,duration:0,...extra});
+export function analyze(samples,{diagnostics=false}={}){
+  const fail=(reason,extra={})=>({reliable:false,bpm:null,pos:null,chrom:null,score:0,reason,fs:0,duration:0,pos_reason:'not_evaluated',chrom_reason:'not_evaluated',...extra});
   if(samples.length<2)return fail('insufficient_samples');
   const invalid=samples.find(s=>s.reason);if(invalid)return fail(invalid.reason);
   if(samples.some(s=>!Number.isFinite(s.t)||s.rgb?.length!==3||s.rgb.some(v=>!Number.isFinite(v))))return fail('invalid_samples');
@@ -62,7 +74,10 @@ export function analyze(samples){
   if(chromaStd<POLICY.minChromaticStd)return fail('no_chromatic_pulse_evidence',audit);
   const n=samples.length,rgb=[];let j=0;
   for(let i=0;i<n;i++){const t=samples[0].t+i/fs;while(j<samples.length-2&&samples[j+1].t<t)j++;const a=samples[j],b=samples[j+1],q=(t-a.t)/(b.t-a.t);rgb.push(a.rgb.map((v,c)=>v+(b.rgb[c]-v)*q));}
-  const pos=spectrum(extract(rgb,fs,'POS'),fs),chrom=spectrum(extract(rgb,fs,'CHROM'),fs);
+  const posTrace={},chromTrace={};
+  const pos=spectrum(extract(rgb,fs,'POS',diagnostics?posTrace:null),fs),chrom=spectrum(extract(rgb,fs,'CHROM',diagnostics?chromTrace:null),fs);
+  Object.assign(audit,{spectra:{POS:pos,CHROM:chrom},resampling:{method:'linear',input_count:samples.length,output_count:n,fs,start:samples[0].t,end:samples.at(-1).t,max_gap:Math.max(...dt),min_gap:Math.min(...dt)}});
+  if(diagnostics)audit.trace={uniform_rgb:rgb,POS:posTrace,CHROM:chromTrace};
   Object.assign(audit,{pos_reason:pos.reason||'accepted_spectrum',chrom_reason:chrom.reason||'accepted_spectrum'});
   if(pos.reason||chrom.reason)return fail(pos.reason||chrom.reason,audit);
   if(Math.abs(pos.bpm-chrom.bpm)>6)return fail('algorithm_disagreement',audit);

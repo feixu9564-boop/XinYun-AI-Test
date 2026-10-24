@@ -18,7 +18,7 @@ for name in ('clean','no_pulse','second_harmonic','mixed_motion','noise','indist
         try: bpm,_=reliable_heart_rate(wave,30); reason=''
         except InsufficientSignal as e: bpm=None; reason=e.reason
         cases.append(dict(case=name,method=method,rgb=rgb.tolist(),wave=wave.tolist(),bpm=bpm,reason=reason))
-js="""import fs from 'node:fs';import {extract,spectrum} from './web/signal.js';
+js="""import fs from 'node:fs';import {extract,spectrum} from './tests/fixtures/signal-v061.mjs';
 const rows=JSON.parse(fs.readFileSync(0,'utf8'));console.log(JSON.stringify(rows.map(r=>{const wave=extract(r.rgb,30,r.method);return {maxError:Math.max(...wave.map((v,i)=>Math.abs(v-r.wave[i]))),result:spectrum(wave,30)};})));"""
 p=subprocess.run(['node','--input-type=module','-e',js],input=json.dumps(cases),text=True,capture_output=True,check=True)
 results=json.loads(p.stdout)

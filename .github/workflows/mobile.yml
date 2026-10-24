@@ -28,6 +28,7 @@ jobs:
           mkdir -p test-results
           npm test | tee test-results/node.log
           python scripts/check-mobile-parity.py | tee test-results/parity.log
+          python scripts/check-v062.py | tee test-results/v062-numerical.log
           python -m pytest tests/test_mobile_csv.py -q | tee test-results/csv.log
       - name: Desktop engines with mobile viewport and explicit camera mocks
         run: |

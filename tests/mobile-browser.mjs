@@ -72,6 +72,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
       await page.screenshot({path:`${out}/${name.toLowerCase()}-fault-ui.png`,fullPage:true});
       page.on('dialog',d=>d.accept());await page.locator('#clear').click();assert.equal(await page.locator('#record-count').innerText(),'0 条');assert.deepEqual(errors,[]);
+      const wx=await b.newContext({userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Mobile MicroMessenger/8.0.0'});const wp=await wx.newPage();await wp.goto(url);assert.equal(await wp.locator('#browser-notice').isVisible(),true);await wx.close();
     }finally{await b.close();}
   });
 
@@ -119,7 +120,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       rows=await page.evaluate(()=>JSON.parse(localStorage.getItem('xinyun-mobile-v1')));end=rows.filter(r=>r.record_type==='session_end').at(-1);
       assert.equal(end.reason,'model_timeout');assert.equal(end.frames_submitted,1);assert.equal(end.model_completions,0);assert.equal(end.model_results,1);assert.ok(end.pending_inference_ms>=8000);
       assert.ok(rows.filter(r=>r.record_type==='window').every(r=>r.bpm==null));
-      const dl=page.waitForEvent('download');await page.locator('#export').click();const csv=await readFile(await (await dl).path(),'utf8');assert.ok(csv.includes('capture-v0.6.1'));assert.ok(csv.includes('video_frame_stalled'));assert.ok(csv.includes('model_timeout'));assert.deepEqual(errors,[]);
+      const dl=page.waitForEvent('download');await page.locator('#export').click();const csv=await readFile(await (await dl).path(),'utf8');assert.ok(csv.includes('capture-v0.6.2'));assert.ok(csv.includes('video_frame_stalled'));assert.ok(csv.includes('model_timeout'));assert.deepEqual(errors,[]);
     }finally{await b.close();}
   });
 }
