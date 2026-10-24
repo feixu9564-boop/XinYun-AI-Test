@@ -26,3 +26,6 @@
 .results.completed .countdown-panel{display:block}
 
 .results main{display:flex;flex-direction:column}.results .layout{order:-2}.results .controls{order:-1}.results .setup{display:block}
+
+#interruption{background:#fff2cf;color:#664200;border-left:3px solid #b97a15;padding:5px 8px;font-size:12px;line-height:1.35;margin:4px 0}#interruption[hidden],#result-details[hidden]{display:none}#result-details{font-size:14px;border-top:1px solid #cbded4;padding-top:10px}#result-version{overflow-wrap:anywhere} .measuring #result-version{display:none}
+@media(max-height:650px){.measuring #elapsed{display:none}.measuring .countdown-panel strong{font-size:56px}.measuring #status{font-size:12px}}

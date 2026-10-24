@@ -63,6 +63,7 @@ export function analyze(samples){
   const n=samples.length,rgb=[];let j=0;
   for(let i=0;i<n;i++){const t=samples[0].t+i/fs;while(j<samples.length-2&&samples[j+1].t<t)j++;const a=samples[j],b=samples[j+1],q=(t-a.t)/(b.t-a.t);rgb.push(a.rgb.map((v,c)=>v+(b.rgb[c]-v)*q));}
   const pos=spectrum(extract(rgb,fs,'POS'),fs),chrom=spectrum(extract(rgb,fs,'CHROM'),fs);
+  Object.assign(audit,{pos_reason:pos.reason||'accepted_spectrum',chrom_reason:chrom.reason||'accepted_spectrum'});
   if(pos.reason||chrom.reason)return fail(pos.reason||chrom.reason,audit);
   if(Math.abs(pos.bpm-chrom.bpm)>6)return fail('algorithm_disagreement',audit);
   return {reliable:true,bpm:Math.round(pos.bpm*10)/10,pos:pos.bpm,chrom:chrom.bpm,score:Math.round(100*Math.min(pos.concentration,chrom.concentration)),reason:'accepted_experimental',...audit};
