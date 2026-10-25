@@ -2,6 +2,14 @@
 
 所有“已经验证”仅限其明确范围；合成验证不是人体准确性验证。真机状态：**DEVICE_TEST_REQUIRED**。分支 `fix/issue-12-rppg-root-cause`（基于 3528e13），未合并、未部署生产。
 
+## CI 回归修复
+
+- `benchmark.yml` 在全新 venv 中安装 `requirements-benchmark.lock` 后运行 `validate-phase4.py`；新增独立参考测试在收集时导入 `scipy.signal.detrend`，原锁文件缺少 SciPy。最小修复仅补充 `scipy==1.16.3`，保留参考测试及所有断言。该版本的[官方依赖声明](https://github.com/scipy/scipy/blob/v1.16.3/pyproject.toml)为 Python ≥3.11、NumPy ≥1.25.2 且 <2.6，兼容 CI 的 Python 3.12 与 `numpy==2.2.6`。
+- 检查新增测试、`check-issue12-reference.py`、`plot-*.py` 及 CI 调用路径后，没有发现其他必需而未锁定的 Python 包。Matplotlib 仅用于独立绘图脚本（包括 `npm run evidence:issue12` 的绘图步骤），pytest 和 `validate-phase4.py` 不导入或执行它们，因此不加入 benchmark 锁文件；本地绘图仍需另行安装 Matplotlib。
+- `validate-phase4.py` 动态枚举 `benchmark/*.py`、`scripts/*.py`、`tests/*.py` 和锁文件生成 `source-hashes.json`；新增 Python 文件会自动纳入，绘图脚本只读取源码计算哈希，不执行导入。没有固定源码文件数或旧哈希断言需要更新；真实数据 inventory 和 624 行合成回归断言不受本次依赖修复影响。
+- **已经验证（复现与修复）**：协调人按 CI 方式在全新 clone 中用 Python 3.12.15 + `bash scripts/install-benchmark.sh` 建 `.venv` 后运行 `.venv/bin/python scripts/validate-phase4.py --out outputs/phase4-validation`：c6dacda 原锁文件下复现同样的 `Unexpected failure: …/pytest.log`（`ModuleNotFoundError: No module named 'scipy'`，与 GitHub run 40158181387 的 pytest.log 一致）；补充 `scipy==1.16.3` 后同一流程 `129 passed`、validate-phase4 退出 0。
+- 本地 `/workspace/xy-venv` 下 validate-phase4 在 `environment.freeze.txt` 失败的原因是该 venv 的 pip 自身损坏（`No module named 'pip._internal.operations.build'`，`pip freeze` 无法运行），属本机环境问题，与仓库代码无关。
+
 ## Phase 1（先于任何源代码修改完成）
 
 审计基线：3528e13（web 0.6.1）。以下行号均指该基线，可用 `git show 3528e13:路径 | nl -ba` 独立复核。
