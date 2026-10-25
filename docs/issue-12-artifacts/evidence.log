@@ -1,0 +1,634 @@
+
+> evidence:issue12
+> node scripts/synthetic-matrix.mjs --baseline --label baseline && node scripts/synthetic-matrix.mjs --label after && node scripts/roi-jitter-experiment.mjs && /workspace/xy-venv/bin/python scripts/plot-issue12.py && /workspace/xy-venv/bin/python scripts/check-issue12-reference.py && node scripts/replay-diagnostics.mjs docs/issue-12-artifacts/synthetic-diagnostic.json docs/issue-12-artifacts/synthetic-replay.json > docs/issue-12-artifacts/replay.log && /workspace/xy-venv/bin/python scripts/plot-diagnostics.py docs/issue-12-artifacts/synthetic-replay.json docs/issue-12-artifacts/replay.png
+
+{
+  "label": "baseline",
+  "cases": 90,
+  "accepted": 2,
+  "adequateAccepted": 0,
+  "adequateTotal": 32,
+  "tones": 30,
+  "tonesRejected": 6,
+  "falseAccepts": 0,
+  "maxAdequateError": 0,
+  "knownArtifactAccepts": 0,
+  "reasons": {
+    "no_chromatic_pulse_evidence": 63,
+    "excessive_motion": 16,
+    "competing_periodicity": 2,
+    "accepted_experimental": 2,
+    "diffuse_spectrum": 7
+  }
+}
+{
+  "label": "after",
+  "cases": 90,
+  "accepted": 36,
+  "adequateAccepted": 32,
+  "adequateTotal": 32,
+  "tones": 30,
+  "tonesRejected": 0,
+  "falseAccepts": 0,
+  "maxAdequateError": 0.5999999999999943,
+  "knownArtifactAccepts": 2,
+  "reasons": {
+    "accepted_experimental": 36,
+    "competing_periodicity": 4,
+    "excessive_motion": 16,
+    "no_chromatic_pulse_evidence": 2,
+    "diffuse_spectrum": 32
+  }
+}
+{
+  "seed": 12026,
+  "width": 320,
+  "height": 240,
+  "description": "Stationary synthetic textured uint8 image; uniform landmark translation, no pulse; dense control is an observation, not a production change",
+  "experiments": [
+    {
+      "jitterPixels": 0,
+      "pointSample": {
+        "rgbStd": [
+          7.958078640513122e-13,
+          7.105427357601002e-14,
+          6.821210263296962e-13
+        ],
+        "chromaStd": 1.7208456881689926e-15,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "no_chromatic_pulse_evidence",
+          "fs": 20,
+          "duration": 16,
+          "motion": 0,
+          "displacement": 0,
+          "lightCV": 6.557784488987695e-16,
+          "chromaStd": 1.7208456881689926e-15
+        }
+      },
+      "denseControl": {
+        "rgbStd": [
+          4.547473508864641e-13,
+          1.9895196601282805e-13,
+          3.836930773104541e-13
+        ],
+        "chromaStd": 8.326672684688674e-16,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "no_chromatic_pulse_evidence",
+          "fs": 20,
+          "duration": 16,
+          "motion": 0,
+          "displacement": 0,
+          "lightCV": 8.746927066593747e-16,
+          "chromaStd": 8.326672684688674e-16
+        }
+      },
+      "sampleCount": 408,
+      "pointMotionP95": 0
+    },
+    {
+      "jitterPixels": 0.2,
+      "pointSample": {
+        "rgbStd": [
+          0.1454861494404738,
+          0.012748828673574762,
+          0.012950331436640894
+        ],
+        "chromaStd": 0.00022107038686633166,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "diffuse_spectrum",
+          "fs": 20,
+          "duration": 16,
+          "motion": 0.36094057123443957,
+          "displacement": 0.002975736579037215,
+          "lightCV": 0.00035284616927083355,
+          "chromaStd": 0.00022107038686633166,
+          "pos_reason": "diffuse_spectrum",
+          "chrom_reason": "diffuse_spectrum"
+        }
+      },
+      "denseControl": {
+        "rgbStd": [
+          0.011002033307536817,
+          0.010704010614424995,
+          0.0017477215623466248
+        ],
+        "chromaStd": 0.00002122590732201692,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "diffuse_spectrum",
+          "fs": 20,
+          "duration": 16,
+          "motion": 0.36094057123443957,
+          "displacement": 0.002975736579037215,
+          "lightCV": 0.000041006874255833506,
+          "chromaStd": 0.00002122590732201692,
+          "pos_reason": "diffuse_spectrum",
+          "chrom_reason": "diffuse_spectrum"
+        }
+      },
+      "sampleCount": 408,
+      "pointMotionP95": 0.36094057123443957
+    },
+    {
+      "jitterPixels": 0.6,
+      "pointSample": {
+        "rgbStd": [
+          0.2866910983906311,
+          0.034002399412203406,
+          0.02244143920370447
+        ],
+        "chromaStd": 0.0004072385724303044,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "diffuse_spectrum",
+          "fs": 20,
+          "duration": 16,
+          "motion": 1.2604523218773827,
+          "displacement": 0.008545906003142803,
+          "lightCV": 0.0007656985445747395,
+          "chromaStd": 0.0004072385724303044,
+          "pos_reason": "diffuse_spectrum",
+          "chrom_reason": "diffuse_spectrum"
+        }
+      },
+      "denseControl": {
+        "rgbStd": [
+          0.021905821221754572,
+          0.022659606792849583,
+          0.0019854755947609918
+        ],
+        "chromaStd": 0.00004163886707038191,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "diffuse_spectrum",
+          "fs": 20,
+          "duration": 16,
+          "motion": 1.2604523218773827,
+          "displacement": 0.008545906003142803,
+          "lightCV": 0.00008484335181173578,
+          "chromaStd": 0.00004163886707038191,
+          "pos_reason": "diffuse_spectrum",
+          "chrom_reason": "diffuse_spectrum"
+        }
+      },
+      "sampleCount": 408,
+      "pointMotionP95": 1.2604523218773827
+    },
+    {
+      "jitterPixels": 1,
+      "pointSample": {
+        "rgbStd": [
+          0.30604945513257015,
+          0.03233180050625973,
+          0.02568212034295154
+        ],
+        "chromaStd": 0.0004402370330812427,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "excessive_motion",
+          "fs": 20,
+          "duration": 16,
+          "motion": 1.8796410884862993,
+          "displacement": 0.013864805966020145,
+          "lightCV": 0.0008052634727426615,
+          "chromaStd": 0.0004402370330812427
+        }
+      },
+      "denseControl": {
+        "rgbStd": [
+          0.03123022390229568,
+          0.0345870227271273,
+          0.002241540699494354
+        ],
+        "chromaStd": 0.00006433139693662185,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "excessive_motion",
+          "fs": 20,
+          "duration": 16,
+          "motion": 1.8796410884862993,
+          "displacement": 0.013864805966020145,
+          "lightCV": 0.00012210177205593533,
+          "chromaStd": 0.00006433139693662185
+        }
+      },
+      "sampleCount": 408,
+      "pointMotionP95": 1.8796410884862993
+    }
+  ]
+}
+Generated 5 PNG charts offline in docs/issue-12-artifacts
+[
+  {
+    "label": "baseline",
+    "comparisons": 180,
+    "max_wave_abs_error": 3.408731630294426e-16,
+    "max_spectral_metric_abs_error": 0.428774213850047,
+    "baseline_half_bin_boundary_discrepancies": [
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "normal",
+        "method": "POS",
+        "js": 3.626557696935107e-05,
+        "integer_bin_reference": 0.00011532634501630258,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "weak",
+        "method": "POS",
+        "js": 0.00012714425431523384,
+        "integer_bin_reference": 0.0016146329187642645,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "weak",
+        "method": "CHROM",
+        "js": 0.0019894856543266268,
+        "integer_bin_reference": 0.0025414525402176983,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "noise",
+        "method": "POS",
+        "js": 0.002940967104604703,
+        "integer_bin_reference": 0.005757924430177903,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "jitter",
+        "method": "POS",
+        "js": 0.00013164957916483898,
+        "integer_bin_reference": 0.00019895171299825234,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "jitter",
+        "method": "CHROM",
+        "js": 0.0002034333581955168,
+        "integer_bin_reference": 0.000584272091963148,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "motion",
+        "method": "POS",
+        "js": 3.626557696935107e-05,
+        "integer_bin_reference": 0.00011532634501630258,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "normal",
+        "method": "POS",
+        "js": 8.59148753446225e-05,
+        "integer_bin_reference": 0.0005495888801219124,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "normal",
+        "method": "CHROM",
+        "js": 0.00024842373488807206,
+        "integer_bin_reference": 0.0014933544754461435,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "weak",
+        "method": "POS",
+        "js": 0.0007501649213389079,
+        "integer_bin_reference": 0.00662246765878069,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "weak",
+        "method": "CHROM",
+        "js": 0.003544212853162044,
+        "integer_bin_reference": 0.014880340151832589,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "noise",
+        "method": "POS",
+        "js": 0.0014504365993391517,
+        "integer_bin_reference": 0.018108500731194372,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "noise",
+        "method": "CHROM",
+        "js": 0.008437968871213668,
+        "integer_bin_reference": 0.034629942791014355,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "drift",
+        "method": "POS",
+        "js": 0.00016327242615829112,
+        "integer_bin_reference": 0.0005285903443191474,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "drift",
+        "method": "CHROM",
+        "js": 0.000544330117980807,
+        "integer_bin_reference": 0.0013354261838550256,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "jitter",
+        "method": "CHROM",
+        "js": 6.223804007493179e-05,
+        "integer_bin_reference": 0.0011719480088392747,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "motion",
+        "method": "POS",
+        "js": 8.59148753446225e-05,
+        "integer_bin_reference": 0.0005495888801219124,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "motion",
+        "method": "CHROM",
+        "js": 0.00024842373488807206,
+        "integer_bin_reference": 0.0014933544754461435,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 90,
+        "condition": "normal",
+        "method": "POS",
+        "js": 8.578870393441182e-05,
+        "integer_bin_reference": 0.00015192278785156952,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 90,
+        "condition": "weak",
+        "method": "POS",
+        "js": 0.0006566519720176719,
+        "integer_bin_reference": 0.0016042600196120287,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 90,
+        "condition": "drift",
+        "method": "CHROM",
+        "js": 0.00010633461345788155,
+        "integer_bin_reference": 0.00020569582526021413,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 90,
+        "condition": "motion",
+        "method": "POS",
+        "js": 8.578870393441182e-05,
+        "integer_bin_reference": 0.00015192278785156952,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "normal",
+        "method": "POS",
+        "js": 0.00012052821749544674,
+        "integer_bin_reference": 0.0001635709120347047,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "normal",
+        "method": "CHROM",
+        "js": 5.552307459900095e-05,
+        "integer_bin_reference": 0.00017117265324928692,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "weak",
+        "method": "POS",
+        "js": 0.0007519415313506191,
+        "integer_bin_reference": 0.0017686588961604555,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "weak",
+        "method": "CHROM",
+        "js": 0.000626194552766671,
+        "integer_bin_reference": 0.001208123695952792,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "noise",
+        "method": "POS",
+        "js": 0.003567342974251774,
+        "integer_bin_reference": 0.005326581864950787,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "noise",
+        "method": "CHROM",
+        "js": 0.002327947408470884,
+        "integer_bin_reference": 0.0028141481172427063,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "drift",
+        "method": "POS",
+        "js": 0.00019138052951222172,
+        "integer_bin_reference": 0.00020332306673049655,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "drift",
+        "method": "CHROM",
+        "js": 0.0001332508460628221,
+        "integer_bin_reference": 0.00016167495726778893,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "jitter",
+        "method": "POS",
+        "js": 0.00011352019568603083,
+        "integer_bin_reference": 0.00020475376766540632,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "motion",
+        "method": "POS",
+        "js": 0.00012052821749544674,
+        "integer_bin_reference": 0.0001635709120347047,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "motion",
+        "method": "CHROM",
+        "js": 5.552307459900095e-05,
+        "integer_bin_reference": 0.00017117265324928692,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": null,
+        "condition": "periodic_light",
+        "method": "CHROM",
+        "js": 0.18088685095157425,
+        "integer_bin_reference": 0.21946588045895501,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "white_noise",
+        "method": "CHROM",
+        "js": 0.04759476174984163,
+        "integer_bin_reference": 0.14909390015588986,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "white_noise",
+        "method": "POS",
+        "js": 0.10919292821338236,
+        "integer_bin_reference": 0.3013427948096829,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "periodic_light",
+        "method": "CHROM",
+        "js": 0.00917778749624154,
+        "integer_bin_reference": 0.024335644026134823,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "periodic_light",
+        "method": "POS",
+        "js": 0.0747131173735281,
+        "integer_bin_reference": 0.21476744462712496,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "out_of_band",
+        "method": "CHROM",
+        "js": 0.33118332747141144,
+        "integer_bin_reference": 0.7599575413214584,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "out_of_band",
+        "method": "CHROM",
+        "js": 0.13165210021162943,
+        "integer_bin_reference": 0.2893936035026017,
+        "gate_changed": false
+      }
+    ],
+    "scope": "projection + existing local overlap policy + linear resampling + Hann DFT; not full paper filtering or human validation"
+  },
+  {
+    "label": "after",
+    "comparisons": 180,
+    "max_wave_abs_error": 3.408731630294426e-16,
+    "max_spectral_metric_abs_error": 1.035838081975271e-13,
+    "baseline_half_bin_boundary_discrepancies": [],
+    "scope": "projection + existing local overlap policy + linear resampling + Hann DFT; not full paper filtering or human validation"
+  }
+]

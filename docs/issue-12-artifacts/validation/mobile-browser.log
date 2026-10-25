@@ -1,0 +1,7 @@
+PASS Chromium real bundled FaceMesh/WASM: fake no-face camera, 16s unaligned telemetry, CSV, stop/restart
+PASS Chromium mobile UI lifecycle fault injection, permission, cancellation, background, export
+PASS Chromium stalled video-callback recovery, frozen-frame rejection and hung-model diagnostics
+PASS WebKit mobile UI lifecycle fault injection, permission, cancellation, background, export
+PASS WebKit stalled video-callback recovery, frozen-frame rejection and hung-model diagnostics
+PASS Chromium 45s alignment/countdown/reset/stop/export/layout; NOT HUMAN TEST
+PASS WebKit 45s alignment/countdown/reset/stop/export/layout; NOT HUMAN TEST

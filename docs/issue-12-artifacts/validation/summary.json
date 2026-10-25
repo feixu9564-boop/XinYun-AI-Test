@@ -1,0 +1,124 @@
+[
+  {
+    "name": "npm-test",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "docs/issue-12-artifacts/validation/npm-test.log"
+  },
+  {
+    "name": "direct-frame-pump.test",
+    "command": [
+      "node",
+      "tests/frame-pump.test.js"
+    ],
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "docs/issue-12-artifacts/validation/direct-frame-pump.test.log"
+  },
+  {
+    "name": "direct-issue12.test",
+    "command": [
+      "node",
+      "tests/issue12.test.js"
+    ],
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "docs/issue-12-artifacts/validation/direct-issue12.test.log"
+  },
+  {
+    "name": "direct-measurement.test",
+    "command": [
+      "node",
+      "tests/measurement.test.js"
+    ],
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "docs/issue-12-artifacts/validation/direct-measurement.test.log"
+  },
+  {
+    "name": "direct-mobile.test",
+    "command": [
+      "node",
+      "tests/mobile.test.js"
+    ],
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "docs/issue-12-artifacts/validation/direct-mobile.test.log"
+  },
+  {
+    "name": "pytest",
+    "command": [
+      "/workspace/xy-venv/bin/python",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "docs/issue-12-artifacts/validation/pytest.log"
+  },
+  {
+    "name": "parity",
+    "command": [
+      "/workspace/xy-venv/bin/python",
+      "scripts/check-mobile-parity.py"
+    ],
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "docs/issue-12-artifacts/validation/parity.log"
+  },
+  {
+    "name": "reference",
+    "command": [
+      "/workspace/xy-venv/bin/python",
+      "scripts/check-issue12-reference.py"
+    ],
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "docs/issue-12-artifacts/validation/reference.log"
+  },
+  {
+    "name": "build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "docs/issue-12-artifacts/validation/build.log"
+  },
+  {
+    "name": "server",
+    "command": [
+      "npm",
+      "start"
+    ],
+    "status": "STARTED",
+    "log": "docs/issue-12-artifacts/validation/server.log"
+  },
+  {
+    "name": "mobile-browser",
+    "command": [
+      "node",
+      "tests/mobile-browser.mjs"
+    ],
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "docs/issue-12-artifacts/validation/mobile-browser.log"
+  },
+  {
+    "name": "measurement-browser",
+    "command": [
+      "node",
+      "tests/measurement-browser.mjs"
+    ],
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "docs/issue-12-artifacts/validation/measurement-browser.log"
+  }
+]

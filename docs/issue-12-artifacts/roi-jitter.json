@@ -1,0 +1,212 @@
+{
+  "seed": 12026,
+  "width": 320,
+  "height": 240,
+  "description": "Stationary synthetic textured uint8 image; uniform landmark translation, no pulse; dense control is an observation, not a production change",
+  "experiments": [
+    {
+      "jitterPixels": 0,
+      "pointSample": {
+        "rgbStd": [
+          7.958078640513122e-13,
+          7.105427357601002e-14,
+          6.821210263296962e-13
+        ],
+        "chromaStd": 1.7208456881689926e-15,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "no_chromatic_pulse_evidence",
+          "fs": 20,
+          "duration": 16,
+          "motion": 0,
+          "displacement": 0,
+          "lightCV": 6.557784488987695e-16,
+          "chromaStd": 1.7208456881689926e-15
+        }
+      },
+      "denseControl": {
+        "rgbStd": [
+          4.547473508864641e-13,
+          1.9895196601282805e-13,
+          3.836930773104541e-13
+        ],
+        "chromaStd": 8.326672684688674e-16,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "no_chromatic_pulse_evidence",
+          "fs": 20,
+          "duration": 16,
+          "motion": 0,
+          "displacement": 0,
+          "lightCV": 8.746927066593747e-16,
+          "chromaStd": 8.326672684688674e-16
+        }
+      },
+      "sampleCount": 408,
+      "pointMotionP95": 0
+    },
+    {
+      "jitterPixels": 0.2,
+      "pointSample": {
+        "rgbStd": [
+          0.1454861494404738,
+          0.012748828673574762,
+          0.012950331436640894
+        ],
+        "chromaStd": 0.00022107038686633166,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "diffuse_spectrum",
+          "fs": 20,
+          "duration": 16,
+          "motion": 0.36094057123443957,
+          "displacement": 0.002975736579037215,
+          "lightCV": 0.00035284616927083355,
+          "chromaStd": 0.00022107038686633166,
+          "pos_reason": "diffuse_spectrum",
+          "chrom_reason": "diffuse_spectrum"
+        }
+      },
+      "denseControl": {
+        "rgbStd": [
+          0.011002033307536817,
+          0.010704010614424995,
+          0.0017477215623466248
+        ],
+        "chromaStd": 0.00002122590732201692,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "diffuse_spectrum",
+          "fs": 20,
+          "duration": 16,
+          "motion": 0.36094057123443957,
+          "displacement": 0.002975736579037215,
+          "lightCV": 0.000041006874255833506,
+          "chromaStd": 0.00002122590732201692,
+          "pos_reason": "diffuse_spectrum",
+          "chrom_reason": "diffuse_spectrum"
+        }
+      },
+      "sampleCount": 408,
+      "pointMotionP95": 0.36094057123443957
+    },
+    {
+      "jitterPixels": 0.6,
+      "pointSample": {
+        "rgbStd": [
+          0.2866910983906311,
+          0.034002399412203406,
+          0.02244143920370447
+        ],
+        "chromaStd": 0.0004072385724303044,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "diffuse_spectrum",
+          "fs": 20,
+          "duration": 16,
+          "motion": 1.2604523218773827,
+          "displacement": 0.008545906003142803,
+          "lightCV": 0.0007656985445747395,
+          "chromaStd": 0.0004072385724303044,
+          "pos_reason": "diffuse_spectrum",
+          "chrom_reason": "diffuse_spectrum"
+        }
+      },
+      "denseControl": {
+        "rgbStd": [
+          0.021905821221754572,
+          0.022659606792849583,
+          0.0019854755947609918
+        ],
+        "chromaStd": 0.00004163886707038191,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "diffuse_spectrum",
+          "fs": 20,
+          "duration": 16,
+          "motion": 1.2604523218773827,
+          "displacement": 0.008545906003142803,
+          "lightCV": 0.00008484335181173578,
+          "chromaStd": 0.00004163886707038191,
+          "pos_reason": "diffuse_spectrum",
+          "chrom_reason": "diffuse_spectrum"
+        }
+      },
+      "sampleCount": 408,
+      "pointMotionP95": 1.2604523218773827
+    },
+    {
+      "jitterPixels": 1,
+      "pointSample": {
+        "rgbStd": [
+          0.30604945513257015,
+          0.03233180050625973,
+          0.02568212034295154
+        ],
+        "chromaStd": 0.0004402370330812427,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "excessive_motion",
+          "fs": 20,
+          "duration": 16,
+          "motion": 1.8796410884862993,
+          "displacement": 0.013864805966020145,
+          "lightCV": 0.0008052634727426615,
+          "chromaStd": 0.0004402370330812427
+        }
+      },
+      "denseControl": {
+        "rgbStd": [
+          0.03123022390229568,
+          0.0345870227271273,
+          0.002241540699494354
+        ],
+        "chromaStd": 0.00006433139693662185,
+        "result": {
+          "reliable": false,
+          "bpm": null,
+          "pos": null,
+          "chrom": null,
+          "score": 0,
+          "reason": "excessive_motion",
+          "fs": 20,
+          "duration": 16,
+          "motion": 1.8796410884862993,
+          "displacement": 0.013864805966020145,
+          "lightCV": 0.00012210177205593533,
+          "chromaStd": 0.00006433139693662185
+        }
+      },
+      "sampleCount": 408,
+      "pointMotionP95": 1.8796410884862993
+    }
+  ]
+}

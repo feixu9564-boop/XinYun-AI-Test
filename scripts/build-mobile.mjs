@@ -1,10 +1,11 @@
 import {cp, mkdir, readdir, readFile, writeFile} from 'node:fs/promises';
+import {BUILD} from '../web/build-info.js';
 import {createHash} from 'node:crypto';
 await mkdir('dist/vendor/face_mesh', {recursive:true});
 await cp('web', 'dist', {recursive:true});
 const revision=process.env.BUILD_COMMIT||'LOCAL_UNCOMMITTED';
 if(revision!=='LOCAL_UNCOMMITTED'&&!/^[a-f0-9]{40}$/.test(revision))throw Error('Invalid BUILD_COMMIT');
-await writeFile('dist/build-info.js',`export const BUILD=${JSON.stringify({version:'0.6.1',commit:revision})};\n`);
+await writeFile('dist/build-info.js',`export const BUILD=${JSON.stringify({version:BUILD.version,commit:revision})};\n`);
 const vendor='node_modules/@mediapipe/face_mesh';
 const assets=[];
 for(const name of await readdir(vendor)) {

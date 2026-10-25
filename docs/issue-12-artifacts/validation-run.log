@@ -1,0 +1,12 @@
+npm-test PASS 0
+direct-frame-pump.test PASS 0
+direct-issue12.test PASS 0
+direct-measurement.test PASS 0
+direct-mobile.test PASS 0
+pytest PASS 0
+parity PASS 0
+reference PASS 0
+build PASS 0
+mobile-browser ENVIRONMENT_BLOCKED 1
+measurement-browser ENVIRONMENT_BLOCKED 1
+{"ENVIRONMENT_BLOCKED": 3, "PASS": 9}

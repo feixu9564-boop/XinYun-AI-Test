@@ -1,0 +1,5 @@
+
+> build
+> node scripts/build-mobile.mjs
+
+{"status":"built","directory":"dist","modelAssets":9,"modelBytes":16967372}
