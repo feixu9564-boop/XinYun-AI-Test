@@ -1,0 +1,34 @@
+segment 1: accepted_experimental; BPM=74.8 (recorded accepted_experimental)
+┌─────────┬─────────────────────────┬────────────────────────┬──────────┬────────────┬──────┬───────────┐
+│ (index) │ name                    │ value                  │ operator │ threshold  │ pass │ evaluated │
+├─────────┼─────────────────────────┼────────────────────────┼──────────┼────────────┼──────┼───────────┤
+│ 0       │ 'sample_count'          │ 321                    │ '>='     │ 2          │ true │ true      │
+│ 1       │ 'sample_reason'         │ null                   │ '=='     │ null       │ true │ true      │
+│ 2       │ 'sample_format'         │ true                   │ '=='     │ true       │ true │ true      │
+│ 3       │ 'duration'              │ 16                     │ '>='     │ 15         │ true │ true      │
+│ 4       │ 'monotonic_time'        │ 0.049999999999998934   │ '>'      │ 0          │ true │ true      │
+│ 5       │ 'max_gap'               │ 0.05000000000000071    │ '<='     │ 0.25       │ true │ true      │
+│ 6       │ 'fps'                   │ 20                     │ 'range'  │ [ 12, 65 ] │ true │ true      │
+│ 7       │ 'face_roi'              │ true                   │ '=='     │ true       │ true │ true      │
+│ 8       │ 'motion_telemetry'      │ true                   │ '=='     │ true       │ true │ true      │
+│ 9       │ 'exposure_min'          │ 129.88802083333334     │ '>='     │ 30         │ true │ true      │
+│ 10      │ 'exposure_max'          │ 130.11979166666666     │ '<='     │ 235        │ true │ true      │
+│ 11      │ 'motion_p95'            │ 0.15                   │ '<='     │ 3          │ true │ true      │
+│ 12      │ 'displacement_p95'      │ 0.0002                 │ '<='     │ 0.012      │ true │ true      │
+│ 13      │ 'light_cv'              │ 0.00041435278727601434 │ '<='     │ 0.08       │ true │ true      │
+│ 14      │ 'chromatic_nonconstant' │ 0.00012257566654746461 │ '>='     │ 1e-10      │ true │ true      │
+│ 15      │ 'POS.sample_count'      │ 321                    │ '>='     │ 80         │ true │ true      │
+│ 16      │ 'POS.waveform_std'      │ 0.0010058868755947168  │ '>='     │ 1e-8       │ true │ true      │
+│ 17      │ 'POS.band_power'        │ 0.013343978874413367   │ '>='     │ 1e-12      │ true │ true      │
+│ 18      │ 'POS.concentration'     │ 0.9193982063375469     │ '>='     │ 0.6        │ true │ true      │
+│ 19      │ 'POS.subharmonic'       │ 0                      │ '<='     │ 0.04       │ true │ true      │
+│ 20      │ 'POS.secondary'         │ 0.02091557660857279    │ '<='     │ 0.04       │ true │ true      │
+│ 21      │ 'CHROM.sample_count'    │ 321                    │ '>='     │ 80         │ true │ true      │
+│ 22      │ 'CHROM.waveform_std'    │ 0.0019428245402625922  │ '>='     │ 1e-8       │ true │ true      │
+│ 23      │ 'CHROM.band_power'      │ 0.04789502771970892    │ '>='     │ 1e-12      │ true │ true      │
+│ 24      │ 'CHROM.concentration'   │ 0.8920537644970181     │ '>='     │ 0.6        │ true │ true      │
+│ 25      │ 'CHROM.subharmonic'     │ 0                      │ '<='     │ 0.04       │ true │ true      │
+│ 26      │ 'CHROM.secondary'       │ 0.02839321870024763    │ '<='     │ 0.04       │ true │ true      │
+│ 27      │ 'algorithm_agreement'   │ 0                      │ '<='     │ 6          │ true │ true      │
+│ 28      │ 'measurement_complete'  │ true                   │ '=='     │ true       │ true │ true      │
+└─────────┴─────────────────────────┴────────────────────────┴──────────┴────────────┴──────┴───────────┘

@@ -14,3 +14,5 @@ node_modules/
 dist/
 test-results/
 reports/logs/phase5/**/*.png
+docs/issue-12-artifacts/after.json
+docs/issue-12-artifacts/baseline.json

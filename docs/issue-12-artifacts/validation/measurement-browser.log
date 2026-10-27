@@ -1,0 +1,2 @@
+PASS Chromium 45s alignment/countdown/reset/stop/export/layout; NOT HUMAN TEST
+PASS WebKit 45s alignment/countdown/reset/stop/export/layout; NOT HUMAN TEST

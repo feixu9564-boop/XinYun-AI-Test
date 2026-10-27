@@ -29,7 +29,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const draw=CanvasRenderingContext2D.prototype.drawImage;
    CanvasRenderingContext2D.prototype.drawImage=function(image,...args){if(!(image instanceof HTMLVideoElement))return draw.call(this,image,...args);this.fillStyle='#646464';this.fillRect(0,0,this.canvas.width,this.canvas.height);};
   });
-  await page.goto(url);await page.clock.install();await page.locator('#consent').check();await page.locator('#start').click();
+  await page.goto(url);assert.equal(await page.locator('#diagnostic-mode').isChecked(),false);assert.equal(await page.locator('#export-diagnostics').isDisabled(),true);if(name==='WebKit')await page.locator('#diagnostic-mode').check();await page.clock.install();await page.locator('#consent').check();await page.locator('#start').click();
   await page.waitForFunction(()=>document.querySelector('#placeholder').hidden);
   await page.clock.runFor(4000);assert.equal(await page.locator('#countdown').innerText(),'45');
   assert.equal(await page.locator('#bpm').innerText(),'—');
@@ -65,7 +65,18 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   let rows=await page.evaluate(()=>JSON.parse(localStorage.getItem('xinyun-mobile-v1')));
   const end=rows.filter(r=>r.record_type==='session_end').at(-1),windowRow=rows.filter(r=>r.record_type==='window').at(-1);
   assert.equal(end.stop_reason,'measurement_complete');assert.ok(end.effective_seconds>=45);assert.ok(end.valid_sample_count>=540);assert.ok(end.roi_samples>540);assert.ok(end.frames_submitted>540);assert.ok(end.alignment_resets>=2);assert.ok(end.aligned_at&&end.measurement_started_at&&end.stopped_at&&end.commit_sha);
-  assert.equal(windowRow.bpm,null);assert.equal(end.reason,'no_chromatic_pulse_evidence');assert.equal(end.final_reason,end.reason);assert.ok((await page.locator('#status').innerText()).includes('失败原因'));assert.ok((await page.locator('#result-details').innerText()).includes('无效帧'));assert.ok((await page.locator('#result-version').innerText()).includes('0.6.1'));
+  assert.equal(windowRow.bpm,null);assert.equal(end.reason,'no_chromatic_pulse_evidence');assert.equal(end.final_reason,end.reason);assert.ok((await page.locator('#status').innerText()).includes('失败原因'));assert.ok((await page.locator('#result-details').innerText()).includes('无效帧'));assert.ok((await page.locator('#result-version').innerText()).includes('0.6.3-rc'));
+  assert.equal(await page.locator('#export-diagnostics').isEnabled(),name==='WebKit');
+  if(name==='WebKit'){
+    const dd=page.waitForEvent('download');await page.locator('#export-diagnostics').click();
+    const diag=JSON.parse(await readFile(await (await dd).path(),'utf8'));
+    assert.equal(diag.schema,'xinyun-diagnostics-v1');assert.equal(diag.timeUnit,'seconds');assert.ok(diag.samples.length>900&&diag.samples.length<=4096);
+    assert.equal(diag.analyses.at(-1).result.bpm,null);assert.equal(diag.analyses.at(-1).result.reason,end.reason);
+    assert.ok(diag.samples.some(s=>s.reason==='no_face'&&s.rgb===null&&s.motion===null));
+    assert.ok(diag.samples.filter(s=>s.rgb).every(s=>!('previous' in s)&&!('grid' in s)));
+    assert.ok(diag.analyses.at(-1).result.diagnostics.gates.some(g=>g.name==='chromatic_nonconstant'&&g.pass===false));
+    await writeFile(`${out}/webkit-LOCAL-OPT-IN-diagnostic.json`,JSON.stringify(diag));
+  }
   const pauses=rows.filter(r=>r.record_type==='measurement_pause');assert.equal(pauses.length,2);assert.ok(pauses.every(r=>r.paused_at&&r.countdown_before_reset<45&&r.roi_status&&r.model_results>0));assert.ok(rows.filter(r=>r.record_type==='measurement_reset').some(r=>r.reason==='sampling_gap'));assert.equal(windowRow.status,'insufficient_signal');assert.ok(rows.filter(r=>r.record_type==='telemetry').length>=45);
   await writeFile(`${out}/${name.toLowerCase()}-ENGINEERING-ONLY-session.json`,JSON.stringify(rows,null,2));
   await page.screenshot({path:`${out}/${name.toLowerCase()}-45s-rejected-result.png`,fullPage:true});
@@ -76,7 +87,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   await page.evaluate(()=>{Object.defineProperty(navigator,'share',{configurable:true,value:async()=>{throw new DOMException('cancelled','AbortError');}});});
   await page.locator('#share-json').click();assert.ok((await page.locator('#export-status').innerText()).includes('已取消'));assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('xinyun-mobile-v1')).length),rows.length);
   await page.evaluate(()=>{URL.createObjectURL=()=>{throw new Error('injected download failure');};});await page.locator('#export-json').click();assert.ok((await page.locator('#export-status').innerText()).includes('导出失败'));
-  await page.reload();assert.ok((await page.locator('#result-title').innerText()).includes('未得到可靠心率'));assert.ok((await page.locator('#status').innerText()).includes('失败原因'));
+  await page.reload();assert.equal(await page.locator('#diagnostic-mode').isChecked(),false);assert.equal(await page.locator('#export-diagnostics').isDisabled(),true);assert.ok((await page.locator('#result-title').innerText()).includes('未得到可靠心率'));assert.ok((await page.locator('#status').innerText()).includes('失败原因'));
   await page.locator('#subject').fill('P002');await page.locator('#consent').check();await page.locator('#reset').click();await page.waitForFunction(()=>document.querySelector('#placeholder').hidden);await page.clock.runFor(3000);assert.ok(Number(await page.locator('#countdown').innerText())>=43);await page.locator('#stop').click();
   await page.evaluate(()=>window.acq.mode='error');await page.locator('#reset').click();await page.clock.runFor(1000);assert.ok((await page.locator('#reason').innerText()).includes('model_error'));
   await page.evaluate(()=>window.acq.mode='aligned');await page.locator('#reset').click();await page.clock.runFor(3000);await page.evaluate(()=>window.dispatchEvent(new Event('pagehide')));

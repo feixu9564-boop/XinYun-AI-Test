@@ -1,0 +1,50 @@
+TAP version 13
+# Subtest: production analyze: 20 FPS camera-like weak/normal pulses and adverse conditions at 16/45 seconds
+ok 1 - production analyze: 20 FPS camera-like weak/normal pulses and adverse conditions at 16/45 seconds
+  ---
+  duration_ms: 3063.102417
+  ...
+# Subtest: unmodified baseline reproduces early color rejection; Hann half-bin regression is isolated
+ok 2 - unmodified baseline reproduces early color rejection; Hann half-bin regression is isolated
+  ---
+  duration_ms: 59.469746
+  ...
+# Subtest: false accepts: flat, white/colored noise, motion-only, periodic light and out-of-band rejected
+ok 3 - false accepts: flat, white/colored noise, motion-only, periodic light and out-of-band rejected
+  ---
+  duration_ms: 1216.124563
+  ...
+# Subtest: known identifiability limit: same RGB and telemetry cannot reveal chromatic artifact origin
+ok 4 - known identifiability limit: same RGB and telemetry cannot reveal chromatic artifact origin
+  ---
+  duration_ms: 15.96314
+  ...
+# Subtest: seconds, nonmonotonic time, discontinuities and missing telemetry fail closed
+ok 5 - seconds, nonmonotonic time, discontinuities and missing telemetry fail closed
+  ---
+  duration_ms: 15.976965
+  ...
+# Subtest: frequency units and normalization scale invariance across camera frame rates
+ok 6 - frequency units and normalization scale invariance across camera frame rates
+  ---
+  duration_ms: 21.584206
+  ...
+# Subtest: diagnostic whitelist, null detection failure, memory bound, and replay exact segment
+ok 7 - diagnostic whitelist, null detection failure, memory bound, and replay exact segment
+  ---
+  duration_ms: 275.202644
+  ...
+# Subtest: half-frequency boundary uses integer bins, avoiding floating-point mask disagreements
+ok 8 - half-frequency boundary uses integer bins, avoiding floating-point mask disagreements
+  ---
+  duration_ms: 1.782187
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4682.431207

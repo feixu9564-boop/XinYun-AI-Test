@@ -10,32 +10,33 @@ export function faceGeometry(lm){
   if(Math.min(left,right)/Math.max(left,right)<.55||Math.abs(lm[33].y-lm[263].y)/width>.15)return {reason:'face_pose'};
   return {width,x:center.x,y:center.y};
 }
-export function sampleROI(lm,canvas,overlay,previous){
+export function sampleROI(lm,canvas,overlay,previous,{diagnostics=false}={}){
   const geometry=faceGeometry(lm);if(geometry.reason)return geometry;
   const ctx=canvas.getContext('2d',{willReadFrequently:true}),draw=overlay.getContext('2d'),W=canvas.width,H=canvas.height;
-  const data=ctx.getImageData(0,0,W,H).data,sum=[0,0,0],grid=[];let count=0,total=0;
-  for(const ids of POLYGONS){
+  const data=ctx.getImageData(0,0,W,H).data,sum=[0,0,0],grid=[],regions={};let count=0,total=0;
+  for(const [regionIndex,ids] of POLYGONS.entries()){
     const path=new Path2D();ids.forEach((i,j)=>{const p=lm[i];j?path.lineTo(p.x*W,p.y*H):path.moveTo(p.x*W,p.y*H);});path.closePath();
     draw.strokeStyle='#60dfb0';draw.lineWidth=1.3;draw.stroke(path);
     const xs=ids.map(i=>lm[i].x*W),ys=ids.map(i=>lm[i].y*H),x0=Math.min(...xs),y0=Math.min(...ys),w=Math.max(...xs)-x0,h=Math.max(...ys)-y0;
-    let validRegion=0;
+    let validRegion=0,insideRegion=0;const regionSum=[0,0,0];
     // Fixed 12x12 normalized patch grid permits frame-to-frame residual audit.
     for(let iy=0;iy<12;iy++)for(let ix=0;ix<12;ix++){
       const x=Math.floor(x0+(ix+.5)*w/12),y=Math.floor(y0+(iy+.5)*h/12),inside=ctx.isPointInPath(path,x,y),k=(y*W+x)*4;
       const rgb=[data[k],data[k+1],data[k+2]],valid=inside&&Math.min(...rgb)>=10&&Math.max(...rgb)<=245;
-      grid.push(valid?rgb:null);if(inside)total++;
-      if(valid){rgb.forEach((v,c)=>sum[c]+=v);count++;validRegion++;}
+      grid.push(valid?rgb:null);if(inside){total++;insideRegion++;}
+      if(valid){rgb.forEach((v,c)=>{sum[c]+=v;if(diagnostics)regionSum[c]+=v;});count++;validRegion++;}
     }
-    if(validRegion<20)return {reason:'insufficient_roi_pixels'};
+    if(diagnostics)regions[['forehead','left_cheek','right_cheek'][regionIndex]]={rgb:validRegion?regionSum.map(v=>v/validRegion):null,validPixels:validRegion,totalPixels:insideRegion,skinRatio:insideRegion?validRegion/insideRegion:null};
+    if(validRegion<20)return {reason:'insufficient_roi_pixels',...(diagnostics?{regions,skinRatio:total?count/total:null,validPixels:count,roiPosition:geometry}:{})};
   }
-  if(count<80||count/Math.max(total,1)<.8)return {reason:'insufficient_roi_pixels'};
+  if(count<80||count/Math.max(total,1)<.8)return {reason:'insufficient_roi_pixels',...(diagnostics?{regions,skinRatio:total?count/total:null,validPixels:count,roiPosition:geometry}:{})};
   const rgb=sum.map(v=>v/count);let motion=0;
   if(previous){
     const deltas=grid.flatMap((v,i)=>v&&previous.grid[i]?[v.map((x,c)=>x-previous.grid[i][c])]:[]);
-    if(deltas.length<80)return {reason:'unstable_roi'};
+    if(deltas.length<80)return {reason:'unstable_roi',...(diagnostics?{regions,skinRatio:count/total,validPixels:count,roiPosition:geometry}:{})};
     const global=[0,1,2].map(c=>deltas.reduce((s,d)=>s+d[c],0)/deltas.length);
     motion=deltas.reduce((s,d)=>s+d.reduce((n,v,c)=>n+Math.abs(v-global[c]),0)/3,0)/deltas.length;
   }
   const displacement=previous?Math.hypot(geometry.x-previous.x,geometry.y-previous.y)/geometry.width+Math.abs(geometry.width-previous.width):0;
-  return {rgb,motion,displacement,faceCount:1,roiValid:true,previous:{...geometry,grid}};
+  return {rgb,motion,displacement,...(diagnostics?{regions,skinRatio:count/total,validPixels:count,roiPosition:geometry}:{}),faceCount:1,roiValid:true,previous:{...geometry,grid}};
 }

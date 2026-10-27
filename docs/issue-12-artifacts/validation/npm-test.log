@@ -1,0 +1,169 @@
+
+> test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: advancing callback frame IDs recover a stale decoder counter for over 45s
+ok 1 - advancing callback frame IDs recover a stale decoder counter for over 45s
+  ---
+  duration_ms: 25.247487
+  ...
+# Subtest: inference rejection is counted and reported; stopped pump cannot retry
+ok 2 - inference rejection is counted and reported; stopped pump cannot retry
+  ---
+  duration_ms: 1.043419
+  ...
+# Subtest: stalled callback falls back only when media time advances
+ok 3 - stalled callback falls back only when media time advances
+  ---
+  duration_ms: 0.699573
+  ...
+# Subtest: frozen decoded counter overrides an advancing media clock
+ok 4 - frozen decoded counter overrides an advancing media clock
+  ---
+  duration_ms: 0.58902
+  ...
+# Subtest: missing metadata uses actual currentTime; never undefined-equality deadlock
+ok 5 - missing metadata uses actual currentTime; never undefined-equality deadlock
+  ---
+  duration_ms: 0.438665
+  ...
+# Subtest: constant media timestamp with advancing presented frames keeps sampling
+ok 6 - constant media timestamp with advancing presented frames keeps sampling
+  ---
+  duration_ms: 0.358656
+  ...
+# Subtest: hung model remains serialized, timeout diagnostic differs from video stall
+ok 7 - hung model remains serialized, timeout diagnostic differs from video stall
+  ---
+  duration_ms: 0.569343
+  ...
+# Subtest: frozen video never acquires invented samples, and stopped callbacks cannot resume
+ok 8 - frozen video never acquires invented samples, and stopped callbacks cannot resume
+  ---
+  duration_ms: 0.570826
+  ...
+# Subtest: production analyze: 20 FPS camera-like weak/normal pulses and adverse conditions at 16/45 seconds
+ok 9 - production analyze: 20 FPS camera-like weak/normal pulses and adverse conditions at 16/45 seconds
+  ---
+  duration_ms: 3003.673278
+  ...
+# Subtest: unmodified baseline reproduces early color rejection; Hann half-bin regression is isolated
+ok 10 - unmodified baseline reproduces early color rejection; Hann half-bin regression is isolated
+  ---
+  duration_ms: 60.558898
+  ...
+# Subtest: false accepts: flat, white/colored noise, motion-only, periodic light and out-of-band rejected
+ok 11 - false accepts: flat, white/colored noise, motion-only, periodic light and out-of-band rejected
+  ---
+  duration_ms: 1197.388757
+  ...
+# Subtest: known identifiability limit: same RGB and telemetry cannot reveal chromatic artifact origin
+ok 12 - known identifiability limit: same RGB and telemetry cannot reveal chromatic artifact origin
+  ---
+  duration_ms: 15.971679
+  ...
+# Subtest: seconds, nonmonotonic time, discontinuities and missing telemetry fail closed
+ok 13 - seconds, nonmonotonic time, discontinuities and missing telemetry fail closed
+  ---
+  duration_ms: 15.980618
+  ...
+# Subtest: frequency units and normalization scale invariance across camera frame rates
+ok 14 - frequency units and normalization scale invariance across camera frame rates
+  ---
+  duration_ms: 21.746095
+  ...
+# Subtest: diagnostic whitelist, null detection failure, memory bound, and replay exact segment
+ok 15 - diagnostic whitelist, null detection failure, memory bound, and replay exact segment
+  ---
+  duration_ms: 234.424053
+  ...
+# Subtest: half-frequency boundary uses integer bins, avoiding floating-point mask disagreements
+ok 16 - half-frequency boundary uses integer bins, avoiding floating-point mask disagreements
+  ---
+  duration_ms: 2.055005
+  ...
+# Subtest: permission/loading/wall waiting never contributes effective time
+ok 17 - permission/loading/wall waiting never contributes effective time
+  ---
+  duration_ms: 1.058663
+  ...
+# Subtest: single stable face starts only after 1.5s then counts 45 to 0 from samples
+ok 18 - single stable face starts only after 1.5s then counts 45 to 0 from samples
+  ---
+  duration_ms: 1.98021
+  ...
+# Subtest: brief face loss freezes countdown with cause, then explicitly restarts a fresh window
+ok 19 - brief face loss freezes countdown with cause, then explicitly restarts a fresh window
+  ---
+  duration_ms: 0.57106
+  ...
+# Subtest: event-loop gap pauses without fake completion or silent reset
+ok 20 - event-loop gap pauses without fake completion or silent reset
+  ---
+  duration_ms: 0.180436
+  ...
+# Subtest: repeated invalid samples preserve first cause and do not repeatedly reset
+ok 21 - repeated invalid samples preserve first cause and do not repeatedly reset
+  ---
+  duration_ms: 1.112465
+  ...
+# Subtest: low FPS during measurement pauses and keeps the low-FPS cause
+ok 22 - low FPS during measurement pauses and keeps the low-FPS cause
+  ---
+  duration_ms: 0.22511
+  ...
+# Subtest: low FPS and duplicate/out-of-order capture times cannot complete
+ok 23 - low FPS and duplicate/out-of-order capture times cannot complete
+  ---
+  duration_ms: 0.317982
+  ...
+# Subtest: bad exposure, multiple faces and pose keep clock at 45
+ok 24 - bad exposure, multiple faces and pose keep clock at 45
+  ---
+  duration_ms: 0.202233
+  ...
+# Subtest: reference pairing uses actual midpoint, session and subject; no retrospective guessing
+ok 25 - reference pairing uses actual midpoint, session and subject; no retrospective guessing
+  ---
+  duration_ms: 1.74548
+  ...
+# Subtest: manual reference range and future timestamp validation
+ok 26 - manual reference range and future timestamp validation
+  ---
+  duration_ms: 0.310987
+  ...
+# Subtest: CSV preserves failed windows, timestamps, BOM and escapes formula/text
+ok 27 - CSV preserves failed windows, timestamps, BOM and escapes formula/text
+  ---
+  duration_ms: 0.494027
+  ...
+# Subtest: storage persists reload/clear and preserves memory on quota error
+ok 28 - storage persists reload/clear and preserves memory on quota error
+  ---
+  duration_ms: 0.42904
+  ...
+# Subtest: corrupt storage is protected rather than overwritten
+ok 29 - corrupt storage is protected rather than overwritten
+  ---
+  duration_ms: 0.180794
+  ...
+# Subtest: anonymous IDs reject spreadsheet formulas and names with whitespace
+ok 30 - anonymous IDs reject spreadsheet formulas and names with whitespace
+  ---
+  duration_ms: 0.17712
+  ...
+# Subtest: missing/no-face/short/constant inputs fail closed
+ok 31 - missing/no-face/short/constant inputs fail closed
+  ---
+  duration_ms: 1.187922
+  ...
+1..31
+# tests 31
+# suites 0
+# pass 31
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4676.317868

@@ -1,0 +1,379 @@
+[
+  {
+    "label": "baseline",
+    "comparisons": 180,
+    "max_wave_abs_error": 3.408731630294426e-16,
+    "max_spectral_metric_abs_error": 0.428774213850047,
+    "baseline_half_bin_boundary_discrepancies": [
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "normal",
+        "method": "POS",
+        "js": 3.626557696935107e-05,
+        "integer_bin_reference": 0.00011532634501630258,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "weak",
+        "method": "POS",
+        "js": 0.00012714425431523384,
+        "integer_bin_reference": 0.0016146329187642645,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "weak",
+        "method": "CHROM",
+        "js": 0.0019894856543266268,
+        "integer_bin_reference": 0.0025414525402176983,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "noise",
+        "method": "POS",
+        "js": 0.002940967104604703,
+        "integer_bin_reference": 0.005757924430177903,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "jitter",
+        "method": "POS",
+        "js": 0.00013164957916483898,
+        "integer_bin_reference": 0.00019895171299825234,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "jitter",
+        "method": "CHROM",
+        "js": 0.0002034333581955168,
+        "integer_bin_reference": 0.000584272091963148,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 90,
+        "condition": "motion",
+        "method": "POS",
+        "js": 3.626557696935107e-05,
+        "integer_bin_reference": 0.00011532634501630258,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "normal",
+        "method": "POS",
+        "js": 8.59148753446225e-05,
+        "integer_bin_reference": 0.0005495888801219124,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "normal",
+        "method": "CHROM",
+        "js": 0.00024842373488807206,
+        "integer_bin_reference": 0.0014933544754461435,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "weak",
+        "method": "POS",
+        "js": 0.0007501649213389079,
+        "integer_bin_reference": 0.00662246765878069,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "weak",
+        "method": "CHROM",
+        "js": 0.003544212853162044,
+        "integer_bin_reference": 0.014880340151832589,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "noise",
+        "method": "POS",
+        "js": 0.0014504365993391517,
+        "integer_bin_reference": 0.018108500731194372,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "noise",
+        "method": "CHROM",
+        "js": 0.008437968871213668,
+        "integer_bin_reference": 0.034629942791014355,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "drift",
+        "method": "POS",
+        "js": 0.00016327242615829112,
+        "integer_bin_reference": 0.0005285903443191474,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "drift",
+        "method": "CHROM",
+        "js": 0.000544330117980807,
+        "integer_bin_reference": 0.0013354261838550256,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "jitter",
+        "method": "CHROM",
+        "js": 6.223804007493179e-05,
+        "integer_bin_reference": 0.0011719480088392747,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "motion",
+        "method": "POS",
+        "js": 8.59148753446225e-05,
+        "integer_bin_reference": 0.0005495888801219124,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": 120,
+        "condition": "motion",
+        "method": "CHROM",
+        "js": 0.00024842373488807206,
+        "integer_bin_reference": 0.0014933544754461435,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 90,
+        "condition": "normal",
+        "method": "POS",
+        "js": 8.578870393441182e-05,
+        "integer_bin_reference": 0.00015192278785156952,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 90,
+        "condition": "weak",
+        "method": "POS",
+        "js": 0.0006566519720176719,
+        "integer_bin_reference": 0.0016042600196120287,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 90,
+        "condition": "drift",
+        "method": "CHROM",
+        "js": 0.00010633461345788155,
+        "integer_bin_reference": 0.00020569582526021413,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 90,
+        "condition": "motion",
+        "method": "POS",
+        "js": 8.578870393441182e-05,
+        "integer_bin_reference": 0.00015192278785156952,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "normal",
+        "method": "POS",
+        "js": 0.00012052821749544674,
+        "integer_bin_reference": 0.0001635709120347047,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "normal",
+        "method": "CHROM",
+        "js": 5.552307459900095e-05,
+        "integer_bin_reference": 0.00017117265324928692,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "weak",
+        "method": "POS",
+        "js": 0.0007519415313506191,
+        "integer_bin_reference": 0.0017686588961604555,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "weak",
+        "method": "CHROM",
+        "js": 0.000626194552766671,
+        "integer_bin_reference": 0.001208123695952792,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "noise",
+        "method": "POS",
+        "js": 0.003567342974251774,
+        "integer_bin_reference": 0.005326581864950787,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "noise",
+        "method": "CHROM",
+        "js": 0.002327947408470884,
+        "integer_bin_reference": 0.0028141481172427063,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "drift",
+        "method": "POS",
+        "js": 0.00019138052951222172,
+        "integer_bin_reference": 0.00020332306673049655,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "drift",
+        "method": "CHROM",
+        "js": 0.0001332508460628221,
+        "integer_bin_reference": 0.00016167495726778893,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "jitter",
+        "method": "POS",
+        "js": 0.00011352019568603083,
+        "integer_bin_reference": 0.00020475376766540632,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "motion",
+        "method": "POS",
+        "js": 0.00012052821749544674,
+        "integer_bin_reference": 0.0001635709120347047,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": 120,
+        "condition": "motion",
+        "method": "CHROM",
+        "js": 5.552307459900095e-05,
+        "integer_bin_reference": 0.00017117265324928692,
+        "gate_changed": false
+      },
+      {
+        "duration": 16,
+        "bpm": null,
+        "condition": "periodic_light",
+        "method": "CHROM",
+        "js": 0.18088685095157425,
+        "integer_bin_reference": 0.21946588045895501,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "white_noise",
+        "method": "CHROM",
+        "js": 0.04759476174984163,
+        "integer_bin_reference": 0.14909390015588986,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "white_noise",
+        "method": "POS",
+        "js": 0.10919292821338236,
+        "integer_bin_reference": 0.3013427948096829,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "periodic_light",
+        "method": "CHROM",
+        "js": 0.00917778749624154,
+        "integer_bin_reference": 0.024335644026134823,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "periodic_light",
+        "method": "POS",
+        "js": 0.0747131173735281,
+        "integer_bin_reference": 0.21476744462712496,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "out_of_band",
+        "method": "CHROM",
+        "js": 0.33118332747141144,
+        "integer_bin_reference": 0.7599575413214584,
+        "gate_changed": false
+      },
+      {
+        "duration": 45,
+        "bpm": null,
+        "condition": "out_of_band",
+        "method": "CHROM",
+        "js": 0.13165210021162943,
+        "integer_bin_reference": 0.2893936035026017,
+        "gate_changed": false
+      }
+    ],
+    "scope": "projection + existing local overlap policy + linear resampling + Hann DFT; not full paper filtering or human validation"
+  },
+  {
+    "label": "after",
+    "comparisons": 180,
+    "max_wave_abs_error": 3.408731630294426e-16,
+    "max_spectral_metric_abs_error": 1.035838081975271e-13,
+    "baseline_half_bin_boundary_discrepancies": [],
+    "scope": "projection + existing local overlap policy + linear resampling + Hann DFT; not full paper filtering or human validation"
+  }
+]

@@ -1,0 +1,28 @@
+60 clean-0.3% accepted_experimental chromaStd 2.73e-4 bpm 59.8 accepted_spectrum accepted_spectrum
+60 clean x3 accepted_experimental chromaStd 8.19e-4 bpm 59.8 accepted_spectrum accepted_spectrum
+60 0.3%+noise0.1 accepted_experimental chromaStd 3.47e-4 bpm 59.8 accepted_spectrum accepted_spectrum
+60 0.3%+noise0.3 diffuse_spectrum chromaStd 6.77e-4 bpm null diffuse_spectrum diffuse_spectrum
+75 clean-0.3% accepted_experimental chromaStd 2.73e-4 bpm 74.8 accepted_spectrum accepted_spectrum
+75 clean x3 accepted_experimental chromaStd 8.19e-4 bpm 74.8 accepted_spectrum accepted_spectrum
+75 0.3%+noise0.1 accepted_experimental chromaStd 3.48e-4 bpm 74.8 accepted_spectrum accepted_spectrum
+75 0.3%+noise0.3 competing_periodicity chromaStd 6.73e-4 bpm null competing_periodicity diffuse_spectrum
+90 clean-0.3% accepted_experimental chromaStd 2.73e-4 bpm 89.7 accepted_spectrum accepted_spectrum
+90 clean x3 accepted_experimental chromaStd 8.19e-4 bpm 89.7 accepted_spectrum accepted_spectrum
+90 0.3%+noise0.1 accepted_experimental chromaStd 3.25e-4 bpm 89.7 accepted_spectrum accepted_spectrum
+90 0.3%+noise0.3 diffuse_spectrum chromaStd 6.80e-4 bpm null diffuse_spectrum diffuse_spectrum
+120 clean-0.3% accepted_experimental chromaStd 2.73e-4 bpm 119.6 accepted_spectrum accepted_spectrum
+120 clean x3 accepted_experimental chromaStd 8.19e-4 bpm 119.6 accepted_spectrum accepted_spectrum
+120 0.3%+noise0.1 accepted_experimental chromaStd 3.35e-4 bpm 119.6 accepted_spectrum accepted_spectrum
+120 0.3%+noise0.3 diffuse_spectrum chromaStd 6.68e-4 bpm null diffuse_spectrum diffuse_spectrum
+tone 60 ok 1.000 0.0000 0.0000
+tone 61 ok 0.996 0.0002 0.0000
+tone 62 ok 0.983 0.0007 0.0000
+tone 63 ok 0.998 0.0001 0.0000
+tone 64 ok 1.000 0.0000 0.0000
+tone 66 ok 0.989 0.0005 0.0000
+tone 72 ok 0.998 0.0001 0.0000
+tone 75 ok 1.000 0.0000 0.0000
+tone 77 ok 0.983 0.0007 0.0000
+tone 90 ok 1.000 0.0000 0.0000
+tone 92 ok 0.983 0.0007 0.0000
+tone 120 ok 1.000 0.0000 0.0000

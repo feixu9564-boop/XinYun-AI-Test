@@ -7,10 +7,10 @@ from pulse in RGB; trustworthy acquisition/ROI telemetry remains necessary.
 import numpy as np
 from .signal import heart_rate
 
-POLICY = dict(version='experimental-v1', calibration='NOT_CALIBRATED_ON_REAL_VALIDATION',
+POLICY = dict(version='experimental-v2', calibration='NOT_CALIBRATED_ON_REAL_VALIDATION',
               min_peak_fraction=.60, max_secondary_ratio=.04,
               min_subharmonic_ratio=.04, max_motion_p95=3.,
-              max_brightness_cv=.08, min_chromatic_std=.0005)
+              max_brightness_cv=.08, constant_chromatic_epsilon=1e-10, main_lobe_bins=2)
 
 
 class InsufficientSignal(ValueError):
@@ -54,7 +54,7 @@ def input_quality(frames, telemetry=None):
         raise InsufficientSignal('excessive_motion', audit)
     if light_cv > POLICY['max_brightness_cv']:
         raise InsufficientSignal('illumination_variation', audit)
-    if chroma_std < POLICY['min_chromatic_std']:
+    if chroma_std < POLICY['constant_chromatic_epsilon']:
         raise InsufficientSignal('no_chromatic_pulse_evidence', audit)
     return audit
 
@@ -75,11 +75,12 @@ def reliable_heart_rate(wave, fs=30):
         raise InsufficientSignal('no_in_band_signal')
     around = np.abs(np.arange(len(p))-peak) <= 1
     fraction = float(p[around & band].sum()/p[band].sum())
-    other = band & ~around
+    other = band & (np.abs(np.arange(len(p))-peak) > POLICY['main_lobe_bins'])
     secondary = float(p[other].max()/p[peak]) if other.any() else 0.
-    half = (np.abs(f-f[peak]/2) <= fs/len(wave)) & (f >= .7)
+    half = (np.abs(2*np.arange(len(p))-peak) <= 2) & band
     subharmonic = float(p[half].max()/p[peak]) if half.any() else 0.
-    audit = dict(peak_fraction=fraction, secondary_ratio=secondary, subharmonic_ratio=subharmonic)
+    audit = dict(peak_fraction=fraction, secondary_ratio=secondary, subharmonic_ratio=subharmonic,
+                 snr_db=float(10*np.log10(fraction/max(1e-15, 1-fraction))))
     if fraction < POLICY['min_peak_fraction']:
         raise InsufficientSignal('diffuse_spectrum', audit)
     if subharmonic > POLICY['min_subharmonic_ratio']:

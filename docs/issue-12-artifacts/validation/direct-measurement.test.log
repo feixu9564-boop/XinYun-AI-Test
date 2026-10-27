@@ -1,0 +1,50 @@
+TAP version 13
+# Subtest: permission/loading/wall waiting never contributes effective time
+ok 1 - permission/loading/wall waiting never contributes effective time
+  ---
+  duration_ms: 0.952348
+  ...
+# Subtest: single stable face starts only after 1.5s then counts 45 to 0 from samples
+ok 2 - single stable face starts only after 1.5s then counts 45 to 0 from samples
+  ---
+  duration_ms: 1.794274
+  ...
+# Subtest: brief face loss freezes countdown with cause, then explicitly restarts a fresh window
+ok 3 - brief face loss freezes countdown with cause, then explicitly restarts a fresh window
+  ---
+  duration_ms: 0.453764
+  ...
+# Subtest: event-loop gap pauses without fake completion or silent reset
+ok 4 - event-loop gap pauses without fake completion or silent reset
+  ---
+  duration_ms: 0.140065
+  ...
+# Subtest: repeated invalid samples preserve first cause and do not repeatedly reset
+ok 5 - repeated invalid samples preserve first cause and do not repeatedly reset
+  ---
+  duration_ms: 0.967032
+  ...
+# Subtest: low FPS during measurement pauses and keeps the low-FPS cause
+ok 6 - low FPS during measurement pauses and keeps the low-FPS cause
+  ---
+  duration_ms: 0.217935
+  ...
+# Subtest: low FPS and duplicate/out-of-order capture times cannot complete
+ok 7 - low FPS and duplicate/out-of-order capture times cannot complete
+  ---
+  duration_ms: 0.316197
+  ...
+# Subtest: bad exposure, multiple faces and pose keep clock at 45
+ok 8 - bad exposure, multiple faces and pose keep clock at 45
+  ---
+  duration_ms: 0.204155
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14.067029
