@@ -44,7 +44,7 @@ export function spectrum(signal,fs,{diagnostics=false}={}){
   const secondary=Math.max(0,...competitors.map(b=>b.p))/peak.p;
   const half=Math.max(0,...halves.map(b=>b.p))/peak.p;
   const reason=fraction<POLICY.minPeakFraction?'diffuse_spectrum':half>POLICY.maxSubharmonicRatio?'harmonic_ambiguity':secondary>POLICY.maxSecondaryRatio?'competing_periodicity':'';
-  return {bpm:reason?null:peak.f*60,candidateBpm:peak.f*60,reason,concentration:fraction,secondary,subharmonic:half,snrDb:10*Math.log10(fraction/Math.max(1e-15,1-fraction)),...(diagnostics?{...spectralAudit,bins,peak,secondaryPeak:competitors.reduce((a,b)=>!a||b.p>a.p?b:a,null),subharmonicPeak:halves.reduce((a,b)=>!a||b.p>a.p?b:a,null),binHz:fs/n,mainLobeBins:POLICY.mainLobeBins}: {})};
+  return {bpm:reason?null:peak.f*60,candidateBpm:peak.f*60,peakBpm:peak.f*60,secondaryBpm:competitors.reduce((a,b)=>!a||b.p>a.p?b:a,null)?.f*60||null,subharmonicBpm:halves.reduce((a,b)=>!a||b.p>a.p?b:a,null)?.f*60||null,binBpm:fs/n*60,sampleCount:n,reason,concentration:fraction,secondary,subharmonic:half,snrDb:10*Math.log10(fraction/Math.max(1e-15,1-fraction)),...(diagnostics?{...spectralAudit,bins,peak,secondaryPeak:competitors.reduce((a,b)=>!a||b.p>a.p?b:a,null),subharmonicPeak:halves.reduce((a,b)=>!a||b.p>a.p?b:a,null),binHz:fs/n,mainLobeBins:POLICY.mainLobeBins}: {})};
 }
 // The color variance is an observability metric, not evidence of a pulse.
 // Only numerical constancy is rejected here; frequency evidence is tested below.
@@ -52,6 +52,7 @@ export function analyze(samples,{diagnostics=false}={}){
   const gates=[],trace={gates,raw:diagnostics?samples.map(s=>({t:s.t,rgb:s.rgb??null})):null,resampled:null,normalized:null,waves:null,spectra:null};
   const gate=(name,value,operator,threshold,pass)=>{if(diagnostics)gates.push({name,value,operator,threshold,pass,evaluated:true});return pass;};
   const finish=result=>{
+    for(const key of ["pos_peak_bpm", "pos_concentration", "pos_secondary_ratio", "pos_secondary_bpm", "pos_subharmonic_ratio", "pos_subharmonic_bpm", "chrom_peak_bpm", "chrom_concentration", "chrom_secondary_ratio", "chrom_secondary_bpm", "chrom_subharmonic_ratio", "chrom_subharmonic_bpm", "spectral_bin_bpm", "analysis_sample_count", "analysis_fs", "analysis_duration"])if(result[key]===undefined)result[key]=null;
     if(diagnostics){
       const specs={sample_count:['>=',2],sample_reason:['==',null],sample_format:['==',true],duration:['>=',15],max_gap:['<=',.25],monotonic_time:['>',0],fps:['range',[12,65]],face_roi:['==',true],motion_telemetry:['==',true],exposure_min:['>=',30],exposure_max:['<=',235],motion_p95:['<=',POLICY.maxMotionP95],displacement_p95:['<=',.012],light_cv:['<=',POLICY.maxBrightnessCV],chromatic_nonconstant:['>=',POLICY.constantChromaticEpsilon],algorithm_agreement:['<=',6]};
       for(const m of ['POS','CHROM'])Object.assign(specs,{[m+'.sample_count']:['>=','4*fs'],[m+'.waveform_std']:['>=',1e-8],[m+'.band_power']:['>=',1e-12],[m+'.concentration']:['>=',POLICY.minPeakFraction],[m+'.subharmonic']:['<=',POLICY.maxSubharmonicRatio],[m+'.secondary']:['<=',POLICY.maxSecondaryRatio]});
@@ -97,6 +98,11 @@ export function analyze(samples,{diagnostics=false}={}){
   const waves=Object.fromEntries(['POS','CHROM'].map(m=>[m,extract(rgb,fs,m,diagnostics?windows[m]:null)]));
   const spectra=Object.fromEntries(['POS','CHROM'].map(m=>[m,spectrum(waves[m],fs,{diagnostics})]));
   const {POS:pos,CHROM:chrom}=spectra;
+  for(const [method,s] of Object.entries(spectra)){
+    const m=method.toLowerCase();
+    Object.assign(audit,{[m+'_peak_bpm']:s.peakBpm??null,[m+'_concentration']:s.secondary===undefined?null:s.concentration,[m+'_secondary_ratio']:s.secondary??null,[m+'_secondary_bpm']:s.secondaryBpm??null,[m+'_subharmonic_ratio']:s.subharmonic??null,[m+'_subharmonic_bpm']:s.subharmonicBpm??null});
+  }
+  Object.assign(audit,{spectral_bin_bpm:fs/n*60,analysis_sample_count:n,analysis_fs:fs,analysis_duration:duration});
   if(diagnostics){
     trace.resampled={t:rgb.map((_,i)=>samples[0].t+i/fs),rgb,fs,method:'linear'};
     const mu=[0,1,2].map(c=>mean(rgb.map(v=>v[c])));
