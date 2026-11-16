@@ -1,1 +1,2 @@
-export const BUILD={"version":"0.6.3-rc","commit":"f73adc395aa3d2d0b2ca55bc681b853b931c3ac0"};
+// Build stamps the source revision into dist; local source is explicitly unversioned.
+export const BUILD={version:'0.6.4-rc',commit:'0dd81127a15e4517947f5834def81df01e863cf1'};

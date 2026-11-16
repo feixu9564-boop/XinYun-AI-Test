@@ -19,7 +19,7 @@ export function extract(rgb, fs, method='POS', audit=null) {
 }
 // Port of benchmark/quality.py experimental-v2; NOT calibrated on humans.
 export const VERSION='mobile-pos-chrom-v1/experimental-v2';
-export const POLICY={minPeakFraction:.60,maxSecondaryRatio:.04,maxSubharmonicRatio:.04,maxMotionP95:3,maxBrightnessCV:.08,constantChromaticEpsilon:1e-10,mainLobeBins:2};
+export const POLICY={minPeakFraction:.60,maxSecondaryRatio:.04,maxSubharmonicRatio:.04,maxMotionP95:3,maxBrightnessCV:.08,constantChromaticEpsilon:1e-10,mainLobeBins:2,maxPosChromDiffBpm:5,maxSpectralEntropy:.50,maxInvalidFrameRatio:.15};
 export const percentile=(a,q)=>{const b=[...a].sort((x,y)=>x-y),i=(b.length-1)*q,j=Math.floor(i);return b[j]+(b[Math.ceil(i)]-b[j])*(i-j);};
 export function spectrum(signal,fs,{diagnostics=false}={}){
   const n=signal.length,m=mean(signal),center=(n-1)/2;
@@ -39,22 +39,29 @@ export function spectrum(signal,fs,{diagnostics=false}={}){
   const peak=bins.reduce((a,b)=>a.p>b.p?a:b),total=bins.reduce((s,b)=>s+b.p,0);
   if(diagnostics)spectralAudit.bandPower=total;
   if(total<1e-12)return reject('no_in_band_signal');
+  // Normalized Shannon entropy of in-band power (0 = single bin, 1 = flat); N = in-band bins.
+  const entropy=bins.length>1?-bins.reduce((a,b)=>b.p>0?a+(b.p/total)*Math.log(b.p/total):a,0)/Math.log(bins.length):0;
   const fraction=bins.filter(b=>Math.abs(b.k-peak.k)<=1).reduce((s,b)=>s+b.p,0)/total;
   const competitors=bins.filter(b=>Math.abs(b.k-peak.k)>POLICY.mainLobeBins),halves=bins.filter(b=>Math.abs(2*b.k-peak.k)<=2);
   const secondary=Math.max(0,...competitors.map(b=>b.p))/peak.p;
   const half=Math.max(0,...halves.map(b=>b.p))/peak.p;
   const reason=fraction<POLICY.minPeakFraction?'diffuse_spectrum':half>POLICY.maxSubharmonicRatio?'harmonic_ambiguity':secondary>POLICY.maxSecondaryRatio?'competing_periodicity':'';
-  return {bpm:reason?null:peak.f*60,candidateBpm:peak.f*60,reason,concentration:fraction,secondary,subharmonic:half,snrDb:10*Math.log10(fraction/Math.max(1e-15,1-fraction)),...(diagnostics?{...spectralAudit,bins,peak,secondaryPeak:competitors.reduce((a,b)=>!a||b.p>a.p?b:a,null),subharmonicPeak:halves.reduce((a,b)=>!a||b.p>a.p?b:a,null),binHz:fs/n,mainLobeBins:POLICY.mainLobeBins}: {})};
+  // Added in 0.6.4-rc: evaluated after the existing gates so earlier rejection reasons keep their priority.
+  const entropyReject=!reason&&entropy>POLICY.maxSpectralEntropy,finalReason=entropyReject?'high_spectral_entropy':reason;
+  return {bpm:finalReason?null:peak.f*60,candidateBpm:peak.f*60,peakBpm:peak.f*60,secondaryBpm:competitors.reduce((a,b)=>!a||b.p>a.p?b:a,null)?.f*60||null,subharmonicBpm:halves.reduce((a,b)=>!a||b.p>a.p?b:a,null)?.f*60||null,binBpm:fs/n*60,sampleCount:n,reason:finalReason,baseReason:reason,concentration:fraction,secondary,subharmonic:half,spectralEntropy:entropy,snrDb:10*Math.log10(fraction/Math.max(1e-15,1-fraction)),...(diagnostics?{...spectralAudit,bins,peak,secondaryPeak:competitors.reduce((a,b)=>!a||b.p>a.p?b:a,null),subharmonicPeak:halves.reduce((a,b)=>!a||b.p>a.p?b:a,null),binHz:fs/n,mainLobeBins:POLICY.mainLobeBins}: {})};
 }
+// POS/CHROM cross-check: never choose one of two disagreeing algorithms (kept as a function so the boundary is unit-testable).
+export const posChromAgree=(pos,chrom,max=POLICY.maxPosChromDiffBpm)=>{const diff=Math.abs(pos-chrom);return {diff,pass:diff<=max};};
 // The color variance is an observability metric, not evidence of a pulse.
 // Only numerical constancy is rejected here; frequency evidence is tested below.
-export function analyze(samples,{diagnostics=false}={}){
+export function analyze(samples,{diagnostics=false,frames=null}={}){
   const gates=[],trace={gates,raw:diagnostics?samples.map(s=>({t:s.t,rgb:s.rgb??null})):null,resampled:null,normalized:null,waves:null,spectra:null};
   const gate=(name,value,operator,threshold,pass)=>{if(diagnostics)gates.push({name,value,operator,threshold,pass,evaluated:true});return pass;};
   const finish=result=>{
+    for(const key of ["pos_peak_bpm", "pos_concentration", "pos_secondary_ratio", "pos_secondary_bpm", "pos_subharmonic_ratio", "pos_subharmonic_bpm", "chrom_peak_bpm", "chrom_concentration", "chrom_secondary_ratio", "chrom_secondary_bpm", "chrom_subharmonic_ratio", "chrom_subharmonic_bpm", "spectral_bin_bpm", "analysis_sample_count", "analysis_fs", "analysis_duration", "pos_spectral_entropy", "chrom_spectral_entropy", "pos_chrom_bpm_diff", "invalid_frame_ratio"])if(result[key]===undefined)result[key]=null;
     if(diagnostics){
-      const specs={sample_count:['>=',2],sample_reason:['==',null],sample_format:['==',true],duration:['>=',15],max_gap:['<=',.25],monotonic_time:['>',0],fps:['range',[12,65]],face_roi:['==',true],motion_telemetry:['==',true],exposure_min:['>=',30],exposure_max:['<=',235],motion_p95:['<=',POLICY.maxMotionP95],displacement_p95:['<=',.012],light_cv:['<=',POLICY.maxBrightnessCV],chromatic_nonconstant:['>=',POLICY.constantChromaticEpsilon],algorithm_agreement:['<=',6]};
-      for(const m of ['POS','CHROM'])Object.assign(specs,{[m+'.sample_count']:['>=','4*fs'],[m+'.waveform_std']:['>=',1e-8],[m+'.band_power']:['>=',1e-12],[m+'.concentration']:['>=',POLICY.minPeakFraction],[m+'.subharmonic']:['<=',POLICY.maxSubharmonicRatio],[m+'.secondary']:['<=',POLICY.maxSecondaryRatio]});
+      const specs={sample_count:['>=',2],sample_reason:['==',null],sample_format:['==',true],duration:['>=',15],max_gap:['<=',.25],monotonic_time:['>',0],fps:['range',[12,65]],face_roi:['==',true],motion_telemetry:['==',true],exposure_min:['>=',30],exposure_max:['<=',235],motion_p95:['<=',POLICY.maxMotionP95],displacement_p95:['<=',.012],light_cv:['<=',POLICY.maxBrightnessCV],chromatic_nonconstant:['>=',POLICY.constantChromaticEpsilon],algorithm_agreement:['<=',POLICY.maxPosChromDiffBpm],invalid_frame_ratio:['<=',POLICY.maxInvalidFrameRatio]};
+      for(const m of ['POS','CHROM'])Object.assign(specs,{[m+'.sample_count']:['>=','4*fs'],[m+'.waveform_std']:['>=',1e-8],[m+'.band_power']:['>=',1e-12],[m+'.concentration']:['>=',POLICY.minPeakFraction],[m+'.subharmonic']:['<=',POLICY.maxSubharmonicRatio],[m+'.secondary']:['<=',POLICY.maxSecondaryRatio],[m+'.spectral_entropy']:['<=',POLICY.maxSpectralEntropy]});
       for(const [name,[operator,threshold]] of Object.entries(specs))if(!gates.some(g=>g.name===name))gates.push({name,value:null,operator,threshold,pass:null,evaluated:false});
       result.diagnostics={...trace,finalReason:result.reason};
     }
@@ -97,6 +104,15 @@ export function analyze(samples,{diagnostics=false}={}){
   const waves=Object.fromEntries(['POS','CHROM'].map(m=>[m,extract(rgb,fs,m,diagnostics?windows[m]:null)]));
   const spectra=Object.fromEntries(['POS','CHROM'].map(m=>[m,spectrum(waves[m],fs,{diagnostics})]));
   const {POS:pos,CHROM:chrom}=spectra;
+  for(const [method,s] of Object.entries(spectra)){
+    const m=method.toLowerCase();
+    Object.assign(audit,{[m+'_peak_bpm']:s.peakBpm??null,[m+'_concentration']:s.secondary===undefined?null:s.concentration,[m+'_secondary_ratio']:s.secondary??null,[m+'_secondary_bpm']:s.secondaryBpm??null,[m+'_subharmonic_ratio']:s.subharmonic??null,[m+'_subharmonic_bpm']:s.subharmonicBpm??null,[m+'_spectral_entropy']:s.spectralEntropy??null});
+  }
+  // Logged whenever both candidate peaks exist, even if another gate already rejected.
+  audit.pos_chrom_bpm_diff=pos.peakBpm!=null&&chrom.peakBpm!=null?Math.abs(pos.peakBpm-chrom.peakBpm):null;
+  // Session-level frame statistics (model results vs. usable ROI samples); optional so direct callers keep working.
+  audit.invalid_frame_ratio=frames&&frames.total>0?frames.invalid/frames.total:null;
+  Object.assign(audit,{spectral_bin_bpm:fs/n*60,analysis_sample_count:n,analysis_fs:fs,analysis_duration:duration});
   if(diagnostics){
     trace.resampled={t:rgb.map((_,i)=>samples[0].t+i/fs),rgb,fs,method:'linear'};
     const mu=[0,1,2].map(c=>mean(rgb.map(v=>v[c])));
@@ -113,11 +129,17 @@ export function analyze(samples,{diagnostics=false}={}){
       gate(name+'.concentration',s.concentration,'>=',POLICY.minPeakFraction,s.concentration>=POLICY.minPeakFraction);
       gate(name+'.subharmonic',s.subharmonic,'<=',POLICY.maxSubharmonicRatio,s.subharmonic<=POLICY.maxSubharmonicRatio);
       gate(name+'.secondary',s.secondary,'<=',POLICY.maxSecondaryRatio,s.secondary<=POLICY.maxSecondaryRatio);
+      gate(name+'.spectral_entropy',s.spectralEntropy,'<=',POLICY.maxSpectralEntropy,s.spectralEntropy<=POLICY.maxSpectralEntropy);
     }
   }
-  Object.assign(audit,{pos_reason:pos.reason||'accepted_spectrum',chrom_reason:chrom.reason||'accepted_spectrum'});
+  // pos_reason/chrom_reason keep their <=0.6.3-rc meaning (existing gates only); the entropy gate surfaces as the final reason.
+  const base=s=>s.baseReason??s.reason;
+  Object.assign(audit,{pos_reason:base(pos)||'accepted_spectrum',chrom_reason:base(chrom)||'accepted_spectrum'});
+  if(base(pos)||base(chrom))return fail(base(pos)||base(chrom),audit);
   if(pos.reason||chrom.reason)return fail(pos.reason||chrom.reason,audit);
-  const difference=Math.abs(pos.bpm-chrom.bpm);
-  if(!gate('algorithm_agreement',difference,'<=',6,difference<=6))return fail('algorithm_disagreement',audit);
+  const {diff:difference,pass:agree}=posChromAgree(pos.bpm,chrom.bpm);
+  // Both algorithms produced a BPM: never pick one; >5 BPM apart is a failure (was 6 / algorithm_disagreement in <=0.6.3-rc).
+  if(!gate('algorithm_agreement',difference,'<=',POLICY.maxPosChromDiffBpm,agree))return fail('pos_chrom_disagreement',audit);
+  if(audit.invalid_frame_ratio!==null&&!gate('invalid_frame_ratio',audit.invalid_frame_ratio,'<=',POLICY.maxInvalidFrameRatio,audit.invalid_frame_ratio<=POLICY.maxInvalidFrameRatio))return fail('too_many_invalid_frames',audit);
   return finish({reliable:true,bpm:Math.round(pos.bpm*10)/10,pos:pos.bpm,chrom:chrom.bpm,score:Math.round(100*Math.min(pos.concentration,chrom.concentration)),reason:'accepted_experimental',...audit});
 }
