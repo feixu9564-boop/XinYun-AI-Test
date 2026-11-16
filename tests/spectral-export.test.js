@@ -6,7 +6,9 @@ import {FIELDS,toCSV} from '../web/records.js';
 import {fixture,conditions} from '../scripts/synthetic-fixtures.mjs';
 const previousFields=["schema_version","record_type","session_id","subject_id","recorded_at","window_start","window_end","sample_start","sample_end","status","reason","bpm","pos_bpm","chrom_bpm","quality","fps","sample_count","reference_id","reference_bpm","reference_observed_at","reference_recorded_at","reference_match","algorithm_version","user_agent","camera_width","camera_height","camera_facing","capture_version","stop_reason","scheduler_source","video_callbacks","frames_submitted","model_completions","model_results","face_frames","pending_inference_ms","last_video_time","video_ready_state","video_paused","document_visibility","preview_visible","last_sample_reason","app_version","commit_sha","aligned_at","measurement_started_at","stopped_at","measurement_phase","effective_seconds","countdown_seconds","valid_sample_count","alignment_resets","measurement_fps","roi_samples","decoded_frames","presented_frames","media_time","inference_ms","inference_errors","invalid_frames","roi_status","interruption_reason","paused_at","reset_at","countdown_before_reset","previous_effective_seconds","previous_valid_samples","final_reason","pos_reason","chrom_reason","cleanup_errors"];
 const summaryFields=["pos_peak_bpm", "pos_concentration", "pos_secondary_ratio", "pos_secondary_bpm", "pos_subharmonic_ratio", "pos_subharmonic_bpm", "chrom_peak_bpm", "chrom_concentration", "chrom_secondary_ratio", "chrom_secondary_bpm", "chrom_subharmonic_ratio", "chrom_subharmonic_bpm", "spectral_bin_bpm", "analysis_sample_count", "analysis_fs", "analysis_duration"];
+const v064Fields=['pos_spectral_entropy','chrom_spectral_entropy','pos_chrom_bpm_diff','invalid_frame_ratio'];
 const snapshot=JSON.parse(fs.readFileSync(new URL('./fixtures/decisions-f73adc3.json',import.meta.url)));
+const newGateReasons=['high_spectral_entropy','pos_chrom_disagreement','too_many_invalid_frames'];
 const decisionKeys=['reliable','bpm','pos','chrom','score','reason','pos_reason','chrom_reason'];
 const decisions=r=>Object.fromEntries(decisionKeys.filter(k=>r[k]!==undefined).map(k=>[k,r[k]]));
 
@@ -50,14 +52,21 @@ test('spectral summaries are available without diagnostics and absent evaluation
   assert.equal(plain.binBpm,20/320*60);
 });
 
-test('every synthetic matrix decision matches the unmodified f73adc3 snapshot',()=>{
-  let index=0,adequate=0,acceptedWithinFive=0,negatives=0,falseAccepts=0;
+test('every synthetic matrix decision matches the f73adc3 snapshot except accepted-to-rejected by the 0.6.4-rc gates',()=>{
+  let index=0,newlyRejected=0,adequate=0,acceptedWithinFive=0,negatives=0,falseAccepts=0;
   function check(duration,bpm,condition,seed=12026,negative=false){
     const samples=fixture(bpm,condition,duration,seed);
     const expected=snapshot[index++];
     assert.equal(expected.duration,duration);
     assert.equal(expected.condition,condition);
-    for(const diagnostics of [false,true])assert.deepEqual(decisions(analyze(samples,{diagnostics})),decisions(expected),`${duration}s ${bpm} ${condition} ${seed} diagnostics=${diagnostics}`);
+    for(const diagnostics of [false,true]){
+      const actual=decisions(analyze(samples,{diagnostics})),tag=`${duration}s ${bpm} ${condition} ${seed} diagnostics=${diagnostics}`;
+      // 0.6.4-rc gates are rejection-only: a decision may change solely from accepted to rejected by a new gate,
+      // never for the adequate (normal/weak/drift/jitter) fixtures, and never from rejected to accepted.
+      if(expected.reliable&&!actual.reliable&&newGateReasons.includes(actual.reason)){
+        assert.equal(condition,'noise',tag);assert.equal(actual.bpm,null,tag);if(!diagnostics)newlyRejected++;
+      }else assert.deepEqual(actual,decisions(expected),tag);
+    }
     if(!negative&&['normal','weak','drift','jitter'].includes(condition)){
       adequate++;
       if(expected.reliable&&Math.abs(expected.bpm-bpm)<=5)acceptedWithinFive++;
@@ -71,16 +80,17 @@ test('every synthetic matrix decision matches the unmodified f73adc3 snapshot',(
   assert.equal(acceptedWithinFive,32);
   assert.equal(negatives,42);
   assert.equal(falseAccepts,0);
+  console.log('newly rejected by 0.6.4-rc gates (previously accepted noise fixtures):',newlyRejected);
 });
 
 test('CSV preserves the previous columns and appends nullable spectral fields',()=>{
   assert.deepEqual(FIELDS.slice(0,previousFields.length),previousFields);
-  assert.deepEqual(FIELDS.slice(previousFields.length),summaryFields);
-  const row=Object.fromEntries(summaryFields.map(k=>[k,null]));
+  assert.deepEqual(FIELDS.slice(previousFields.length),[...summaryFields,...v064Fields]);
+  const row=Object.fromEntries([...summaryFields,...v064Fields].map(k=>[k,null]));
   const csv=toCSV([row]);
   const [header,line]=csv.replace(/^\uFEFF/,'').trimEnd().split('\r\n');
   assert.equal(header,FIELDS.join(','));
-  assert.deepEqual(line.split(',').slice(previousFields.length),summaryFields.map(()=>'""'));
+  assert.deepEqual(line.split(',').slice(previousFields.length),[...summaryFields,...v064Fields].map(()=>'""'));
   const numeric=toCSV([{...row,pos_peak_bpm:75}]).split('\r\n')[1].split(',');
   assert.equal(numeric[FIELDS.indexOf('pos_peak_bpm')],'"75"');
 });

@@ -10,7 +10,8 @@ from .signal import heart_rate
 POLICY = dict(version='experimental-v2', calibration='NOT_CALIBRATED_ON_REAL_VALIDATION',
               min_peak_fraction=.60, max_secondary_ratio=.04,
               min_subharmonic_ratio=.04, max_motion_p95=3.,
-              max_brightness_cv=.08, constant_chromatic_epsilon=1e-10, main_lobe_bins=2)
+              max_brightness_cv=.08, constant_chromatic_epsilon=1e-10, main_lobe_bins=2,
+              max_pos_chrom_diff_bpm=5., max_spectral_entropy=.50, max_invalid_frame_ratio=.15)
 
 
 class InsufficientSignal(ValueError):
@@ -79,12 +80,35 @@ def reliable_heart_rate(wave, fs=30):
     secondary = float(p[other].max()/p[peak]) if other.any() else 0.
     half = (np.abs(2*np.arange(len(p))-peak) <= 2) & band
     subharmonic = float(p[half].max()/p[peak]) if half.any() else 0.
+    # Normalized Shannon entropy of in-band power (0 = one bin, 1 = flat); mirrors web/signal.js.
+    pb = p[band]/p[band].sum()
+    entropy = float(-(pb[pb > 0]*np.log(pb[pb > 0])).sum()/np.log(len(pb))) if len(pb) > 1 else 0.
     audit = dict(peak_fraction=fraction, secondary_ratio=secondary, subharmonic_ratio=subharmonic,
-                 snr_db=float(10*np.log10(fraction/max(1e-15, 1-fraction))))
+                 spectral_entropy=entropy, snr_db=float(10*np.log10(fraction/max(1e-15, 1-fraction))))
     if fraction < POLICY['min_peak_fraction']:
         raise InsufficientSignal('diffuse_spectrum', audit)
     if subharmonic > POLICY['min_subharmonic_ratio']:
         raise InsufficientSignal('harmonic_ambiguity', audit)
     if secondary > POLICY['max_secondary_ratio']:
         raise InsufficientSignal('competing_periodicity', audit)
+    if entropy > POLICY['max_spectral_entropy']:
+        raise InsufficientSignal('high_spectral_entropy', audit)
     return heart_rate(wave, fs), audit
+
+
+def check_pos_chrom_agreement(pos_bpm, chrom_bpm):
+    """Both methods must yield a BPM and agree within 5 BPM; never pick one (mirrors web/signal.js)."""
+    diff = abs(pos_bpm-chrom_bpm)
+    if diff > POLICY['max_pos_chrom_diff_bpm']:
+        raise InsufficientSignal('pos_chrom_disagreement', dict(pos_chrom_bpm_diff=diff))
+    return diff
+
+
+def check_invalid_frame_ratio(invalid_frames, total_frames):
+    """invalid_frames / total_frames (app.js: max(0, model_results - roi_samples) / model_results) must be <= 15%."""
+    if total_frames <= 0:
+        raise InsufficientSignal('too_many_invalid_frames', dict(invalid_frame_ratio=None))
+    ratio = invalid_frames/total_frames
+    if ratio > POLICY['max_invalid_frame_ratio']:
+        raise InsufficientSignal('too_many_invalid_frames', dict(invalid_frame_ratio=ratio))
+    return ratio
