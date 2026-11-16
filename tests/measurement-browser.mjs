@@ -65,7 +65,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   let rows=await page.evaluate(()=>JSON.parse(localStorage.getItem('xinyun-mobile-v1')));
   const end=rows.filter(r=>r.record_type==='session_end').at(-1),windowRow=rows.filter(r=>r.record_type==='window').at(-1);
   assert.equal(end.stop_reason,'measurement_complete');assert.ok(end.effective_seconds>=45);assert.ok(end.valid_sample_count>=540);assert.ok(end.roi_samples>540);assert.ok(end.frames_submitted>540);assert.ok(end.alignment_resets>=2);assert.ok(end.aligned_at&&end.measurement_started_at&&end.stopped_at&&end.commit_sha);
-  assert.equal(windowRow.bpm,null);assert.equal(end.reason,'no_chromatic_pulse_evidence');assert.equal(end.final_reason,end.reason);assert.ok((await page.locator('#status').innerText()).includes('失败原因'));assert.ok((await page.locator('#result-details').innerText()).includes('无效帧'));assert.ok((await page.locator('#result-version').innerText()).includes('0.6.3-rc'));
+  assert.equal(windowRow.bpm,null);assert.equal(end.reason,'no_chromatic_pulse_evidence');assert.equal(end.final_reason,end.reason);assert.ok((await page.locator('#status').innerText()).includes('失败原因'));assert.ok((await page.locator('#result-details').innerText()).includes('无效帧'));assert.ok((await page.locator('#result-version').innerText()).includes('0.6.4-rc'));
   assert.equal(await page.locator('#export-diagnostics').isEnabled(),name==='WebKit');
   if(name==='WebKit'){
     const dd=page.waitForEvent('download');await page.locator('#export-diagnostics').click();

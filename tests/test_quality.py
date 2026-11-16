@@ -2,7 +2,7 @@
 import json
 import numpy as np
 import pytest
-from benchmark.quality import input_quality, reliable_heart_rate, InsufficientSignal
+from benchmark.quality import input_quality, reliable_heart_rate, InsufficientSignal, POLICY
 from benchmark.metrics import metrics, subject_bootstrap
 from benchmark.signal import heart_rate
 
@@ -109,3 +109,48 @@ def test_missing_telemetry_retains_windows_and_no_bpm(tmp_path):
     assert len(rows) == 12
     assert all(r['predicted_bpm'] is None for r in rows)
     assert all(r['status'] == 'insufficient_signal' for r in rows if r['algorithm'] in ('POS','CHROM'))
+
+
+# --- v0.6.4-rc gates (mirror web/signal.js); synthetic only, DEVICE_TEST_REQUIRED ---
+from benchmark.quality import check_pos_chrom_agreement, check_invalid_frame_ratio
+
+
+def _comb(k_weak, power, fs=20, n=321):
+    b = fs/n; k0 = round(1.25/b); a = np.sqrt(power); t = np.arange(n)/fs
+    w = np.sin(2*np.pi*k0*b*t); ks = []; j = 1
+    while len(ks) < k_weak and j < 200:
+        c = k0+(1 if j % 2 else -1)*int(np.ceil(j/2))*3
+        if .75 <= c*b <= 2.9: ks.append(c)
+        j += 1
+    for q, k in enumerate(ks): w = w+a*np.sin(2*np.pi*k*b*t+q*1.3)
+    return w
+
+
+@pytest.mark.parametrize('bpm', [60, 75, 90, 120])
+def test_entropy_gate_keeps_clean_pulses(bpm):
+    t = np.arange(480)/30
+    _, audit = reliable_heart_rate(np.sin(2*np.pi*bpm/60*t))
+    assert 0 < audit['spectral_entropy'] < .45
+
+
+def test_entropy_gate_rejects_weak_multi_peak_that_passes_other_gates():
+    assert reliable_heart_rate(_comb(6, .03), 20)[1]['spectral_entropy'] < .50
+    with pytest.raises(InsufficientSignal) as e: reliable_heart_rate(_comb(10, .03), 20)
+    assert e.value.reason == 'high_spectral_entropy'
+    assert e.value.audit['secondary_ratio'] <= POLICY['max_secondary_ratio']
+    assert e.value.audit['peak_fraction'] >= POLICY['min_peak_fraction']
+
+
+def test_pos_chrom_cross_check_boundary():
+    assert check_pos_chrom_agreement(75, 80) == 5
+    for a, b in [(75, 80.01), (60, 90)]:
+        with pytest.raises(InsufficientSignal) as e: check_pos_chrom_agreement(a, b)
+        assert e.value.reason == 'pos_chrom_disagreement' and e.value.audit['pos_chrom_bpm_diff'] > 5
+
+
+def test_invalid_frame_ratio_gate():
+    assert check_invalid_frame_ratio(150, 1000) == .15
+    for inv, tot in [(203, 1162), (175, 1162)]:
+        with pytest.raises(InsufficientSignal) as e: check_invalid_frame_ratio(inv, tot)
+        assert e.value.reason == 'too_many_invalid_frames'
+    assert check_invalid_frame_ratio(174, 1162) < .15

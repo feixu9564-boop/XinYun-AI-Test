@@ -25,7 +25,7 @@ results=json.loads(p.stdout)
 for case,actual in zip(cases,results):
     assert actual['maxError']<1e-10,(case['case'],actual)
     assert case['reason']==actual['result']['reason'],(case['case'],case['reason'],actual)
-    for pykey,jskey in [('peak_fraction','concentration'),('secondary_ratio','secondary'),('subharmonic_ratio','subharmonic'),('snr_db','snrDb')]:
+    for pykey,jskey in [('peak_fraction','concentration'),('secondary_ratio','secondary'),('subharmonic_ratio','subharmonic'),('snr_db','snrDb'),('spectral_entropy','spectralEntropy')]:
         if pykey in case['metrics']: assert abs(case['metrics'][pykey]-actual['result'][jskey])<1e-9,(case['case'],pykey)
     if case['bpm'] is not None: assert abs(case['bpm']-actual['result']['bpm'])<1e-9
     print(json.dumps(dict(case=case['case'],algorithm=case['method'],max_wave_error=actual['maxError'],bpm=actual['result']['bpm'],reason=actual['result']['reason'])))
